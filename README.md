@@ -10,3 +10,5 @@ https://doi.org/10.1038/s41467-018-07717-6
 https://arxiv.org/abs/1312.5602
 ### 4.Predicting BTC by using beyesian.
 https://github.com/Rachnog/Deep-Trading/tree/master/bayesian
+
+hcy
