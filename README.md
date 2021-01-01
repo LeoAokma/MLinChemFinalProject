@@ -57,5 +57,10 @@ Scroll to the bottom of the website and you will see the api entrance.
 
 
 ## Problems
-1.Python3.6以上Django==1.8出现的问题
+### 1.Python3.6以上Django==1.8出现的问题
 https://blog.csdn.net/grace666/article/details/103568674
+### 3.缺少库crispy_forms
+自行安装之
+### 2.No module name "django.urls" 报错于crispy_forms中的helper.py
+https://www.cnblogs.com/timest/archive/2012/03/26/2417364.html
+django版本较新，已经弃用urls库，改用django.core.urlresolvers
