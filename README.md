@@ -64,3 +64,19 @@ https://blog.csdn.net/grace666/article/details/103568674
 ### 2.No module name "django.urls" 报错于crispy_forms中的helper.py
 https://www.cnblogs.com/timest/archive/2012/03/26/2417364.html
 django版本较新，已经弃用urls库，改用django.core.urlresolvers
+
+## Steps
+### 1.安装并部署MySQL服务器，配置/etc/my.cnf文件如下：
+
+```
+[mysqld]
+socket=/tmp/mysql.sock
+[mysql]
+socket=/tmp/mysql.sock
+```
+
+### 2.初始化MySQL安装，空白密码进入程序：
+
+```
+sudo mysql_secure_installation
+```
