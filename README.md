@@ -54,3 +54,8 @@ Scroll to the bottom of the website and you will see the api entrance.
 |----   |----   |----   |----   |----   |
 |Materials Platform for Data Science	|This API presents the curated materials data of the PAULING FILE database, suitable for automated processing, materials simulations, discovery, and scientific design.	|Science	|2	|REST v0|
 |Chemcaster	|Chemcaster is a REST-based API offering services for managing cheminformatics resources, including substance registration, structure imaging, and substructure/exact-structure seach. Chemcaster is a...	|Reference	|6	|REST|
+
+
+## Problems
+1.Python3.6以上Django==1.8出现的问题
+https://blog.csdn.net/grace666/article/details/103568674
