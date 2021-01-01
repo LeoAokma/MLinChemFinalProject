@@ -80,3 +80,8 @@ socket=/tmp/mysql.sock
 ```
 sudo mysql_secure_installation
 ```
+
+按照如下步骤部署：
+
+https://blog.csdn.net/liang19890820/article/details/105071479
+
