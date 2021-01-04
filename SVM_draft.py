@@ -5,8 +5,8 @@ import sklearn.svm as svm
 from sklearn.metrics import confusion_matrix, accuracy_score
 # from sklearn.feature_selection import RFE
 
-
 import data_loader
+
 
 train_dl = data_loader.data_loader('../data/history.csv')
 test_dl = data_loader.data_loader('../data/new.csv')
@@ -28,7 +28,6 @@ train_X, train_y = train_dl.generate_trainset(feat_first, include_first_column=F
 train_X, valid_X, train_y, valid_y = model_selection.train_test_split(train_X, train_y, train_size=0.9)
 
 # test_X, test_y = test_dl.generate_trainset(feat_first, include_first_column=False)
-
 
 # normalization
 scaler = preprocessing.StandardScaler()
