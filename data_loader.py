@@ -2,18 +2,11 @@
 author: Shenchen Joe Zhong
 
 System Environment
-OS: Microsoft Windows 10 Professional x64
-CPU: Intel(R) Core(TM) i5-8300h @ 2.30GHz
-GPU: GeForce GTX 1060 with Max-Q Design
-Memory: 32 GiB
+OS: Microsoft Windows 10 Professional x64, WSL with Ubuntu 16.0.4 LTS or MacOS Big Sur 11.0 above
+(No requirments of necessity)
 
 Python Environment
-python==3.6
-numpy==1.19.2
-scipy==1.5.2
-pandas==1.1.3
-scikit-learn==0.23.2
-matplotlib==3.3.2
+python==3.8
 """
 
 import numpy as np
@@ -22,7 +15,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 
-class data_loader():
+class DataLoader:
     def __init__(self, data_path):
         self.data_path = data_path
         self.dataset = pd.read_csv(data_path)
@@ -71,7 +64,7 @@ functions to be implemented: generate dataset with selected features(generate_tr
 '''
 
 # imput your own path of origin dataset(.csv only)
-dl = data_loader('./data/41586_2016_BFnature17439_MOESM231_ESM.csv')
+dl = DataLoader('./data/41586_2016_BFnature17439_MOESM231_ESM.csv')
 
 # testing code
 print(dl.features())
