@@ -60,6 +60,6 @@ For testing
 """
 
 content, stat = climb('https://darkreactions.haverford.edu/database.html?reactions_only=1&page=1')
-tables = 
+tables =
 for _ in content:
     convert2table(StringIO(str(_)))
