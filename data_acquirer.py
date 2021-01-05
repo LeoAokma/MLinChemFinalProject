@@ -55,11 +55,10 @@ def get_data():
         time.sleep(3)
         i += 1
 
-"""
-For testing
-"""
 
-content, stat = climb('https://darkreactions.haverford.edu/database.html?reactions_only=1&page=1')
-tables =
-for _ in content:
-    convert2table(StringIO(str(_)))
+def test():
+    content, stat = climb('https://darkreactions.haverford.edu/database.html?reactions_only=1&page=1')
+    tables = []
+    for _ in content:
+        table = convert2table(StringIO(str(_)))
+        tables.append(table)
