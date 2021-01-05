@@ -8,8 +8,8 @@ from sklearn.metrics import confusion_matrix, accuracy_score
 import data_loader
 
 
-train_dl = data_loader.data_loader('../data/history.csv')
-test_dl = data_loader.data_loader('../data/new.csv')
+train_dl = data_loader.DataLoader('../data/history.csv')
+test_dl = data_loader.DataLoader('../data/new.csv')
 
 feat_first = ['orgvanderwaalsMin', 'orgASA+Min', 'orghbdamsdonGeomAvg',
               'PaulingElectronegMean', 'hardnessMaxWeighted', 'AtomicRadiusMeanWeighted']
