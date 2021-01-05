@@ -14,7 +14,7 @@ import collections
 import pandas as pd
 
 
-class data_loader():
+class DataLoader:
     def __init__(self, data_path):
         self.data_path = data_path
         self.dataset = pd.read_csv(data_path)
