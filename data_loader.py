@@ -100,20 +100,23 @@ class DataLoader:
         train = [train_X, train_Y]
         return train
 
+
 '''
-functions to be implemented:self.dataset editing(inclued new feature, delete useless features, etc.), loading trainset and test set via one data_loader(class data_loader(self, train_data_path, test_data_path)) ...
+functions to be implemented:self.dataset editing(include new feature, delete useless features, etc.),
+ loading trainset and test set via one DataLoader(class data_loader(self, train_data_path, test_data_path)) ...
 '''
 
-# imput your own path of origin dataset(.csv only)
-dl = DataLoader('./data/train.csv')
 
 # testing code
-# print(dl.features())
-# print(dl.dataset)
-# print(dl.get_value_list('XXXinorg'))
-# print(dl.get_value_list('XXXinorg1'))
-# print(dl.get_value_array('XXXinorg'))
-# print(dl.value_numbers('XXXinorg1', 'potassium vanadium trioxide'))
-print(dl.generate_trainset(['XXXinorg1', 'XXXinorg2', 'XXXinorg3'], include_first_column=False)[0])
-print(dl.generate_trainset(include_first_column=False)[1])
-# print(dl.dataset)
+def test():
+    # input your own path of origin dataset(.csv only)
+    dl = DataLoader('./data/train.csv')
+    # print(dl.features())
+    # print(dl.dataset)
+    # print(dl.get_value_list('XXXinorg'))
+    # print(dl.get_value_list('XXXinorg1'))
+    # print(dl.get_value_array('XXXinorg'))
+    # print(dl.value_numbers('XXXinorg1', 'potassium vanadium trioxide'))
+    print(dl.generate_trainset(['XXXinorg1', 'XXXinorg2', 'XXXinorg3'], include_first_column=False)[0])
+    print(dl.generate_trainset(include_first_column=False)[1])
+    # print(dl.dataset)
