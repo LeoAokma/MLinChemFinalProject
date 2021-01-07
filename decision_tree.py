@@ -2,6 +2,7 @@ import numpy as np
 from sklearn import tree
 import graphviz
 import unittest
+import data_keys
 
 
 class DecisionTree(tree.DecisionTreeClassifier):
@@ -26,37 +27,35 @@ class DecisionTreeTest(unittest.TestCase):
     Class for testing
     """
     def test_decision_tree(self):
-        test_key = ['slowCool', 'pH', 'leak', 'numberInorg', 'numberOrg',
-                    'numberOxlike', 'numberComponents', 'orgavgpolMax',
-                    'orgrefractivityMax', 'orgmaximalprojectionareaMax',
-                    'orgmaximalprojectionradiusMax', 'orgmaximalprojectionsizeMax',
-                    'orgminimalprojectionareaMax', 'orgminimalprojectionradiusMax',
-                    'orgminimalprojectionsizeMax', 'orgavgpol_pHdependentMax',
-                    'orgmolpolMax', 'orgvanderwaalsMax', 'orgASAMax', 'orgASA+Max',
-                    'orgASA-Max', 'orgASA_HMax', 'orgASA_PMax', 'orgpolarsurfaceareaMax',
-                    'orghbdamsaccMax', 'orghbdamsdonMax', 'orgavgpolMin', 'orgrefractivityMin',
-                    'orgmaximalprojectionareaMin', 'orgmaximalprojectionradiusMin',
-                    'orgmaximalprojectionsizeMin', 'orgminimalprojectionareaMin',
-                    ]
+        keys = data_keys.feat_top9
+
         from data_loader import DataLoader
+
         train_dl = DataLoader('data/train.csv')
         test_dl = DataLoader('data/test.csv')
-        train_dl.binarize('leak', 'no', data_type='string')
 
-        test_dl.binarize('leak', 'no', data_type='string')
-        train_dl.binarize('slowCool', 'no', data_type='string')
-        train_dl.binarize('outcome', 3)
-        test_dl.binarize('slowCool', 'no', data_type='string')
+        # make all discontinuous data a binary plot
+        train_dl.binarize_all_data()
+        test_dl.binarize_all_data()
+
         test_dl.binarize('outcome (actual)', 3)
-        train_x, train_y = train_dl.generate_trainset(feature_list=test_key, include_first_column=False, binarize=True)
+        train_dl.binarize('outcome', 3)
+
+        train_x, train_y = train_dl.generate_trainset(
+            feature_list=keys,
+            include_first_column=False,
+            binarize=True,
+            )
+
         dcx_tree = DecisionTree(
-            max_depth=9,
+            max_depth=4,
             splitter='random',
             class_weight='balanced',
         )
+
         dcx_tree.fit(train_x, train_y)
-        graph = dcx_tree.plot(test_key)
-        graph.render('data/tree.png', view=True)
+        graph = dcx_tree.plot(keys)
+        graph.render('data/tree', view=True)
 
 
 if __name__ == '__main__':

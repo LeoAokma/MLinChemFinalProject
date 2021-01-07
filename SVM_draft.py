@@ -7,30 +7,24 @@ from sklearn.metrics import confusion_matrix, accuracy_score
 # importing own codes
 from data_loader import DataLoader
 import visualization as vz
+import data_keys
 
 
 # Dataset paths
 train_dl = DataLoader('data/train.csv')
 test_dl = DataLoader('data/test.csv')
 
-# Declaring Features
-feat_first = ['orgvanderwaalsMin', 'orgASA+Min', 'orghbdamsdonGeomAvg',
-              'PaulingElectronegMean', 'hardnessMaxWeighted', 'AtomicRadiusMeanWeighted']
+keys = data_keys.test_key
 
-feat_top6 = ['time', 'hardnessMinWeighted', 'orgASA_HGeomAvg', 'leak', 
-             'inorg-water-moleratio', 'orgvanderwaalsArithAvg']
+# make all discontinuous data a binary plot
+train_dl.binarize_all_data()
+test_dl.binarize_all_data()
 
-feat_top9 = ['time', 'hardnessMinWeighted', 'orgASA_HGeomAvg', 'leak', 
-             'inorg-water-moleratio', 'orgvanderwaalsArithAvg', 'orgvanderwaalsArithAvg',
-             'orghbdamsaccMax', 'temp', 'EAMinWeighted']
-
-train_dl.replace('leak', lambda x: 0 if x == 'no' else 1)
-test_dl.replace('leak', lambda x: 0 if x == 'no' else 1)
-# binarizing the outcome in test data set
 test_dl.binarize('outcome (actual)', 3)
+train_dl.binarize('outcome', 3)
 
 # generate the dataset and binarize the outcome
-train_X, train_y = train_dl.generate_trainset(feat_first, include_first_column=False, binarize=True)
+train_X, train_y = train_dl.generate_trainset(keys, include_first_column=False, binarize=True)
 train_X, valid_X, train_y, valid_y = model_selection.train_test_split(train_X, train_y, train_size=0.9)
 
 # test_X, test_y = test_dl.generate_trainset(feat_first, include_first_column=False)
