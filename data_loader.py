@@ -147,6 +147,21 @@ class DataLoader:
         if not self.is_binary:
             self.binarize('leak', 'no', data_type='string')
             self.binarize('slowCool', 'no', data_type='string')
+            atoms = ['Na', 'Li', 'Te', 'Br', 'K',
+                     'C', 'F', 'I', 'Mo', 'O',
+                     'N', 'P', 'S', 'V', 'Se',
+                     'Zn', 'Co', 'Cl', 'Ga', 'Cs',
+                     'Cr', 'Cu', 'Actinide', 'AlkaliMetal', 'Lanthanide',
+                     'P1', 'P2', 'P3', 'P4', 'P5',
+                     'P6', 'P7', 'G1', 'G2', 'G3',
+                     'G4', 'G5', 'G6', 'G7', 'G8',
+                     'G9', 'G10', 'G11', 'G12', 'G13',
+                     'G14', 'G15', 'G16', 'G17', 'G18',
+                     'V0', 'V1', 'V2', 'V3', 'V4'
+                     'V5', 'V6', 'V7',
+                    ]
+            for atom in atoms:
+                self.binarize(atom, 'no', data_type='string')
             self.is_binary = True
 
 
