@@ -8,9 +8,11 @@ from data_loader import DataLoader
 import visualization as vz
 
 
+# Dataset paths
 train_dl = DataLoader('data/train.csv')
 test_dl = DataLoader('data/test.csv')
 
+# Declaring Features
 feat_first = ['orgvanderwaalsMin', 'orgASA+Min', 'orghbdamsdonGeomAvg',
               'PaulingElectronegMean', 'hardnessMaxWeighted', 'AtomicRadiusMeanWeighted']
 
