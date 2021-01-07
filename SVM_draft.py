@@ -26,8 +26,11 @@ feat_top9 = ['time', 'hardnessMinWeighted', 'orgASA_HGeomAvg', 'leak',
 
 train_dl.replace('leak', lambda x: 0 if x == 'no' else 1)
 test_dl.replace('leak', lambda x: 0 if x == 'no' else 1)
+# binarizing the outcome in test data set
+test_dl.binarize('outcome (actual)', 3)
 
-train_X, train_y = train_dl.generate_trainset(feat_first, include_first_column=False)
+# generate the dataset and binarize the outcome
+train_X, train_y = train_dl.generate_trainset(feat_first, include_first_column=False, binarize=True)
 train_X, valid_X, train_y, valid_y = model_selection.train_test_split(train_X, train_y, train_size=0.9)
 
 # test_X, test_y = test_dl.generate_trainset(feat_first, include_first_column=False)
