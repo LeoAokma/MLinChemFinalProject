@@ -14,6 +14,7 @@ import pandas as pd
 import requests
 import time
 from io import StringIO
+import unittest
 
 
 def convert2table(html_table):
@@ -56,9 +57,17 @@ def get_data():
         i += 1
 
 
-def test():
-    content, stat = climb('https://darkreactions.haverford.edu/database.html?reactions_only=1&page=1')
-    tables = []
-    for _ in content:
-        table = convert2table(StringIO(str(_)))
-        tables.append(table)
+class DataAcquirerTest(unittest.TestCase):
+    """
+    Class for testing
+    """
+    def test_data_acquirer(self):
+        content, stat = climb('https://darkreactions.haverford.edu/database.html?reactions_only=1&page=1')
+        tables = []
+        for _ in content:
+            table = convert2table(StringIO(str(_)))
+            tables.append(table)
+
+
+if __name__ == '__main__':
+    unittest.main()

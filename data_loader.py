@@ -12,6 +12,7 @@ python==3.8
 import numpy as np
 import collections
 import pandas as pd
+import unittest
 
 
 class DataLoader:
@@ -135,15 +136,23 @@ functions to be implemented:self.dataset editing(include new feature, delete use
 
 
 # testing code
-def test():
-    # input your own path of origin dataset(.csv only)
-    dl = DataLoader('./data/train.csv')
-    # print(dl.features())
-    # print(dl.dataset)
-    # print(dl.get_value_list('XXXinorg'))
-    # print(dl.get_value_list('XXXinorg1'))
-    # print(dl.get_value_array('XXXinorg'))
-    # print(dl.value_numbers('XXXinorg1', 'potassium vanadium trioxide'))
-    print(dl.generate_trainset(['XXXinorg1', 'XXXinorg2', 'XXXinorg3'], include_first_column=False)[0])
-    print(dl.generate_trainset(include_first_column=False)[1])
-    # print(dl.dataset)
+class DataLoaderTest(unittest.TestCase):
+    """
+    Class for testing
+    """
+    def test_data_loader(self):
+        # input your own path of origin dataset(.csv only)
+        dl = DataLoader('./data/train.csv')
+        # print(dl.features())
+        # print(dl.dataset)
+        # print(dl.get_value_list('XXXinorg'))
+        # print(dl.get_value_list('XXXinorg1'))
+        # print(dl.get_value_array('XXXinorg'))
+        # print(dl.value_numbers('XXXinorg1', 'potassium vanadium trioxide'))
+        print(dl.generate_trainset(['XXXinorg1', 'XXXinorg2', 'XXXinorg3'], include_first_column=False)[0])
+        print(dl.generate_trainset(include_first_column=False)[1])
+        # print(dl.dataset)
+
+
+if __name__ == '__main__':
+    unittest.main()

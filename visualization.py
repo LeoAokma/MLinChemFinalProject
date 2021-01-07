@@ -10,6 +10,7 @@ python==3.8
 """
 import matplotlib.pyplot as plt
 import numpy as np
+import unittest
 
 
 def print_matrix(mtx, title=None):
@@ -52,3 +53,16 @@ def hyper_learning_plot():
     """
     # TODO
     pass
+
+
+class VisualizationTest(unittest.TestCase):
+    """
+    Class for testing
+    """
+    def test_visualization(self):
+        # TODO
+        pass
+
+
+if __name__ == '__main__':
+    unittest.main()
