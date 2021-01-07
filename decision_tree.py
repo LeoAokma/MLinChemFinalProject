@@ -17,13 +17,27 @@ class DecisionTreeTest(unittest.TestCase):
     Class for testing
     """
     def test_decision_tree(self):
+        test_key = ['slowCool', 'pH', 'leak', 'numberInorg', 'numberOrg',
+                    'numberOxlike', 'numberComponents', 'orgavgpolMax',
+                    'orgrefractivityMax', 'orgmaximalprojectionareaMax',
+                    'orgmaximalprojectionradiusMax', 'orgmaximalprojectionsizeMax',
+                    'orgminimalprojectionareaMax', 'orgminimalprojectionradiusMax',
+                    'orgminimalprojectionsizeMax', 'orgavgpol_pHdependentMax',
+                    'orgmolpolMax', 'orgvanderwaalsMax', 'orgASAMax', 'orgASA+Max',
+                    'orgASA-Max', 'orgASA_HMax', 'orgASA_PMax', 'orgpolarsurfaceareaMax',
+                    'orghbdamsaccMax', 'orghbdamsdonMax', 'orgavgpolMin', 'orgrefractivityMin',
+                    'orgmaximalprojectionareaMin', 'orgmaximalprojectionradiusMin',
+                    'orgmaximalprojectionsizeMin', 'orgminimalprojectionareaMin',
+                    ]
         from data_loader import DataLoader
         train_dl = DataLoader('data/train.csv')
         test_dl = DataLoader('data/test.csv')
-        train_dl.replace('leak', lambda x: 0 if x == 'no' else 1)
-        test_dl.replace('leak', lambda x: 0 if x == 'no' else 1)
+        train_dl.binarize('leak', 'no', data_type='string')
+        test_dl.binarize('leak', 'no', data_type='string')
+        train_dl.binarize('slowCool', 'no', data_type='string')
+        test_dl.binarize('slowCool', 'no', data_type='string')
         test_dl.binarize('outcome (actual)', 3)
-        train_x, train_y = train_dl.generate_trainset(include_first_column=False, binarize=True)
+        train_x, train_y = train_dl.generate_trainset(feature_list=test_key, include_first_column=False, binarize=True)
         dcx_tree = DecisionTree(
             max_depth=9,
             splitter='random',
