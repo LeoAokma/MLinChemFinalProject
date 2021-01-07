@@ -4,6 +4,7 @@ import sklearn.svm as svm
 from sklearn.metrics import confusion_matrix, accuracy_score
 # from sklearn.feature_selection import RFE
 
+# importing own codes
 from data_loader import DataLoader
 import visualization as vz
 
