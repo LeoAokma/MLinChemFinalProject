@@ -68,15 +68,20 @@ class DataLoader:
         counter = self.value_counter(feature)
         return counter[value]
 
-    def generate_trainset(self, feature_list=None, include_first_column=True):
+    def generate_trainset(self, feature_list=None, include_first_column=True, binarize=False):
         """
         generate train dataset based on selected features, data_loader.generate_trainset()[0] for X,
         data_loader.generate_trainset()[1] for Y
         last column for outcomes as default
         :param feature_list: list of selected features
-        :param include_first_column: whether first column used for dataset(if feature_list == None), default = True
+        :param include_first_column: bool, Default True.
+        Whether first column used for dataset(if feature_list == None), default = True
+        :param binarize: bool, Default=False.
+        Turn the outcome column into binary value with 0 and 1 if True.
         :return: train dataset based on selected features
         """
+        if binarize:
+            self.binarize('outcome', 3)
         if feature_list == None:
             train = np.array(self.dataset)
             if include_first_column:
@@ -108,6 +113,19 @@ class DataLoader:
         :return:
         """
         self.dataset[key] = self.dataset[key].apply(func)
+
+    def binarize(self, key, criteria):
+        """
+        Designed for turning a multiple discontinuous data into a binary dataset by
+        :param: key: str.
+        The key of the dataframe to be processed
+        :param: criteria: int or float.
+        The criteria to binarize the dataset
+        :return: Processed data
+        Examples:
+        binarize('outcome', 3)
+        """
+        self.replace(key, lambda x: 0 if x < criteria else 1)
 
 
 '''
