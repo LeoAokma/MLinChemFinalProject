@@ -8,6 +8,7 @@ OS: Microsoft Windows 10 Professional x64, WSL with Ubuntu 16.0.4 LTS or MacOS B
 Python Environment
 python==3.8
 """
+import matplotlib.pyplot as plt
 
 
 def print_matrix(mtx, title=None):
