@@ -82,13 +82,13 @@ class DataLoader:
             if include_first_column:
                 feature_Y = self.features()[-1]
                 train_Y = self.get_value_array(feature_Y)
-                train_X = self.dataset.drop([feature_Y], axis = 1)
+                train_X = self.dataset.drop([feature_Y], axis=1)
                 train_X = np.array(train_X)
             else: 
                 feature_first_column = self.features()[0]
                 feature_Y = self.features()[-1]
                 train_Y = self.get_value_array(feature_Y)
-                train_X = self.dataset.drop([feature_first_column, feature_Y], axis = 1)
+                train_X = self.dataset.drop([feature_first_column, feature_Y], axis=1)
                 train_X = np.array(train_X)
         else:
             trainset = []
