@@ -1,7 +1,7 @@
 import numpy as np
 from sklearn import preprocessing, model_selection
 import sklearn.svm as svm
-from sklearn.metrics import confusion_matrix, accuracy_score
+from sklearn.metrics import confusion_matrix, accuracy_score, recall_score
 # from sklearn.feature_selection import RFE
 
 # importing own codes
@@ -49,6 +49,9 @@ for i in np.linspace(1, 1000, num=20):
     train_acc = accuracy_score(train_y, train_pred)
     valid_acc = accuracy_score(valid_y, valid_pred)
 
+    train_recall = recall_score(train_y, train_pred)
+    valid_recall = recall_score(valid_y, valid_pred)
+
     # print(train_cm)
     # print(test_cm)
     print(i)
@@ -57,6 +60,9 @@ for i in np.linspace(1, 1000, num=20):
     vz.print_matrix(valid_cm, title='Testing Set')
     print("Train Accuracy:{:.4f}".format(train_acc))
     print("Test Accuracy:{:.4f}".format(valid_acc))
+
+    print("Train Recall:{:.4f}".format(train_recall))
+    print("Test Recall:{:.4f}".format(valid_recall))
     print('\n')
 
     del svm_model

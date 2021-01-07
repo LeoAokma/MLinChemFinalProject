@@ -27,7 +27,7 @@ class DecisionTreeTest(unittest.TestCase):
     Class for testing
     """
     def test_decision_tree(self):
-        keys = data_keys.feat_top9
+        keys = data_keys.test_key
 
         from data_loader import DataLoader
 
@@ -48,7 +48,7 @@ class DecisionTreeTest(unittest.TestCase):
             )
 
         dcx_tree = DecisionTree(
-            max_depth=4,
+            max_depth=5,
             splitter='random',
             class_weight='balanced',
         )
