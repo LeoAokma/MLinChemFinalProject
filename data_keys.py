@@ -1,5 +1,5 @@
 # Declaring features:
-test_key = ['time', 'slowCool', 'pH', 'leak', 'numberInorg', 'numberOrg',
+test_key = [['time', 'slowCool', 'pH', 'leak', 'numberInorg', 'numberOrg',
             'numberOxlike', 'numberComponents', 'orgavgpolMax',
             'orgrefractivityMax', 'orgmaximalprojectionareaMax',
             'orgmaximalprojectionradiusMax', 'orgmaximalprojectionsizeMax',
@@ -9,14 +9,36 @@ test_key = ['time', 'slowCool', 'pH', 'leak', 'numberInorg', 'numberOrg',
             'orgASA-Max', 'orgASA_HMax', 'orgASA_PMax', 'orgpolarsurfaceareaMax',
             'orghbdamsaccMax', 'orghbdamsdonMax', 'orgavgpolMin', 'orgrefractivityMin',
             'orgmaximalprojectionareaMin', 'orgmaximalprojectionradiusMin',
-            'orgmaximalprojectionsizeMin', 'orgminimalprojectionareaMin',
+            'orgmaximalprojectionsizeMin', 'orgminimalprojectionareaMin'],
+            ['反应时间', '慢速冷却', 'pH', 'leak', '无机组分数', '有机组分数量',
+             'Oxlike数', '组分数', 'orgavgpolMax',
+            'orgrefractivityMax', 'orgmaximalprojectionareaMax',
+            'orgmaximalprojectionradiusMax', 'orgmaximalprojectionsizeMax',
+            'orgminimalprojectionareaMax', 'orgminimalprojectionradiusMax',
+            'orgminimalprojectionsizeMax', 'orgavgpol_pHdependentMax',
+            'orgmolpolMax', 'orgvanderwaalsMax', 'orgASAMax', 'orgASA+Max',
+            'orgASA-Max', 'orgASA_HMax', 'orgASA_PMax', 'orgpolarsurfaceareaMax',
+            'orghbdamsaccMax', 'orghbdamsdonMax', 'orgavgpolMin', 'orgrefractivityMin',
+            'orgmaximalprojectionareaMin', 'orgmaximalprojectionradiusMin',
+            'orgmaximalprojectionsizeMin', 'orgminimalprojectionareaMin'
+             ]
             ]
-feat_first = ['orgvanderwaalsMin', 'orgASA+Min', 'orghbdamsdonGeomAvg',
-              'PaulingElectronegMean', 'hardnessMaxWeighted', 'AtomicRadiusMeanWeighted']
+feat_first = [['orgvanderwaalsMin', 'orgASA+Min', 'orghbdamsdonGeomAvg',
+              'PaulingElectronegMean', 'hardnessMaxWeighted', 'AtomicRadiusMeanWeighted'],
+              ['orgvanderwaalsMin', 'orgASA+Min', 'orghbdamsdonGeomAvg',
+               '平均Pauling电负性', '硬度MaxWeighted', '原子半径MeanWeighted']
+              ]
 
-feat_top6 = ['time', 'hardnessMinWeighted', 'orgASA_HGeomAvg', 'leak',
-             'inorg-water-moleratio', 'orgvanderwaalsArithAvg']
+feat_top6 = [['time', 'hardnessMinWeighted', 'orgASA_HGeomAvg', 'leak',
+             'inorg-water-moleratio', 'orgvanderwaalsArithAvg'],
+             ['反应时间', '硬度MinWeighted', 'orgASA_HGeomAvg', 'leak',
+             '无机组分/水摩尔比', 'org范德华ArithAvg']
+             ]
 
-feat_top9 = ['time', 'hardnessMinWeighted', 'orgASA_HGeomAvg', 'leak',
-             'inorg-water-moleratio', 'orgvanderwaalsArithAvg', 'orgvanderwaalsArithAvg',
-             'orghbdamsaccMax', 'temp', 'EAMinWeighted']
+feat_top9 = [['time', 'hardnessMinWeighted', 'orgASA_HGeomAvg', 'leak',
+             'inorg-water-moleratio', 'orgvanderwaalsArithAvg',
+             'orghbdamsaccMax', 'temp', 'EAMinWeighted'],
+             ['反应时间', '硬度MinWeighted', 'orgASA_HGeomAvg', 'leak',
+             '无机组分/水摩尔比', 'org范德华ArithAvg',
+             'orghbdamsaccMax', '反应温度', 'EAMinWeighted']
+             ]
