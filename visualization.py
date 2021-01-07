@@ -14,7 +14,7 @@ def print_matrix(mtx, title=None):
     """
     Printing matrix in the cmd lines in a relatively clear way.
     :param mtx: The input matrix, could be ndarray or list.
-    :param title: The caption of the matrix
+    :param title: The caption of the matrix, default=None.
     :return: None
     """
     if title != None:
