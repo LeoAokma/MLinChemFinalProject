@@ -5,6 +5,7 @@ from sklearn.metrics import confusion_matrix, accuracy_score
 # from sklearn.feature_selection import RFE
 
 from data_loader import DataLoader
+import visualization as vz
 
 
 train_dl = DataLoader('data/train.csv')
@@ -51,10 +52,11 @@ for i in np.linspace(1, 1000, num=20):
     # print(train_cm)
     # print(test_cm)
     print(i)
-    print(train_cm)
-    print(valid_cm)
-    print(train_acc)
-    print(valid_acc)
+    print("Confusion Matrix")
+    vz.print_matrix(train_cm, title='Training Set')
+    vz.print_matrix(valid_cm, title='Testing Set')
+    print("Train Accuracy:{:.4f}".format(train_acc))
+    print("Test Accuracy:{:.4f}".format(valid_acc))
     print('\n')
 
     del svm_model
