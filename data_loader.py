@@ -18,41 +18,68 @@ class DataLoader:
     def __init__(self, data_path):
         self.data_path = data_path
         self.dataset = pd.read_csv(data_path)
-    
-    # return all features of the dataset as a list
+
     def features(self):
+        """
+        return all features of the dataset as a list
+        :return: all features of the dataset as a list
+        """
         return list(self.dataset.columns.values)
-    
-    # return current dataset
+
     def data(self):
+        """
+        return current dataset
+        :return: current dataset
+        """
         return self.dataset
-     
-    # return a list of all values of a certain feature
+
     def get_value_list(self, feature):
+        """
+        return a list of all values of a certain feature
+        :param feature:
+        :return:
+        """
         return self.dataset[feature].values.tolist()
 
-    # return values as a 1d array
     def get_value_array(self, feature):
+        """
+        return values as a 1d array
+        :param feature:
+        :return:
+        """
         lst = self.get_value_list(feature)
         return np.array(lst)
 
-    # return values as a dict:{'value name': number of the value}
     def value_counter(self, feature):
+        """
+        return values as a dict:{'value name': number of the value}
+        :param feature:
+        :return:
+        """
         return collections.Counter(self.get_value_list(feature))
-    
-    # return numbers of a certain value
+
     def value_numbers(self, feature, value):
+        """
+        return numbers of a certain value
+        :param feature:
+        :param value:
+        :return:
+        """
         counter = self.value_counter(feature)
         return counter[value]
 
-    # generate train dataset based on selected features, data_loader.generate_trainset()[0] for X, data_loader.generate_trainset()[1] for Y
-    # feature_list: list of selected features
-    # include_first_column indicates whether first column used for dataset(if feature_list == None), default = True
-    # last column for outcomes as default
-    def generate_trainset(self, feature_list = None, include_first_column = True):
+    def generate_trainset(self, feature_list=None, include_first_column=True):
+        """
+        generate train dataset based on selected features, data_loader.generate_trainset()[0] for X,
+        data_loader.generate_trainset()[1] for Y
+        last column for outcomes as default
+        :param feature_list: list of selected features
+        :param include_first_column: whether first column used for dataset(if feature_list == None), default = True
+        :return: train dataset based on selected features
+        """
         if feature_list == None:
             train = np.array(self.dataset)
-            if include_first_column == True:
+            if include_first_column:
                 feature_Y = self.features()[-1]
                 train_Y = self.get_value_array(feature_Y)
                 train_X = self.dataset.drop([feature_Y], axis = 1)
