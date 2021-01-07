@@ -115,18 +115,26 @@ class DataLoader:
         """
         self.dataset[key] = self.dataset[key].apply(func)
 
-    def binarize(self, key, criteria):
+    def binarize(self, key, criteria, data_type='figure'):
         """
         Designed for turning a multiple discontinuous data into a binary dataset by
         :param: key: str.
         The key of the dataframe to be processed
         :param: criteria: int or float.
-        The criteria to binarize the dataset
+        The criteria to binarize the dataset. The criteria refers to:
+        1. The inferior edge of the value if using figure as data type.
+        2. The criteria turning data into 0(or state False) if using
+        sting as data type.
+
+        :param: data_type: 'figure' or 'string', Default='figure'
         :return: Processed data
         Examples:
         binarize('outcome', 3)
         """
-        self.replace(key, lambda x: 0 if x < criteria else 1)
+        if data_type == 'figure':
+            self.replace(key, lambda x: 0 if x < criteria else 1)
+        elif data_type == 'string':
+            self.replace(key, lambda x: 0 if x == criteria else 1)
 
 
 '''
