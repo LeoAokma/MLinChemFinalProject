@@ -20,6 +20,9 @@ class DataLoader:
         self.data_path = data_path
         self.dataset = pd.read_csv(data_path)
 
+        # initialize the status of whether the discontinuous data in data loader is normalized to {0,1}
+        self.is_binary = False
+
     def features(self):
         """
         return all features of the dataset as a list
@@ -82,7 +85,7 @@ class DataLoader:
         :return: train dataset based on selected features
         """
         if binarize:
-            self.binarize('outcome', 3)
+            self.binarize_all_data()
         if feature_list == None:
             train = np.array(self.dataset)
             if include_first_column:
@@ -135,6 +138,16 @@ class DataLoader:
             self.replace(key, lambda x: 0 if x < criteria else 1)
         elif data_type == 'string':
             self.replace(key, lambda x: 0 if x == criteria else 1)
+
+    def binarize_all_data(self):
+        """
+        Make all data into binary {0,1} data set except outcome.
+        :return:
+        """
+        if not self.is_binary:
+            self.binarize('leak', 'no', data_type='string')
+            self.binarize('slowCool', 'no', data_type='string')
+            self.is_binary = True
 
 
 '''
