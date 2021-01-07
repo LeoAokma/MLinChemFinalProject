@@ -100,6 +100,15 @@ class DataLoader:
         train = [train_X, train_Y]
         return train
 
+    def replace(self, key, func):
+        """
+        apply function 'func' to column 'key'
+        :param key: the key of column
+        :param func: callable, a function that you want to apply.
+        :return:
+        """
+        self.dataset[key] = self.dataset[key].apply(func)
+
 
 '''
 functions to be implemented:self.dataset editing(include new feature, delete useless features, etc.),
