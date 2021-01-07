@@ -1,5 +1,6 @@
 import numpy as np
 from sklearn import tree
+import graphviz
 import unittest
 
 
@@ -8,8 +9,16 @@ class DecisionTree(tree.DecisionTreeClassifier):
     A class of decision tree succeeded from the sklearn.tree.DecisionTreeClassifier.
     """
 
-    def plot(self):
-        tree.plot_tree(self)
+    def plot(self, feature_name, class_name=None):
+        dot_data = tree.export_graphviz(self,
+                                        out_file=None,
+                                        feature_names=feature_name,
+                                        class_names=class_name,
+                                        filled=True,
+                                        rounded=True,
+                                        )
+        # print(tree.export_text(self, feature_name))
+        return graphviz.Source(dot_data, format='png')
 
 
 class DecisionTreeTest(unittest.TestCase):
@@ -33,8 +42,10 @@ class DecisionTreeTest(unittest.TestCase):
         train_dl = DataLoader('data/train.csv')
         test_dl = DataLoader('data/test.csv')
         train_dl.binarize('leak', 'no', data_type='string')
+
         test_dl.binarize('leak', 'no', data_type='string')
         train_dl.binarize('slowCool', 'no', data_type='string')
+        train_dl.binarize('outcome', 3)
         test_dl.binarize('slowCool', 'no', data_type='string')
         test_dl.binarize('outcome (actual)', 3)
         train_x, train_y = train_dl.generate_trainset(feature_list=test_key, include_first_column=False, binarize=True)
@@ -44,7 +55,8 @@ class DecisionTreeTest(unittest.TestCase):
             class_weight='balanced',
         )
         dcx_tree.fit(train_x, train_y)
-        dcx_tree.plot()
+        graph = dcx_tree.plot(test_key)
+        graph.render('data/tree.png', view=True)
 
 
 if __name__ == '__main__':
