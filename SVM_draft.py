@@ -4,11 +4,11 @@ import sklearn.svm as svm
 from sklearn.metrics import confusion_matrix, accuracy_score
 # from sklearn.feature_selection import RFE
 
-import data_loader
+from data_loader import DataLoader
 
 
-train_dl = data_loader.DataLoader('../data/history.csv')
-test_dl = data_loader.DataLoader('../data/new.csv')
+train_dl = DataLoader('data/train.csv')
+test_dl = DataLoader('data/test.csv')
 
 feat_first = ['orgvanderwaalsMin', 'orgASA+Min', 'orghbdamsdonGeomAvg',
               'PaulingElectronegMean', 'hardnessMaxWeighted', 'AtomicRadiusMeanWeighted']

@@ -78,7 +78,7 @@ functions to be implemented:self.dataset editing(inclued new feature, delete use
 '''
 
 # imput your own path of origin dataset(.csv only)
-dl = DataLoader('./data/41586_2016_BFnature17439_MOESM231_ESM.csv')
+dl = DataLoader('./data/train.csv')
 
 # testing code
 # print(dl.features())
