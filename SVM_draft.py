@@ -1,5 +1,4 @@
 import numpy as np
-import pandas as pd
 from sklearn import preprocessing, model_selection
 import sklearn.svm as svm
 from sklearn.metrics import confusion_matrix, accuracy_score
