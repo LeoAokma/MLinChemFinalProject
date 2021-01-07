@@ -18,8 +18,8 @@ class DecisionTree(tree.DecisionTreeClassifier):
                                         filled=True,
                                         rounded=True,
                                         )
-        # print(tree.export_text(self, feature_name))
-        return graphviz.Source(dot_data, format='png')
+        new_dot = dot_data.replace('helvetica', '"Microsoft YaHei"')
+        return graphviz.Source(new_dot, format='png', encoding='utf-8')
 
 
 class DecisionTreeTest(unittest.TestCase):
@@ -42,7 +42,7 @@ class DecisionTreeTest(unittest.TestCase):
         train_dl.binarize('outcome', 3)
 
         train_x, train_y = train_dl.generate_trainset(
-            feature_list=keys,
+            feature_list=keys[0],
             include_first_column=False,
             binarize=True,
             )
@@ -54,7 +54,7 @@ class DecisionTreeTest(unittest.TestCase):
         )
 
         dcx_tree.fit(train_x, train_y)
-        graph = dcx_tree.plot(keys)
+        graph = dcx_tree.plot(keys[1])
         graph.render('data/tree', view=True)
 
 

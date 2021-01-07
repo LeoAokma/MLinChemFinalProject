@@ -24,7 +24,7 @@ test_dl.binarize('outcome (actual)', 3)
 train_dl.binarize('outcome', 3)
 
 # generate the dataset and binarize the outcome
-train_X, train_y = train_dl.generate_trainset(keys, include_first_column=False, binarize=True)
+train_X, train_y = train_dl.generate_trainset(keys[0], include_first_column=False, binarize=True)
 train_X, valid_X, train_y, valid_y = model_selection.train_test_split(train_X, train_y, train_size=0.9)
 
 # test_X, test_y = test_dl.generate_trainset(feat_first, include_first_column=False)
