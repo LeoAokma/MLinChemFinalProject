@@ -2,7 +2,7 @@ import numpy as np
 from sklearn import preprocessing, model_selection
 import sklearn.svm as svm
 from sklearn.metrics import confusion_matrix, accuracy_score, recall_score
-# from sklearn.feature_selection import RFE
+from sklearn.feature_selection import SelectFromModel, RFE
 
 # importing own codes
 from data_loader import DataLoader
@@ -40,6 +40,16 @@ for i in np.linspace(1, 1000, num=20):
     svm_model = svm.SVC(kernel='rbf', class_weight='balanced', C=i)
     svm_model.fit(train_X, train_y)
 
+    # Evaluating features:
+    selection = SelectFromModel(svm.SVC(kernel='linear', class_weight='balanced', C=i),
+                                max_features=10,
+                                ).fit(train_X, train_y)
+    print('Selections:')
+    for _ in range(len(keys[1])):
+        if selection.get_support()[_]:
+            print(keys[0][_], keys[1][_], sep='\t')
+
+    # Statistical Features
     train_pred = svm_model.predict(train_X)
     valid_pred = svm_model.predict(valid_X)
 
