@@ -11,7 +11,6 @@ python==3.8
 import matplotlib.pyplot as plt
 import numpy as np
 import unittest
-import SVM_draft as svm
 
 
 def print_matrix(mtx, title=None):
@@ -112,49 +111,31 @@ class VisualizationTest(unittest.TestCase):
     """
     Class for testing
     """
-    def __init__(self, 
-                 test_acc=None, 
-                 test_rr=None, 
-                 test_pro=None,
-                 test_cm=None, 
-                 test_accoef=None,
-                 test_coef=None
-                 ):
+    def get_test_data(self):
+        import SVM_draft:
+        self.test_pro = test_pro
         self.test_acc = test_acc
         self.test_rr = test_rr
-        self.test_pro = test_pro
         self.test_cm = test_cm
         self.test_accoef = test_accoef
-        self.test_coef = test_coef
+        self.test_coef = test_accoef
 
     def test_testing_status_plot(self):
         # TODO
-        if self.test_acc != None and self.test_rr != None and self.test_pro != None:
-            print('testing testing_status_plot..')
-            testing_status_plot(self.test_pro, 
-                                self.test_acc,
-                                self.test_rr,
-                                test=True)
-            print('test pass.')
+        testing_status_plot(self.test_pro,
+                            self.test_acc,
+                            self.test_rr,
+                            test=True)
     
     def test_cm_heat_plot(self):
-        if self.cm != None:
-            print('testing cm_heat_plot..')
-            testing_status_plot(self.test_cm,
-                                test=True)
-            print('test pass.')
+        testing_status_plot(self.test_cm,
+                            test=True)
         
     def test_hyper_learning_plot(self):
-        if self.test_accoef != None and self.test_coef != None:
-            print('testing hyper_learning_plot..')
-            testing_status_plot(self.test_accoef,
-                                self.test_coef,
-                                test=True)
-            print('test pass.')
+        testing_status_plot(self.test_accoef,
+                            self.test_coef,
+                            test=True)
 
 
 if __name__ == '__main__':
     unittest.main()
-    # cm = svm.svm_valuate(10)
-    # print(cm)
-    # cm_heat_plot(cm)
