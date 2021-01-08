@@ -84,19 +84,21 @@ class DataLoader:
         Turn the outcome column into binary value with 0 and 1 if True.
         :return: train dataset based on selected features
         """
+        try:
+            feature_Y = 'outcome (actual)'
+            train_Y = self.get_value_array(feature_Y)
+        except Exception:
+            feature_Y = 'outcome'
+            train_Y = self.get_value_array(feature_Y)
         if binarize:
             self.binarize_all_data()
         if feature_list == None:
             train = np.array(self.dataset)
             if include_first_column:
-                feature_Y = self.features()[-1]
-                train_Y = self.get_value_array(feature_Y)
                 train_X = self.dataset.drop([feature_Y], axis=1)
                 train_X = np.array(train_X)
             else: 
                 feature_first_column = self.features()[0]
-                feature_Y = self.features()[-1]
-                train_Y = self.get_value_array(feature_Y)
                 train_X = self.dataset.drop([feature_first_column, feature_Y], axis=1)
                 train_X = np.array(train_X)
         else:
@@ -104,8 +106,6 @@ class DataLoader:
             for item in feature_list:
                 trainset.append(self.get_value_list(item))
             train_X = np.array(trainset).T
-            feature_Y = self.features()[-1]
-            train_Y = self.get_value_array(feature_Y)
         train = [train_X, train_Y]
         return train
 
