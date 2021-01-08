@@ -87,6 +87,7 @@ def hyper_coefficient():
     return best_c
 
 
+human_acc = train_dl.get_value_array('Intuition')
 hyper_c = hyper_coefficient()
 features = 10
 # Evaluating features(Using linear kernels, not rbf)
@@ -95,6 +96,8 @@ selection = SelectFromModel(svm.SVC(kernel='linear', class_weight='balanced', C=
                             ).fit(train_X, train_y)
 print('Selected Features: {} in {}.'.format(features, len(keys[0])))
 print('Feature name\t Translation')
+features_selected = []
 for _ in range(len(keys[1])):
     if selection.get_support()[_]:
         print(keys[0][_], keys[1][_], sep='\t')
+        features_selected.append(keys[0][_])
