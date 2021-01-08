@@ -1,7 +1,7 @@
 # MLinChemFinalProject
 the final project of ML in Chem course.
 
-# Project Chooosing
+# Project Choosing
 ### 1.Finding MOFs using SVM
 https://doi.org/10.1038/nature17439
 ### 2.Peptides
