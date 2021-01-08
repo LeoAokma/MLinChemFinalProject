@@ -20,15 +20,15 @@ test_key = [['time', 'slowCool', 'pH', 'leak', 'numberInorg', 'numberOrg',
             'orgmaximalprojectionsizeMin', 'orgminimalprojectionareaMin'],
             ['反应时间', '慢速冷却', 'pH', '产物泄露', '无机组分数', '有机组分数量',
              'Ox类似物数量', '组分数', '有机物平均分子极化率Max',
-            '有机物最大折射率', 'orgmaximalprojectionareaMax',
-            'orgmaximalprojectionradiusMax', 'orgmaximalprojectionsizeMax',
-            'orgminimalprojectionareaMax', 'orgminimalprojectionradiusMax',
-            'orgminimalprojectionsizeMax', '有机物平均分子极化率-pH依赖关系Max',
+            '有机物最大折射率', '有机物maximalprojectionareaMax',
+            '有机物maximalprojectionradiusMax', '有机物maximalprojectionsizeMax',
+            '有机物minimalprojectionareaMax', '有机物minimalprojectionradiusMax',
+            '有机物minimalprojectionsizeMax', '有机物平均分子极化率-pH依赖关系Max',
             '有机物最大分子极性', '有机物最大范德华立体表面积', '有机分子最大亲水表面积', '有机物最大亲水表面积+',
             '有机物最大亲水表面积', '有机物最大亲水表面积_H', '有机物最大亲水表面积_P', '有机物最大极性表面积',
             '有机物最大氢键受体数量', '有机物最大氢键给体数', '有机物平均分子极化率Min', '有机物最小折射率',
-            'orgmaximalprojectionareaMin', 'orgmaximalprojectionradiusMin',
-            'orgmaximalprojectionsizeMin', 'orgminimalprojectionareaMin'
+            '有机物maximalprojectionareaMin', '有机物maximalprojectionradiusMin',
+            '有机物maximalprojectionsizeMin', '有机物minimalprojectionareaMin'
              ]
             ]
 feat_first = [['orgvanderwaalsMin', 'orgASA+Min', 'orghbdamsdonGeomAvg',
