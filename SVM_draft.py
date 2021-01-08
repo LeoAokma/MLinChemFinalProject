@@ -35,44 +35,66 @@ scaler.fit(train_X)
 train_X = scaler.transform(train_X)
 valid_X = scaler.transform(valid_X)
 
-# C = 580
-for i in np.linspace(1, 1000, num=20):
-    svm_model = svm.SVC(kernel='rbf', class_weight='balanced', C=i)
-    svm_model.fit(train_X, train_y)
 
-    # Evaluating features:
-    selection = SelectFromModel(svm.SVC(kernel='linear', class_weight='balanced', C=i),
-                                max_features=10,
-                                ).fit(train_X, train_y)
-    print('Selections:')
-    for _ in range(len(keys[1])):
-        if selection.get_support()[_]:
-            print(keys[0][_], keys[1][_], sep='\t')
+def hyper_coefficient():
+    """
+    A function designed for finding best hyper parameters
+    :return: the best hyper parameter
+    """
+    # C = 580
+    test_accs = []
+    test_rrs = []
+    cs = []
+    for i in np.linspace(1, 1000, num=20):
+        cs.append(i)
+        svm_model = svm.SVC(kernel='rbf', class_weight='balanced', C=i)
+        svm_model.fit(train_X, train_y)
 
-    # Statistical Features
-    train_pred = svm_model.predict(train_X)
-    valid_pred = svm_model.predict(valid_X)
+        # Statistical Features
+        train_pred = svm_model.predict(train_X)
+        valid_pred = svm_model.predict(valid_X)
 
-    train_cm = confusion_matrix(train_y, train_pred)
-    valid_cm = confusion_matrix(valid_y, valid_pred)
+        train_cm = confusion_matrix(train_y, train_pred)
+        valid_cm = confusion_matrix(valid_y, valid_pred)
 
-    train_acc = accuracy_score(train_y, train_pred)
-    valid_acc = accuracy_score(valid_y, valid_pred)
+        train_acc = accuracy_score(train_y, train_pred)
+        valid_acc = accuracy_score(valid_y, valid_pred)
 
-    train_recall = recall_score(train_y, train_pred)
-    valid_recall = recall_score(valid_y, valid_pred)
+        train_recall = recall_score(train_y, train_pred)
+        valid_recall = recall_score(valid_y, valid_pred)
 
-    # print(train_cm)
-    # print(test_cm)
-    print(i)
-    print("Confusion Matrix")
-    vz.print_matrix(train_cm, title='Training Set')
-    vz.print_matrix(valid_cm, title='Testing Set')
-    print("Train Accuracy:{:.4f}".format(train_acc))
-    print("Test Accuracy:{:.4f}".format(valid_acc))
+        test_accs.append(valid_acc)
+        test_rrs.append(valid_recall)
 
-    print("Train Recall:{:.4f}".format(train_recall))
-    print("Test Recall:{:.4f}".format(valid_recall))
-    print('\n')
+        # print(train_cm)
+        # print(test_cm)
+        print(i)
+        print("Confusion Matrix")
+        vz.print_matrix(train_cm, title='Training Set')
+        vz.print_matrix(valid_cm, title='Testing Set')
+        print("Train Accuracy:{:.4f}".format(train_acc))
+        print("Test Accuracy:{:.4f}".format(valid_acc))
 
-    del svm_model
+        print("Train Recall:{:.4f}".format(train_recall))
+        print("Test Recall:{:.4f}".format(valid_recall))
+        print('\n')
+
+        del svm_model
+
+    best_c = cs[test_accs.index(max(test_accs))]
+    print('Best Hyperparameter C: {:.4f}'.format(best_c))
+    print('Acc: {:.4f}, Recall: {:.4f}'.format(max(test_accs), test_rrs[test_accs.index(max(test_accs))]))
+    return best_c
+
+
+hyper_c = hyper_coefficient()
+features = 10
+# Evaluating features:
+selection = SelectFromModel(svm.SVC(kernel='linear', class_weight='balanced', C=hyper_c),
+                            max_features=features,
+                            ).fit(train_X, train_y)
+print('Selected Features: {} in {}.'.format(features, len(keys[0])))
+print('Feature name\t Translation')
+for _ in range(len(keys[1])):
+    if selection.get_support()[_]:
+        print(keys[0][_], keys[1][_], sep='\t')
