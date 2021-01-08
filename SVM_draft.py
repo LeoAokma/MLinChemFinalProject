@@ -20,12 +20,14 @@ keys = data_keys.test_key
 train_dl.binarize_all_data()
 test_dl.binarize_all_data()
 
+test_dl.binarize('XXX-Intuition', 'FALSE', data_type='string')
 test_dl.binarize('outcome (actual)', 3)
 train_dl.binarize('outcome', 3)
 
 # generate the dataset and binarize the outcome
 train_X, train_y = train_dl.generate_trainset(keys[0], include_first_column=False, binarize=True)
-train_X, valid_X, train_y, valid_y = model_selection.train_test_split(train_X, train_y, train_size=0.9)
+# train_X, valid_X, train_y, valid_y = model_selection.train_test_split(train_X, train_y, train_size=0.9)
+valid_X, valid_y = test_dl.generate_trainset(keys[0])
 
 # test_X, test_y = test_dl.generate_trainset(feat_first, include_first_column=False)
 
@@ -87,7 +89,8 @@ def hyper_coefficient():
     return best_c
 
 
-human_acc = train_dl.get_value_array('Intuition')
+human_acc = accuracy_score(test_dl.get_value_array('outcome (actual)'), test_dl.get_value_array('XXX-Intuition'))
+print('Human test accuracy: {:.4f}'.format(human_acc))
 hyper_c = hyper_coefficient()
 features = 10
 # Evaluating features(Using linear kernels, not rbf)
