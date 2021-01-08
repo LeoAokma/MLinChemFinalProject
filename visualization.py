@@ -112,13 +112,13 @@ class VisualizationTest(unittest.TestCase):
     Class for testing
     """
     def get_test_data(self):
-        import SVM_draft:
-        self.test_pro = test_pro
-        self.test_acc = test_acc
-        self.test_rr = test_rr
-        self.test_cm = test_cm
-        self.test_accoef = test_accoef
-        self.test_coef = test_accoef
+        import SVM_draft as svm
+        self.test_pro = svm.test_pro
+        self.test_acc = svm.valid_acc
+        self.test_rr = svm.valid_recall
+        self.test_cm = svm.valid_cm
+        self.test_accoef = svm.test_accoef
+        self.test_coef = svm.test_accoef
 
     def test_testing_status_plot(self):
         # TODO
