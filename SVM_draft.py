@@ -89,7 +89,7 @@ def hyper_coefficient():
 
 hyper_c = hyper_coefficient()
 features = 10
-# Evaluating features:
+# Evaluating features(Using linear kernels, not rbf)
 selection = SelectFromModel(svm.SVC(kernel='linear', class_weight='balanced', C=hyper_c),
                             max_features=features,
                             ).fit(train_X, train_y)
