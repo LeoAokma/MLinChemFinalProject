@@ -13,6 +13,7 @@ import numpy as np
 import unittest
 import SVM_draft as svm
 
+
 def print_matrix(mtx, title=None):
     """
     Printing matrix in the cmd lines in a relatively clear way.
@@ -60,10 +61,11 @@ def testing_status_plot(x,
     if test == False:
         plt.savefig('./data/{}'.format(filename))
 
+
 def cm_heat_plot(cm, 
                  title='confusion_matrix', 
                  filename='cm_heat_plot.png',
-                 test = False
+                 test=False
                  ):
     """
     Generate the heat-point plot of confusion matrix.
@@ -75,16 +77,17 @@ def cm_heat_plot(cm,
     plt.colorbar()
     
     thresh = cm.max() / 2
-    elements = np.reshape([[[i,j] for j in range(2)] for i in range(2)],(cm.size,2))
-    for i,j in elements:
+    elements = np.reshape([[[i, j] for j in range(2)] for i in range(2)], (cm.size, 2))
+    for i, j in elements:
         plt.text(j, i, format(cm[i, j]))
     
     plt.ylabel('Real label')
     plt.xlabel('Prediction')
     plt.tight_layout()
     plt.show()
-    if test == False:
+    if not test:
         plt.savefig('./data/{}'.format(filename))
+
 
 def hyper_learning_plot(acc, 
                         coef, 
@@ -123,7 +126,7 @@ class VisualizationTest(unittest.TestCase):
         self.test_cm = test_cm
         self.test_accoef = test_accoef
         self.test_coef = test_coef
-        
+
     def test_testing_status_plot(self):
         # TODO
         if self.test_acc != None and self.test_rr != None and self.test_pro != None:
@@ -148,10 +151,10 @@ class VisualizationTest(unittest.TestCase):
                                 self.test_coef,
                                 test=True)
             print('test pass.')
-    
+
+
 if __name__ == '__main__':
-    #unittest.main()
-    cm = svm.svm_valuate(10)
-    print(cm)
-    cm_heat_plot(cm)
-    
+    unittest.main()
+    # cm = svm.svm_valuate(10)
+    # print(cm)
+    # cm_heat_plot(cm)
