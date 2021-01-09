@@ -20,6 +20,7 @@ class DataLoader:
     def __init__(self, data_path):
         self.data_path = data_path
         self.dataset = pd.read_csv(data_path)
+        self.identity = None
 
         # initialize the status of whether the discontinuous data in data loader is normalized to {0,1}
         self.is_binary = False
@@ -164,6 +165,61 @@ class DataLoader:
             for atom in atoms:
                 self.binarize(atom, 'no', data_type='string')
             self.is_binary = True
+        
+    def remove_feature(self, feature_list):
+        """
+        remove certain feature from dataset.self.dataest would be CHANGED permanently! 
+        :param: featuer_list: list
+        Features to be removed
+        """
+        for item in feature_list:
+            self.dataset = self.dataset.drop([item], axis=1)
+        return 0
+
+    def identification_features(self, feature_list = None, number_serial = None):
+        """
+        remove certain feature from dataset to a new DataFrame as 'identifications' of the initial dataset.self.dataest would be CHANGED permanently!
+        :param: feature_list: list
+        Features for identifications
+        :param: number_serial: list
+        lines between number_serial[0] and number_serial[1] are for identifications(including both),both number are required
+        first column = 0
+        this method execute according to the feature_list if feature_list and ignore serial numbers(even if serial numbers are included)
+        """
+        if feature_list:
+            self.identity = pd.DataFrame(self.dataset.loc[:, feature_list])
+            for item in feature_list:
+                self.dataset = self.dataset.drop([item], axis=1)
+        else:
+            start_number = number_serial[0]
+            stop_number = number_serial[1]
+            i = start_number
+            feature_list = [self.features()[start_number]]
+            while i < stop_number:
+                i = i + 1
+                feature_list.append(self.features()[i])
+            self.identity = pd.DataFrame(self.dataset.loc[:, feature_list])
+            for item in feature_list:
+                self.dataset = self.dataset.drop([item], axis=1)
+        return 0
+
+    def identifications(self):
+        """
+        return identifications, if not identities, return 0
+        """
+        if self.identity.empty:
+            return 0
+        else:
+            return list(self.identityset.columns.values)
+
+    def identities(self):
+        """
+        return identifications DataFrame, if no identities, return 0
+        """
+        if self.identity.empty:
+            return 0
+        else:
+            return self.identity
 
 
 '''
