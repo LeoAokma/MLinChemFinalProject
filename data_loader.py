@@ -223,8 +223,7 @@ class DataLoader:
 
 
 '''
-functions to be implemented:self.dataset editing(include new feature, delete useless features, etc.),
- loading trainset and test set via one DataLoader(class data_loader(self, train_data_path, test_data_path)) ...
+functions to be implemented: loading trainset and test set via one DataLoader(class data_loader(self, train_data_path, test_data_path)) ...
 '''
 
 
