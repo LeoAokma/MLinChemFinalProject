@@ -32,6 +32,7 @@ def testing_status_plot(x,
                         acc, 
                         rrs, 
                         xscale='log',
+                        x_label='Regularization Number',
                         title='', 
                         filename='testing_status_plot.png',
                         test=False
@@ -41,19 +42,19 @@ def testing_status_plot(x,
     1x2 subplots, spline
     :return:
     """
-    # TODO
+    # fig
     fig1, (accplot, rrplot) = plt.subplots(1, 2, figsize=(9.,4.5), dpi=320)
     
     # acc subplot
     accplot.plot(x, acc)
     accplot.set_xscale(xscale)
-    accplot.set_xlabel('Regularization Number')
+    accplot.set_xlabel(x_label)
     accplot.set_ylabel('Accuracy')
     
     # rr subplot
     rrplot.plot(x, rrs)
     rrplot.set_xscale(xscale)
-    rrplot.set_xlabel('Regularization Number')
+    rrplot.set_xlabel(x_label)
     rrplot.set_ylabel('Recall Rate')
 
     fig1.show()
@@ -75,7 +76,7 @@ def cm_heat_plot(cm,
     plt.title(title)
     plt.colorbar()
     
-    thresh = cm.max() / 2
+    #thresh = cm.max() / 2
     elements = np.reshape([[[i, j] for j in range(2)] for i in range(2)], (cm.size, 2))
     for i, j in elements:
         plt.text(j, i, format(cm[i, j]))
@@ -112,30 +113,36 @@ class VisualizationTest(unittest.TestCase):
     Class for testing
     """
     def get_test_data(self):
-        import SVM_draft as svm
-        self.test_pro = svm.test_pro
-        self.test_acc = svm.valid_acc
-        self.test_rr = svm.valid_recall
-        self.test_cm = svm.valid_cm
-        self.test_accoef = svm.test_accoef
-        self.test_coef = svm.test_accoef
+        self.test_pro = np.logspace(-3, 3, num=25)
+        self.test_acc = np.arange(25)
+        self.test_rr = np.arange(25)
+        mtx = np.random.rand(2,2)
+        print(mtx)
+        self.test_cm = mtx
+        self.test_accoef = np.arange(25)
+        self.test_coef = np.arange(25)
 
     def test_testing_status_plot(self):
         # TODO
-        testing_status_plot(self.test_pro,
-                            self.test_acc,
-                            self.test_rr,
+        self.get_test_data()
+        testing_status_plot(self.test_pro, 
+                            self.test_pro, 
+                            self.test_pro, 
                             test=True)
     
     def test_cm_heat_plot(self):
-        testing_status_plot(self.test_cm,
+        self.get_test_data()
+        cm_heat_plot(self.test_cm,
                             test=True)
-        
+    
+    
     def test_hyper_learning_plot(self):
-        testing_status_plot(self.test_accoef,
+        self.get_test_data()
+        hyper_learning_plot(self.test_accoef,
                             self.test_coef,
                             test=True)
-
+    
+    
 
 if __name__ == '__main__':
     unittest.main()
