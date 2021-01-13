@@ -40,7 +40,7 @@ def testing_status_plot(x,
     """
     Generate the plot of accuracy and recall rate by the progress of training.
     1x2 subplots, spline
-    :return:
+    :return: None
     """
     # fig
     fig1, (accplot, rrplot) = plt.subplots(1, 2, figsize=(9.,4.5), dpi=320)
@@ -59,7 +59,7 @@ def testing_status_plot(x,
 
     fig1.show()
     if test == False:
-        plt.savefig('./data/{}'.format(filename))
+        plt.savefig('data/{}'.format(filename))
 
 
 def cm_heat_plot(cm, 
@@ -69,7 +69,9 @@ def cm_heat_plot(cm,
                  ):
     """
     Generate the heat-point plot of confusion matrix.
-    :return:
+    :param: cm: ndarray, confusion matrix
+    :param: title: string, the title of the picture, Default='confusion_matrix'
+    :return: None
     """
     # TODO
     plt.imshow(cm, interpolation='nearest', cmap=plt.cm.Oranges)
@@ -86,7 +88,7 @@ def cm_heat_plot(cm,
     plt.tight_layout()
     plt.show()
     if not test:
-        plt.savefig('./data/{}'.format(filename))
+        plt.savefig('data/{}'.format(filename))
 
 
 def hyper_learning_plot(acc, 
@@ -105,7 +107,7 @@ def hyper_learning_plot(acc,
     plt.ylabel('Accuracy')
     plt.xscale(xscale)
     if test == False:
-        plt.savefig('./data/{}'.format(filename))
+        plt.savefig('data/{}'.format(filename))
 
 
 class VisualizationTest(unittest.TestCase):
@@ -134,15 +136,13 @@ class VisualizationTest(unittest.TestCase):
         self.get_test_data()
         cm_heat_plot(self.test_cm,
                             test=True)
-    
-    
+
     def test_hyper_learning_plot(self):
         self.get_test_data()
         hyper_learning_plot(self.test_accoef,
                             self.test_coef,
                             test=True)
-    
-    
+
 
 if __name__ == '__main__':
     unittest.main()
