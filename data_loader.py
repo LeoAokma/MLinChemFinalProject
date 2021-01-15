@@ -13,16 +13,23 @@ import numpy as np
 import collections
 import pandas as pd
 import unittest
+import json
+import google.protobuf as protobuf
 
 
 class DataLoader:
-    def __init__(self, data_path):
-        self.data_path = data_path
-        self.dataset = pd.read_csv(data_path)
+    def __init__(self, file_path):
+        self.data_path = file_path
+        self.dataset = pd.read_csv(file_path)
         self.identity = None
+        self.sample_number = len(self.dataset.index)
+        self.validation = None
 
         # initialize the status of whether the discontinuous data in data loader is normalized to {0,1}
         self.is_binary = False
+
+    def sample_numbers(self):
+        return self.sample_number
 
     def features(self):
         """
@@ -73,7 +80,7 @@ class DataLoader:
         counter = self.value_counter(feature)
         return counter[value]
 
-    def generate_trainset(self, feature_list=None, include_first_column=True, binarize=False):
+    def generate_trainset(self, feature_list=None, include_first_column=True, binarize=False, is_validation = False):
         """
         generate train dataset based on selected features, data_loader.generate_trainset()[0] for X,
         data_loader.generate_trainset()[1] for Y
@@ -85,29 +92,54 @@ class DataLoader:
         Turn the outcome column into binary value with 0 and 1 if True.
         :return: train dataset based on selected features
         """
-        if binarize:
-            self.binarize_all_data()
-        if feature_list == None:
-            train = np.array(self.dataset)
-            if include_first_column:
-                feature_Y = self.features()[-1]
+        if not is_validation:
+            try:
+                feature_Y = 'outcome (actual)'
                 train_Y = self.get_value_array(feature_Y)
-                train_X = self.dataset.drop([feature_Y], axis=1)
-                train_X = np.array(train_X)
-            else: 
-                feature_first_column = self.features()[0]
-                feature_Y = self.features()[-1]
+            except Exception:
+                feature_Y = 'outcome'
                 train_Y = self.get_value_array(feature_Y)
-                train_X = self.dataset.drop([feature_first_column, feature_Y], axis=1)
-                train_X = np.array(train_X)
+            if binarize:
+                self.binarize_all_data()
+            if feature_list == None:
+                train = np.array(self.dataset)
+                if include_first_column:
+                    train_X = self.dataset.drop([feature_Y], axis=1)
+                    train_X = np.array(train_X)
+                else: 
+                    feature_first_column = self.features()[0]
+                    train_X = self.dataset.drop([feature_first_column, feature_Y], axis=1)
+                    train_X = np.array(train_X)
+            else:
+                trainset = []
+                for item in feature_list:
+                    trainset.append(self.get_value_list(item))
+                train_X = np.array(trainset).T
+            train = [train_X, train_Y]
         else:
-            trainset = []
-            for item in feature_list:
-                trainset.append(self.get_value_list(item))
-            train_X = np.array(trainset).T
-            feature_Y = self.features()[-1]
-            train_Y = self.get_value_array(feature_Y)
-        train = [train_X, train_Y]
+            try:
+                feature_Y = 'outcome (actual)'
+                train_Y = np.array(self.validation[feature_Y].values.tolist())
+            except Exception:
+                feature_Y = 'outcome'
+                train_Y = np.array(self.validation[feature_Y].values.tolist())
+            if binarize:
+                self.binarize_all_data()
+            if feature_list == None:
+                train = np.array(self.validation)
+                if include_first_column:
+                    train_X = self.validation.drop([feature_Y], axis=1)
+                    train_X = np.array(train_X)
+                else: 
+                    feature_first_column = self.validation.features()[0]
+                    train_X = self.validation.drop([feature_first_column, feature_Y], axis=1)
+                    train_X = np.array(train_X)
+            else:
+                trainset = []
+                for item in feature_list:
+                    trainset.append(self.validation[item].values.tolist())
+                train_X = np.array(trainset).T
+            train = [train_X, train_Y]
         return train
 
     def replace(self, key, func):
@@ -219,12 +251,47 @@ class DataLoader:
             return 0
         else:
             return self.identity
+    
+    def split_validation(self, ratio = 0.25):
+        """
+        generate a validation set from original dataset,return new dataset and validation dataset.Validation dataset will be expelled from self.dataset and 
+        possibly called as self.validation. self.dataest would be CHANGED permanently!
+        :param:ratio: float
+        decides the ratio of validation samples
+        """
+        np.random.seed(1)
+        shuffled_indices = np.random.permutation(self.sample_number)
+        valid_size = int(self.sample_number * ratio)
+        valid_indices = shuffled_indices[:valid_size]
+        train_indices = shuffled_indices[valid_size:]
+        self.validation = self.dataset.iloc[valid_indices]
+        self.dataset = self.dataset.iloc[train_indices]
+        return self.dataset,self.validation
 
 
 '''
 functions to be implemented:self.dataset editing(include new feature, delete useless features, etc.),
  loading trainset and test set via one DataLoader(class data_loader(self, train_data_path, test_data_path)) ...
 '''
+
+
+class JsonDataLoader:
+    """
+    A class designed for loading databases in json form
+    """
+    def __init__(self, file_path):
+        with open(file_path, 'r') as file:
+            self.content = json.load(file)
+        print(self.content)
+
+class protobufDataLoader:
+    """
+    A class designed for loading databases in protobuf form
+    """
+    def __init__(self, file_path):
+        self.data_path = file_path
+        self.dataset = None
+        
 
 
 # testing code
@@ -241,8 +308,14 @@ class DataLoaderTest(unittest.TestCase):
         # print(dl.get_value_list('XXXinorg1'))
         # print(dl.get_value_array('XXXinorg'))
         # print(dl.value_numbers('XXXinorg1', 'potassium vanadium trioxide'))
-        print(dl.generate_trainset(['XXXinorg1', 'XXXinorg2', 'XXXinorg3'], include_first_column=False)[0])
-        print(dl.generate_trainset(include_first_column=False)[1])
+        train, valid = dl.split_validation()
+        print(train)
+        print(valid)
+        lst1 = ['XXXinorg1',  'XXXinorg1mass',  'XXXinorg1moles']
+        print(dl.generate_trainset(include_first_column=True)[0])
+        print(dl.generate_trainset(include_first_column=True)[1])
+        print(dl.generate_trainset(include_first_column=True, feature_list = lst1, is_validation = True)[0])
+        print(dl.generate_trainset(include_first_column=True, feature_list = lst1, is_validation = True)[1])
         # print(dl.dataset)
 
 
