@@ -91,45 +91,64 @@ def cm_heat_plot(cm,
         plt.savefig('data/{}'.format(filename))
 
 
-def hyper_learning_plot(acc, 
+def hyper_learning_plot(test_acc,
+                        train_acc,
                         coef, 
                         title='',
-                        xscale='log', 
+                        xscale='log',
+                        x_name='Regularization Coefficient',
+                        y_name='Accuracy',
                         filename='hyper_learning_plot.png', 
                         test=False):
     """
     Generate the accuracy plot by the progress of regularization coefficient
-    :return:
+    Binary plot, which needs two sets of curve, correspond to test set and train set.
+    :param: test_acc: list or nd-array.
+    :param: train_acc:
+    :param: coef:
+    :param: title: str. The caption of the plot. Default=''
+    :param: xscale: str. 'log', 'linear' or others, Default='log'. Check the docs of plt.plot for more info.
+    :param: x_name: str. The name of x axis. Default='Regularization Coefficient'
+    :param: y_name: str. The name of y axis. Default='Accuracy'
+    :param: filename: str. The file name of pic to be saved, make sure includes the format postfix (e.g. 'pic.png').
+            Default='hyper_learning_plot.png'
+    :param: test: bool. Won't generate file if true. Only used for unittest. Default=False
+    :return: None
     """
     # TODO
-    plt.plot(coef, acc)
-    plt.xlabel('Regularization Coefficient')
-    plt.ylabel('Accuracy')
+    plt.plot(coef, test_acc, label='Test', color='blue')
+    plt.plot(coef, train_acc, label='Train', color='black')
+    plt.xlabel(x_name)
+    plt.ylabel(y_name)
+    plt.legend()
+    plt.title(title)
     plt.xscale(xscale)
     if test == False:
         plt.savefig('data/{}'.format(filename))
+    plt.close()
 
 
-def multi_hyper_learning_plot(accs,
-                        coefs,
-                        title='',
-                        xscale='log',
-                        filename='hyper_learning_plot.png',
-                        test=False):
+def acc_recall_plot(accs,
+                    rrs,
+                    title='',
+                    xscale='log',
+                    x_name='Recall Rate',
+                    y_name='Accuracy',
+                    filename='acc_recall_plot.png',
+                    test=False):
     """
     Generate the accuracy plot by the progress of regularization coefficient
-    :param: accs: The accuracy list enrolled. List or nd-array
-    :param: coefs: The coefficiency of alpha enrolled. List or nd-array
     :return:
     """
     # TODO
-    for (acc, coef) in zip(accs, coefs):
-        plt.plot(coef, acc)
-    plt.xlabel('Regularization Coefficient')
-    plt.ylabel('Accuracy')
+    plt.plot(rrs, accs, color='blue')
+    plt.xlabel(x_name)
+    plt.ylabel(y_name)
+    plt.title(title)
     plt.xscale(xscale)
     if test == False:
         plt.savefig('data/{}'.format(filename))
+    plt.close()
 
 
 class VisualizationTest(unittest.TestCase):
