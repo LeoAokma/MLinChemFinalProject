@@ -176,15 +176,17 @@ class DataLoader:
             self.dataset = self.dataset.drop([item], axis=1)
         return 0
 
-    def identification_features(self, feature_list = None, number_serial = None):
+    def identification_features(self, feature_list=None, number_serial=None):
         """
-        remove certain feature from dataset to a new DataFrame as 'identifications' of the initial dataset.self.dataest would be CHANGED permanently!
+        remove certain feature from dataset to a new DataFrame as 'identifications' of the initial
+        dataset.self.dataest would be CHANGED permanently!
         :param: feature_list: list
         Features for identifications
         :param: number_serial: list
         lines between number_serial[0] and number_serial[1] are for identifications(including both),both number are required
         first column = 0
-        this method execute according to the feature_list if feature_list and ignore serial numbers(even if serial numbers are included)
+        this method execute according to the feature_list if feature_list and ignore serial numbers
+        (even if serial numbers are included)
         """
         if feature_list:
             self.identity = pd.DataFrame(self.dataset.loc[:, feature_list])
