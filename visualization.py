@@ -110,6 +110,28 @@ def hyper_learning_plot(acc,
         plt.savefig('data/{}'.format(filename))
 
 
+def multi_hyper_learning_plot(accs,
+                        coefs,
+                        title='',
+                        xscale='log',
+                        filename='hyper_learning_plot.png',
+                        test=False):
+    """
+    Generate the accuracy plot by the progress of regularization coefficient
+    :param: accs: The accuracy list enrolled. List or nd-array
+    :param: coefs: The coefficiency of alpha enrolled. List or nd-array
+    :return:
+    """
+    # TODO
+    for (acc, coef) in zip(accs, coefs):
+        plt.plot(coef, acc)
+    plt.xlabel('Regularization Coefficient')
+    plt.ylabel('Accuracy')
+    plt.xscale(xscale)
+    if test == False:
+        plt.savefig('data/{}'.format(filename))
+
+
 class VisualizationTest(unittest.TestCase):
     """
     Class for testing
