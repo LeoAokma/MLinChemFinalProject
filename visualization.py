@@ -141,7 +141,7 @@ def acc_recall_plot(accs,
     :return:
     """
     # TODO
-    plt.plot(rrs, accs, color='blue')
+    plt.scatter(rrs, accs, color='blue')
     plt.xlabel(x_name)
     plt.ylabel(y_name)
     plt.title(title)
