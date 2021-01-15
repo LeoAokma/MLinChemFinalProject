@@ -118,7 +118,7 @@ class VisualizationTest(unittest.TestCase):
         self.test_pro = np.logspace(-3, 3, num=25)
         self.test_acc = np.arange(25)
         self.test_rr = np.arange(25)
-        mtx = np.random.rand(2,2)
+        mtx = np.random.rand(2, 2)
         print(mtx)
         self.test_cm = mtx
         self.test_accoef = np.arange(25)
