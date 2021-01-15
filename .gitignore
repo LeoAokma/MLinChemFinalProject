@@ -5,3 +5,6 @@ __pycache__/visualization.cpython-38.pyc
 .idea/MLinChemFinalProject.iml
 *.pyc
 .idea/MLinChemFinalProject.iml
+*.iml
+.idea/MLinChemFinalProject.iml
+.idea/misc.xml
