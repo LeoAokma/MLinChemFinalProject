@@ -227,16 +227,6 @@ functions to be implemented: loading trainset and test set via one DataLoader(cl
 '''
 
 
-class JsonDataLoader:
-    """
-    A class designed for loading databases in json form
-    """
-    def __init__(self, file_path):
-        with open(file_path, 'r') as file:
-            self.content = json.load(file)
-        print(self.content)
-
-
 # testing code
 class DataLoaderTest(unittest.TestCase):
     """
@@ -254,11 +244,6 @@ class DataLoaderTest(unittest.TestCase):
         print(dl.generate_trainset(['XXXinorg1', 'XXXinorg2', 'XXXinorg3'], include_first_column=False)[0])
         print(dl.generate_trainset(include_first_column=False)[1])
         # print(dl.dataset)
-
-    def test_json_loader(self):
-        json_dl = JsonDataLoader(
-            '/Users/leohe/Documents/OpenReactionDatabase/ord-data-main/data/7d/ord_dataset-7d8f5fd922d4497d91cb81489b052746.pbtxt'
-                )
 
 
 if __name__ == '__main__':
