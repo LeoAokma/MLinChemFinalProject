@@ -4,6 +4,9 @@ import sklearn.svm as svm
 from sklearn.metrics import confusion_matrix, accuracy_score, recall_score
 from sklearn.ensemble import RandomForestClassifier as RFC
 from sklearn.feature_selection import SelectFromModel, RFE
+import matplotlib.pyplot as plt
+# modules for multi thread processing:
+from time import time
 import threadpoolctl
 
 # importing own codes
@@ -28,7 +31,7 @@ test_dl.binarize('outcome (actual)', 3)
 train_dl.binarize('outcome', 3)
 
 
-def hyper_coefficient(X, y, test_X, test_y):
+def hyper_coefficient(X, y, test_X, test_y, plot_str):
     """
     A function designed for finding best hyper parameters
     :return: the best hyper parameter
@@ -82,27 +85,27 @@ def hyper_coefficient(X, y, test_X, test_y):
     vz.hyper_learning_plot(test_acc=test_accs,
                            train_acc=train_accs,
                            coef=np.linspace(1, 1500, num=200),
-                           filename='Hyper_Learning_acc.png',
+                           filename='Hyper_Learning_acc_{}.png'.format(plot_str),
                            title='Accuracy dependency on regularization',
                            xscale='linear')
     vz.hyper_learning_plot(test_acc=test_rrs,
                            train_acc=train_rrs,
                            coef=np.linspace(1, 1500, num=200),
                            y_name='Recall Rate',
-                           filename='Hyper_Learning_rr.png',
+                           filename='Hyper_Learning_rr_{}.png'.format(plot_str),
                            title='Recall-rate dependency on regularization',
                            xscale='linear')
     vz.acc_recall_plot(accs=test_accs,
                        rrs=test_rrs,
-                       filename='acc_recall_test.png',
+                       filename='acc_recall_test_{}.png'.format(plot_str),
                        title='ROC Curve of test set',
                        xscale='linear')
     vz.acc_recall_plot(accs=train_accs,
                        rrs=train_rrs,
-                       filename='acc_recall_train.png',
+                       filename='acc_recall_train_{}.png'.format(plot_str),
                        title='ROC Curve of train set',
                        xscale='linear')
-    return best_c
+    return best_c, max(test_accs), test_rrs[test_accs.index(max(test_accs))]
 
 
 def feature_selection(input_keys, features=10):
@@ -142,23 +145,42 @@ def feature_selection(input_keys, features=10):
 human_acc = accuracy_score(test_dl.get_value_array('outcome (actual)'), test_dl.get_value_array('XXX-Intuition'))
 print('Human test accuracy: {:.4f}'.format(human_acc))
 
-selected_features = feature_selection(keys, features=20)
-# generate the train and valid dataset and binarize the outcome
-tr_X, tr_y = train_dl.generate_trainset(selected_features, include_first_column=False, binarize=True)
-va_X, va_y = test_dl.generate_trainset(selected_features)
-# normalization
-scaler = preprocessing.StandardScaler()
-scaler.fit(tr_X)
-tr_X = scaler.transform(tr_X)
-va_X = scaler.transform(va_X)
-hyper_c = hyper_coefficient(tr_X, tr_y, va_X, va_y)
-dcx_tree = DecisionTree(max_depth=8,
-                        splitter='random',
-                        class_weight='balanced')
+accs = []
+rrs = []
+fets = []
+for fet_num in np.geomspace(1, 200, 30):
+    fet = round(fet_num)
+    fets.append(fet)
+    selected_features = feature_selection(keys, features=fet)
+    # generate the train and valid dataset and binarize the outcome
+    tr_X, tr_y = train_dl.generate_trainset(selected_features, include_first_column=False, binarize=True)
+    va_X, va_y = test_dl.generate_trainset(selected_features)
+    # normalization
+    scaler = preprocessing.StandardScaler()
+    scaler.fit(tr_X)
+    tr_X = scaler.transform(tr_X)
+    va_X = scaler.transform(va_X)
+    hyper_c, acc, rr = hyper_coefficient(tr_X, tr_y, va_X, va_y, plot_str=str(fet))
+    accs.append(acc)
+    rrs.append(rrs)
+    dcx_tree = DecisionTree(max_depth=8,
+                            max_features=fet,
+                            splitter='random',
+                            class_weight='balanced')
 
-dcx_tree.fit(tr_X, tr_y)
-graph = dcx_tree.plot(selected_features)
-graph.render('data/tree', view=True)
+    dcx_tree.fit(tr_X, tr_y)
+    graph = dcx_tree.plot(selected_features)
+    graph.render('data/tree_{}'.format(str(fet)), view=False)
 
-# train_dl.identification_features(number_serial=[0, 18])
-# print(len(train_dl.features()))
+    # train_dl.identification_features(number_serial=[0, 18])
+    # print(len(train_dl.features()))
+
+plt.plot(fets, accs, label='Accuracy', color='blue')
+plt.plot(fets, rrs, label='Recall rate', color='black')
+plt.xlabel('Numbers of feature')
+plt.ylabel('Score')
+plt.legend()
+plt.title('The feature selection results')
+plt.xscale('linear')
+plt.savefig('data/{}'.format('feature_selection.png'))
+plt.close()
