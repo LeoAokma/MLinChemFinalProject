@@ -104,3 +104,5 @@ for _ in range(len(keys[1])):
     if selection.get_support()[_]:
         print(keys[0][_], keys[1][_], sep='\t')
         features_selected.append(keys[0][_])
+
+train_dl.identification_features()
