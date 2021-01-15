@@ -10,6 +10,7 @@ import threadpoolctl
 from data_loader import DataLoader
 import visualization as vz
 import data_keys
+from decision_tree import DecisionTree
 
 
 # Dataset paths
@@ -151,6 +152,13 @@ scaler.fit(tr_X)
 tr_X = scaler.transform(tr_X)
 va_X = scaler.transform(va_X)
 hyper_c = hyper_coefficient(tr_X, tr_y, va_X, va_y)
+dcx_tree = DecisionTree(max_depth=8,
+                        splitter='random',
+                        class_weight='balanced')
+
+dcx_tree.fit(tr_X, tr_y)
+graph = dcx_tree.plot(selected_features)
+graph.render('data/tree', view=True)
 
 # train_dl.identification_features(number_serial=[0, 18])
 # print(len(train_dl.features()))
