@@ -40,9 +40,16 @@ def testing_status_plot(x,
     """
     Generate the plot of accuracy and recall rate by the progress of training.
     1x2 subplots, spline
+    :param: acc: list or array.
+    :param: rrs: list or array.
+    :param: xscale: str. 'log', 'linear' or others. Default='log'. Check the docs of plt.plot for more info.
+    :param: title: string. Caption of the plot. Default=''.
+    :param: filename: str. The file name of pic to be saved, make sure includes the format postfix (e.g. 'pic.png').
+            Default='testing_status_plot.png'.
+    :param: test: bool. Won't generate file if true. Only used for unittest. Default=False
     :return: None
     """
-    # fig
+    # figure initialize
     fig1, (accplot, rrplot) = plt.subplots(1, 2, figsize=(9.,4.5), dpi=320)
     
     # acc subplot
@@ -56,7 +63,8 @@ def testing_status_plot(x,
     rrplot.set_xscale(xscale)
     rrplot.set_xlabel(x_label)
     rrplot.set_ylabel('Recall Rate')
-
+    
+    # show plot and save figure
     fig1.show()
     if test == False:
         plt.savefig('data/{}'.format(filename))
@@ -70,22 +78,27 @@ def cm_heat_plot(cm,
     """
     Generate the heat-point plot of confusion matrix.
     :param: cm: ndarray, confusion matrix
-    :param: title: string, the title of the picture, Default='confusion_matrix'
+    :param: title: string. Caption of the picture, Default='confusion_matrix'
+    :param: filename: str. The file name of pic to be saved, make sure includes the format postfix (e.g. 'pic.png').
+            Default='cm_heat_plot.png'.
     :return: None
     """
-    # TODO
+    # plot initialize
     plt.imshow(cm, interpolation='nearest', cmap=plt.cm.Oranges)
     plt.title(title)
     plt.colorbar()
     
-    #thresh = cm.max() / 2
+    #
     elements = np.reshape([[[i, j] for j in range(2)] for i in range(2)], (cm.size, 2))
     for i, j in elements:
         plt.text(j, i, format(cm[i, j]))
     
+    # set labels
     plt.ylabel('Real label')
     plt.xlabel('Prediction')
     plt.tight_layout()
+    
+    # show plot and save figure
     plt.show()
     if not test:
         plt.savefig('data/{}'.format(filename))
@@ -111,7 +124,7 @@ def hyper_learning_plot(test_acc,
     :param: x_name: str. The name of x axis. Default='Regularization Coefficient'
     :param: y_name: str. The name of y axis. Default='Accuracy'
     :param: filename: str. The file name of pic to be saved, make sure includes the format postfix (e.g. 'pic.png').
-            Default='hyper_learning_plot.png'
+            Default='hyper_learning_plot.png'.
     :param: test: bool. Won't generate file if true. Only used for unittest. Default=False
     :return: None
     """
@@ -138,14 +151,23 @@ def acc_recall_plot(pres,
                     test=False):
     """
     Generate the accuracy plot by the progress of regularization coefficient
-    :return:
+    :param: pres: list or array.
+    :param: rrs: list or array.
+    :param: xscale: str. 'log', 'linear' or others. Default='linear'. Check the docs of plt.plot for more info.
+    :param: title: string. Caption of the plot. Default=''.
+    :param: filename: str. The file name of pic to be saved, make sure includes the format postfix (e.g. 'pic.png').
+            Default='pr_curve.png'.
+    :param: test: bool. Won't generate file if true. Only used for unittest. Default=False
+    :return: None
     """
-    # TODO
+    # plot initialize
     plt.step(rrs, pres, color='blue')
     plt.xlabel(x_name)
     plt.ylabel(y_name)
     plt.title(title)
     plt.xscale(xscale)
+    
+    # save figure
     if test == False:
         plt.savefig('data/{}'.format(filename))
     plt.close()
@@ -166,7 +188,6 @@ class VisualizationTest(unittest.TestCase):
         self.test_coef = np.arange(25)
 
     def test_testing_status_plot(self):
-        # TODO
         self.get_test_data()
         testing_status_plot(self.test_pro, 
                             self.test_pro, 
