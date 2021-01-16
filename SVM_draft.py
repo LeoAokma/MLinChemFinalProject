@@ -1,7 +1,7 @@
 import numpy as np
 from sklearn import preprocessing, model_selection
 import sklearn.svm as svm
-from sklearn.metrics import confusion_matrix, accuracy_score, recall_score
+from sklearn.metrics import confusion_matrix, accuracy_score, recall_score, precision_recall_curve
 from sklearn.ensemble import RandomForestClassifier as RFC
 from sklearn.feature_selection import SelectFromModel, RFE
 import matplotlib.pyplot as plt
@@ -31,7 +31,7 @@ test_dl.binarize('outcome (actual)', 3)
 train_dl.binarize('outcome', 3)
 
 
-def hyper_coefficient(X, y, test_X, test_y, plot_str):
+def hyper_coefficient(X, y, test_X, test_y, plot_str, print_det=False):
     """
     A function designed for finding best hyper parameters
     :return: the best hyper parameter
@@ -42,6 +42,7 @@ def hyper_coefficient(X, y, test_X, test_y, plot_str):
     test_accs = []
     test_rrs = []
     cs = []
+    cnt = 1
     for i in np.linspace(1, 1500, num=200):
         cs.append(i)
         svm_model = svm.SVC(kernel='rbf', class_weight='balanced', C=i)
@@ -67,20 +68,23 @@ def hyper_coefficient(X, y, test_X, test_y, plot_str):
 
         # print(train_cm)
         # print(test_cm)
-        print(i)
-        print("Confusion Matrix")
-        vz.print_matrix(train_cm, title='Training Set')
-        vz.print_matrix(valid_cm, title='Testing Set')
-        print("Train Accuracy:{:.4f}".format(train_acc))
-        print("Test Accuracy:{:.4f}".format(valid_acc))
-        print("Train Recall:{:.4f}".format(train_recall))
-        print("Test Recall:{:.4f}".format(valid_recall))
-        print('\n')
+        if cnt % 20 == 0:
+            print("\r{}/200".format(cnt), end='', flush=True)
+        if print_det:
+            print("Confusion Matrix")
+            vz.print_matrix(train_cm, title='Training Set')
+            vz.print_matrix(valid_cm, title='Testing Set')
+            print("Train Accuracy:{:.4f}".format(train_acc))
+            print("Test Accuracy:{:.4f}".format(valid_acc))
+            print("Train Recall:{:.4f}".format(train_recall))
+            print("Test Recall:{:.4f}".format(valid_recall))
+            print('\n')
 
         del svm_model
+        cnt += 1
 
     best_c = cs[train_accs.index(max(train_accs))]
-    print('Best Hyperparameter C: {:.4f}'.format(best_c))
+    print('\nBest Hyperparameter C: {:.4f}'.format(best_c))
     print('Acc: {:.4f}, Recall: {:.4f}'.format(max(test_accs), test_rrs[test_accs.index(max(test_accs))]))
     vz.hyper_learning_plot(test_acc=test_accs,
                            train_acc=train_accs,
@@ -95,17 +99,10 @@ def hyper_coefficient(X, y, test_X, test_y, plot_str):
                            filename='Hyper_Learning_rr_{}.png'.format(plot_str),
                            title='Recall-rate dependency on regularization',
                            xscale='linear')
-    vz.acc_recall_plot(accs=test_accs,
-                       rrs=test_rrs,
-                       filename='acc_recall_test_{}.png'.format(plot_str),
-                       title='ROC Curve of test set',
-                       xscale='linear')
-    vz.acc_recall_plot(accs=train_accs,
-                       rrs=train_rrs,
-                       filename='acc_recall_train_{}.png'.format(plot_str),
-                       title='ROC Curve of train set',
-                       xscale='linear')
-    return best_c, max(test_accs), test_rrs[test_accs.index(max(test_accs))]
+    # generating final svm model:
+    svm_final = svm.SVC(kernel='rbf', class_weight='balanced', C=best_c, probability=True)
+    svm_final.fit(X, y)
+    return best_c, max(test_accs), test_rrs[test_accs.index(max(test_accs))], svm_final
 
 
 def feature_selection(input_keys, features=10):
@@ -135,11 +132,13 @@ def feature_selection(input_keys, features=10):
     print('Selected Features: {} in {}.'.format(features, len(input_keys[0])))
     print('Feature name\t Translation')
     features_selected = []
+    translation = []
     for _ in range(len(input_keys[1])):
         if selection.get_support()[_]:
             print(input_keys[0][_], input_keys[1][_], sep='\t')
             features_selected.append(input_keys[0][_])
-    return features_selected
+            translation.append(input_keys[1][_])
+    return features_selected, translation
 
 
 human_acc = accuracy_score(test_dl.get_value_array('outcome (actual)'), test_dl.get_value_array('XXX-Intuition'))
@@ -148,10 +147,10 @@ print('Human test accuracy: {:.4f}'.format(human_acc))
 accs = []
 rrs = []
 fets = []
-for fet_num in np.geomspace(1, 200, 30):
+for fet_num in np.linspace(1, 200, 30):
     fet = round(fet_num)
     fets.append(fet)
-    selected_features = feature_selection(keys, features=fet)
+    selected_features, trans = feature_selection(keys, features=fet)
     # generate the train and valid dataset and binarize the outcome
     tr_X, tr_y = train_dl.generate_trainset(selected_features, include_first_column=False, binarize=True)
     va_X, va_y = test_dl.generate_trainset(selected_features)
@@ -160,18 +159,33 @@ for fet_num in np.geomspace(1, 200, 30):
     scaler.fit(tr_X)
     tr_X = scaler.transform(tr_X)
     va_X = scaler.transform(va_X)
-    hyper_c, acc, rr = hyper_coefficient(tr_X, tr_y, va_X, va_y, plot_str=str(fet))
+    # hyper learning
+    _, hyper_tr_X = model_selection.train_test_split(tr_X, test_size=0.2, random_state=114514)
+    _, hyper_tr_y = model_selection.train_test_split(tr_y, test_size=0.2, random_state=114514)
+    # _, hyper_va_X = model_selection.train_test_split(va_X, test_size=0.2, random_state=114514)
+    # _, hyper_va_y = model_selection.train_test_split(va_y, test_size=0.2, random_state=114514)
+    hyper_c, acc, rr, svm_fn = hyper_coefficient(hyper_tr_X, hyper_tr_y, va_X, va_y, plot_str=str(fet))
     accs.append(acc)
     rrs.append(rrs)
-    dcx_tree = DecisionTree(max_depth=8,
-                            max_features=fet,
-                            splitter='random',
+
+    # p-r curve of the model
+    train_prpba = svm_fn.predict_proba(tr_X)[:, 1]
+    valid_prpba = svm_fn.predict_proba(va_X)[:, 1]
+    train_p, train_r, _ = precision_recall_curve(tr_y, train_prpba)
+    test_p, test_r, _ = precision_recall_curve(va_y, valid_prpba)
+    vz.acc_recall_plot(train_p, train_r, title='P-R Curve of train set', filename='pr_train_{}.png'.format(str(fet)))
+    vz.acc_recall_plot(test_p, test_r, title='P-R Curve of test set', filename='pr_test_{}.png'.format(str(fet)))
+
+    """
+    dcx_tree = DecisionTree(max_depth=round(np.log2(fet)+1),
+                            max_features='auto',
+                            splitter='best',
                             class_weight='balanced')
 
     dcx_tree.fit(tr_X, tr_y)
-    graph = dcx_tree.plot(selected_features)
+    graph = dcx_tree.plot(trans)
     graph.render('data/tree_{}'.format(str(fet)), view=False)
-
+    """
     # train_dl.identification_features(number_serial=[0, 18])
     # print(len(train_dl.features()))
 
