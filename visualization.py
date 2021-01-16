@@ -128,20 +128,20 @@ def hyper_learning_plot(test_acc,
     plt.close()
 
 
-def acc_recall_plot(accs,
+def acc_recall_plot(pres,
                     rrs,
                     title='',
-                    xscale='log',
+                    xscale='linear',
                     x_name='Recall Rate',
                     y_name='Accuracy',
-                    filename='acc_recall_plot.png',
+                    filename='pr_curve.png',
                     test=False):
     """
     Generate the accuracy plot by the progress of regularization coefficient
     :return:
     """
     # TODO
-    plt.scatter(rrs, accs, color='blue')
+    plt.step(rrs, pres, color='blue')
     plt.xlabel(x_name)
     plt.ylabel(y_name)
     plt.title(title)
