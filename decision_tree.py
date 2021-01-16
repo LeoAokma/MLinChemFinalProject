@@ -49,7 +49,7 @@ class DecisionTreeTest(unittest.TestCase):
 
         dcx_tree = DecisionTree(
             max_depth=5,
-            splitter='random',
+            splitter='best',
             class_weight='balanced',
         )
 

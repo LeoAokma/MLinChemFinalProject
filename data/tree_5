@@ -1,0 +1,33 @@
+digraph Tree {
+node [shape=box, style="filled, rounded", color="black", fontname="Microsoft YaHei"] ;
+edge [fontname="Microsoft YaHei"] ;
+0 [label="反应时间 <= 21.5\ngini = 0.5\nsamples = 3955\nvalue = [1977.5, 1977.5]\nclass = 成功", fillcolor="#ffffff"] ;
+1 [label="有机相-水摩尔比 <= 0.003\ngini = 0.272\nsamples = 772\nvalue = [803.096, 155.935]\nclass = 失败", fillcolor="#ea995f"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label="反应时间 <= 19.5\ngini = 0.479\nsamples = 272\nvalue = [174.403, 114.818]\nclass = 失败", fillcolor="#f6d4bb"] ;
+1 -> 2 ;
+3 [label="gini = 0.0\nsamples = 90\nvalue = [126.583, 0.0]\nclass = 失败", fillcolor="#e58139"] ;
+2 -> 3 ;
+4 [label="gini = 0.415\nsamples = 182\nvalue = [47.82, 114.818]\nclass = 成功", fillcolor="#8bc6f0"] ;
+2 -> 4 ;
+5 [label="无机相-水摩尔比 <= 0.04\ngini = 0.115\nsamples = 500\nvalue = [628.693, 41.117]\nclass = 失败", fillcolor="#e78946"] ;
+1 -> 5 ;
+6 [label="gini = 0.07\nsamples = 436\nvalue = [573.841, 21.722]\nclass = 失败", fillcolor="#e68640"] ;
+5 -> 6 ;
+7 [label="gini = 0.386\nsamples = 64\nvalue = [54.852, 19.395]\nclass = 失败", fillcolor="#eeae7f"] ;
+5 -> 7 ;
+8 [label="无机相-水摩尔比 <= 0.014\ngini = 0.477\nsamples = 3183\nvalue = [1174.404, 1821.565]\nclass = 成功", fillcolor="#b9dcf6"] ;
+0 -> 8 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+9 [label="反应时间 <= 83.65\ngini = 0.471\nsamples = 1460\nvalue = [973.279, 595.81]\nclass = 失败", fillcolor="#f5ceb2"] ;
+8 -> 9 ;
+10 [label="gini = 0.421\nsamples = 1168\nvalue = [921.239, 397.983]\nclass = 失败", fillcolor="#f0b78f"] ;
+9 -> 10 ;
+11 [label="gini = 0.33\nsamples = 292\nvalue = [52.039, 197.828]\nclass = 成功", fillcolor="#6db7ec"] ;
+9 -> 11 ;
+12 [label="原子半径MinWeighted <= 0.819\ngini = 0.242\nsamples = 1723\nvalue = [201.126, 1225.755]\nclass = 成功", fillcolor="#59ade9"] ;
+8 -> 12 ;
+13 [label="gini = 0.187\nsamples = 1655\nvalue = [140.647, 1206.36]\nclass = 成功", fillcolor="#50a8e8"] ;
+12 -> 13 ;
+14 [label="gini = 0.368\nsamples = 68\nvalue = [60.478, 19.395]\nclass = 失败", fillcolor="#eda978"] ;
+12 -> 14 ;
+}
