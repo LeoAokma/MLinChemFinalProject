@@ -70,7 +70,7 @@ all_keys = [['temp', 'time', 'slowCool', 'pH', 'leak', 'numberInorg', 'numberOrg
              'IonizationMeanWeighted', 'EAMeanWeighted', 'PaulingElectronegMeanWeighted',
              'PearsonElectronegMeanWeighted', 'hardnessMeanWeighted', 'AtomicRadiusMeanWeighted',
              'IonizationGeomWeighted', 'EAGeomWeighted', 'PaulingElectronegGeomWeighted',
-             'PearsonElectronegGeomWeighted', 'hardnessGeomWeighted', 'AtomicRadiusGeomWeighted', 'purity'],
+             'PearsonElectronegGeomWeighted', 'hardnessGeomWeighted', 'AtomicRadiusGeomWeighted'],
             ['温度', '反应时间', '缓慢冷却', 'pH', '产物泄露', '无机组分数', '有机组分数', 'numberOxlike',
              '组分数', 'orgavgpolMax', 'orgrefractivityMax', 'orgmaximalprojectionareaMax',
              'orgmaximalprojectionradiusMax', 'orgmaximalprojectionsizeMax', 'orgminimalprojectionareaMax',
@@ -118,8 +118,8 @@ all_keys = [['temp', 'time', 'slowCool', 'pH', 'leak', 'numberInorg', 'numberOrg
              'oxlikeavgpol_pHdependent几何平均', 'oxlikemolpol几何平均', 'oxlikevanderwaals几何平均', 'oxlikeASA几何平均',
              'oxlikeASA+几何平均', 'oxlikeASA-几何平均', 'oxlikeASA_H几何平均', 'oxlikeASA_P几何平均',
              'oxlikepolarsurfacearea几何平均', 'oxlikehbdamsacc几何平均', 'oxlikehbdamsdon几何平均',
-             'inorg-water-moleratio', 'org-water-moleratio', 'orgacc-waterdonratio', 'orgdon-wateraccratio',
-             'inorg-org-moleratio', 'notwater-water-moleratio', 'Na', 'Li', 'Te', 'Br', 'K', 'C', 'F', 'I', 'Mo', 'O',
+             '无机相-水摩尔比', '有机相-水摩尔比', 'orgacc-waterdonratio', 'orgdon-wateraccratio',
+             '无机-有机相摩尔比', '非水-水摩尔比', 'Na', 'Li', 'Te', 'Br', 'K', 'C', 'F', 'I', 'Mo', 'O',
              'N', 'P', 'S', 'V', 'Se', 'Zn', 'Co', 'Cl', 'Ga', 'Cs', 'Cr', 'Cu', 'Actinide', 'AlkaliMetal',
              '镧系元素', 'P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7', 'G1', 'G2', 'G3', 'G4', 'G5', 'G6', 'G7', 'G8',
              'G9', 'G10', 'G11', 'G12', 'G13', 'G14', 'G15', 'G16', 'G17', 'G18', 'V0', 'V1', 'V2', 'V3', 'V4', 'V5',
@@ -134,7 +134,7 @@ all_keys = [['temp', 'time', 'slowCool', 'pH', 'leak', 'numberInorg', 'numberOrg
              '电离能MeanWeighted', '电子亲和能MeanWeighted', 'Pauling电负性MeanWeighted',
              'Pearson电负性MeanWeighted', '硬度MeanWeighted', '原子半径MeanWeighted',
              '电离能GeomWeighted', '电子亲和能GeomWeighted', 'Pauling电负性GeomWeighted',
-             'Pearson电负性GeomWeighted', '硬度GeomWeighted', '原子半径GeomWeighted', '纯度']]
+             'Pearson电负性GeomWeighted', '硬度GeomWeighted', '原子半径GeomWeighted']]
 
 test_key = [['time', 'slowCool', 'pH', 'leak', 'numberInorg', 'numberOrg',
             'numberOxlike', 'numberComponents', 'orgavgpolMax',
