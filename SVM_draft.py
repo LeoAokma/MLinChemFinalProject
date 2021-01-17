@@ -159,31 +159,31 @@ for fet_num in np.linspace(1, 50, 50):
     tr_X = scaler.transform(tr_X_origin)
     va_X = scaler.transform(va_X_origin)
     # hyper learning
-    _, hyper_tr_X = model_selection.train_test_split(tr_X, test_size=0.2, random_state=114514)
-    _, hyper_tr_y = model_selection.train_test_split(tr_y, test_size=0.2, random_state=114514)
+    _, valid_X = model_selection.train_test_split(tr_X, test_size=0.2, random_state=114514)
+    _, valid_y = model_selection.train_test_split(tr_y, test_size=0.2, random_state=114514)
     # _, hyper_va_X = model_selection.train_test_split(va_X, test_size=0.2, random_state=114514)
     # _, hyper_va_y = model_selection.train_test_split(va_y, test_size=0.2, random_state=114514)
-    hyper_c, svm_fn = hyper_coefficient(hyper_tr_X, hyper_tr_y, va_X, va_y, plot_str=str(fet))
+    hyper_c, svm_fn = hyper_coefficient(valid_X, valid_y, va_X, va_y, plot_str=str(fet))
 
     # Generate the instance according to hyper learning
     svm_main = svm.SVC(kernel='rbf', class_weight='balanced', C=hyper_c)
     svm_main.fit(tr_X, tr_y)
     # Statistical Features
     train_pred = svm_main.predict(tr_X)
-    valid_pred = svm_main.predict(va_X)
+    test_pred = svm_main.predict(va_X)
 
     train_cm = confusion_matrix(tr_y, train_pred)
-    valid_cm = confusion_matrix(va_y, valid_pred)
+    test_cm = confusion_matrix(va_y, test_pred)
 
     train_acc = accuracy_score(tr_y, train_pred)
-    valid_acc = accuracy_score(va_y, valid_pred)
+    test_acc = accuracy_score(va_y, test_pred)
 
     train_recall = recall_score(tr_y, train_pred)
-    valid_recall = recall_score(va_y, valid_pred)
-    print('Test Acc: {:.4f}, Test Recall: {:.4f}'.format(valid_acc, valid_recall))
+    test_recall = recall_score(va_y, test_pred)
+    print('Test Acc: {:.4f}, Test Recall: {:.4f}'.format(test_acc, test_recall))
     # saving data to lists
-    accs.append(valid_acc)
-    rrs.append(valid_recall)
+    accs.append(test_acc)
+    rrs.append(test_recall)
     # Instance used for generating ROC or PR figs
     svm_fn.fit(tr_X, tr_y)
     # p-r curve of the model
