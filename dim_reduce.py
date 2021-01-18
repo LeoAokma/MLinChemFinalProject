@@ -18,7 +18,8 @@ from sklearn.manifold import TSNE
 import matplotlib.pyplot as plt
 
 import data_loader
-from svm import FeatNames, load_preprocess
+from svm import load_preprocess
+from data_keys import FeatNames
 
 
 def plot2D(X, labels, title="", save="./2D-plot.png"):
