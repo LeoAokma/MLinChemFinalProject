@@ -24,74 +24,7 @@ from hypopt import GridSearch
 import matplotlib.pyplot as plt
 
 import data_loader
-
-
-class FeatNames:
-    """
-    feature names
-    """
-
-    feat_first = ['orgvanderwaalsMin', 'orgASA+Min', 'orghbdamsdonGeomAvg',
-                  'PaulingElectronegMean', 'hardnessMaxWeighted', 'AtomicRadiusMeanWeighted']
-
-    feat_top6 = ['time', 'hardnessMinWeighted', 'orgASA_HGeomAvg', 'leak',
-                 'inorg-water-moleratio', 'orgvanderwaalsArithAvg']
-
-    feat_top9 = ['time', 'hardnessMinWeighted', 'orgASA_HGeomAvg', 'leak',
-                 'inorg-water-moleratio', 'orgvanderwaalsArithAvg', 'orgvanderwaalsArithAvg',
-                 'orghbdamsaccMax', 'temp', 'EAMinWeighted']
-
-    feat_inorg = ['orgavgpolMax', 'IonizationMax', 'IonizationMin', 'IonizationMean', 'IonizationGeom',
-                  'IonizationMaxWeighted', 'IonizationMinWeighted', 'IonizationMeanWeighted', 'IonizationGeomWeighted',
-                  'EAMax', 'EAMin', 'EAMean', 'EAGeom',
-                  'EAMaxWeighted', 'EAMinWeighted', 'EAMeanWeighted', 'EAGeomWeighted',
-                  'PaulingElectronegMax', 'PaulingElectronegMin', 'PaulingElectronegMean', 'PaulingElectronegGeom',
-                  'PaulingElectronegMaxWeighted', 'PaulingElectronegMinWeighted', 'PaulingElectronegMeanWeighted',
-                  'PaulingElectronegGeomWeighted',
-                  'PearsonElectronegMax', 'PearsonElectronegMin', 'PearsonElectronegMean', 'PearsonElectronegGeom',
-                  'PearsonElectronegMaxWeighted', 'PearsonElectronegMinWeighted', 'PearsonElectronegMeanWeighted',
-                  'PearsonElectronegGeomWeighted',
-                  'hardnessMax', 'hardnessMin', 'hardnessMean', 'hardnessGeom',
-                  'hardnessMaxWeighted', 'hardnessMinWeighted', 'hardnessMeanWeighted', 'hardnessGeomWeighted',
-                  'AtomicRadiusMax', 'AtomicRadiusMin', 'AtomicRadiusMean', 'AtomicRadiusGeom',
-                  'AtomicRadiusMaxWeighted', 'AtomicRadiusMinWeighted', 'AtomicRadiusMeanWeighted',
-                  'AtomicRadiusGeomWeighted', 'AtomicRadiusGeom']
-
-    feat_stoichio = ['inorg-water-moleratio', 'inorg-org-moleratio', 'org-water-moleratio',
-                     'orgacc-waterdonratio', 'orgdon-wateraccratio', 'notwater-water-moleratio']
-
-    feat_condition = ['temp', 'time', 'slowCool', 'pH', 'leak']
-
-    feat_org = ['orgavgpolMax', 'orgavgpolMin', 'orgavgpolArithAvg', 'orgavgpolGeomAvg',
-                'orgavgpol_pHdependentMax', 'orgavgpol_pHdependentMin', 'orgavgpol_pHdependentArithAvg',
-                'orgavgpol_pHdependentGeomAvg',
-                'orgrefractivityMax', 'orgrefractivityMin', 'orgrefractivityArithAvg', 'orgrefractivityGeomAvg',
-                'orgmaximalprojectionareaMax', 'orgmaximalprojectionareaMin', 'orgmaximalprojectionareaArithAvg',
-                'orgmaximalprojectionareaGeomAvg',
-                'orgmaximalprojectionradiusMax', 'orgmaximalprojectionradiusMin', 'orgmaximalprojectionradiusArithAvg',
-                'orgmaximalprojectionradiusGeomAvg',
-                'orgmaximalprojectionsizeMax', 'orgmaximalprojectionsizeMin', 'orgmaximalprojectionsizeArithAvg',
-                'orgmaximalprojectionsizeGeomAvg',
-                'orgminimalprojectionareaMax', 'orgminimalprojectionareaMin', 'orgminimalprojectionareaArithAvg',
-                'orgminimalprojectionareaGeomAvg',
-                'orgminimalprojectionradiusMax', 'orgminimalprojectionradiusMin', 'orgminimalprojectionradiusArithAvg',
-                'orgminimalprojectionradiusGeomAvg',
-                'orgminimalprojectionsizeMax', 'orgminimalprojectionsizeMin', 'orgminimalprojectionsizeArithAvg',
-                'orgminimalprojectionsizeGeomAvg',
-                'orgmolpolMax', 'orgmolpolMin', 'orgmolpolArithAvg', 'orgmolpolGeomAvg',
-                'orgvanderwaalsMax', 'orgvanderwaalsMin', 'orgvanderwaalsArithAvg', 'orgvanderwaalsGeomAvg',
-                'orgASAMax', 'orgASAMin', 'orgASAArithAvg', 'orgASAGeomAvg',
-                'orgASA+Max', 'orgASA+Min', 'orgASA+ArithAvg', 'orgASA+GeomAvg',
-                'orgASA-Max', 'orgASA-Min', 'orgASA-ArithAvg', 'orgASA-GeomAvg',
-                'orgASA_HMax', 'orgASA_HMin', 'orgASA_HArithAvg', 'orgASA_HGeomAvg',
-                'orgASA_PMax', 'orgASA_PMin', 'orgASA_PArithAvg', 'orgASA_PGeomAvg',
-                'orgpolarsurfaceareaMax', 'orgpolarsurfaceareaMin', 'orgpolarsurfaceareaArithAvg',
-                'orgpolarsurfaceareaGeomAvg',
-                'orghbdamsaccMax', 'orghbdamsaccMin', 'orghbdamsaccArithAvg', 'orghbdamsaccGeomAvg',
-                'orghbdamsdonMax', 'orghbdamsdonMin', 'orghbdamsdonArithAvg', 'orghbdamsdonGeomAvg']
-
-    feat_misc = feat_stoichio + feat_condition
-    feat_all = feat_inorg + feat_org + feat_misc
+from data_keys import FeatNames
 
 
 def load_preprocess():
