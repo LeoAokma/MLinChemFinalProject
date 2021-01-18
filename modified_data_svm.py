@@ -24,7 +24,7 @@ from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
 
 import data_loader
-from SVM import FeatNames, opt_model, load_preprocess
+from svm import FeatNames, opt_model, load_preprocess
 
 # Successful or failed
 NCLASS = 2
