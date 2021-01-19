@@ -18,7 +18,7 @@ from sklearn.manifold import TSNE
 import matplotlib.pyplot as plt
 
 import data_loader
-from svm import load_preprocess
+from SVM import load_preprocess
 from data_keys import FeatNames
 
 

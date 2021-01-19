@@ -124,17 +124,12 @@ def feature_selection(input_keys, features=10, model='random_forest'):
     train_X = scaler.transform(train_X)
     valid_X = scaler.transform(test_X)
     # Evaluating features(Using linear kernels, not rbf)
-    """
-    selection = SelectFromModel(svm.SVC(kernel='linear', class_weight='balanced', C=hyper_c),
-                                max_features=features,
-                                ).fit(train_X, train_y)
-    """
     if model == 'random_forest':
         selection = SelectFromModel(RFC(),
                                     max_features=features,
                                     ).fit(train_X, train_y)
     elif model == 'svm':
-        selection = SelectFromModel(svm,
+        selection = SelectFromModel(svm.SVC(kernel='linear', class_weight='balanced'),
                                     max_features=features,
                                     ).fit(train_X, train_y)
     print('Selected Features: {} in {}.'.format(features, len(input_keys[0])))
@@ -155,7 +150,7 @@ print('Human test accuracy: {:.4f}'.format(human_acc))
 accs = []
 rrs = []
 fets = []
-for fet_num in np.linspace(1, 150, 50):
+for fet_num in np.linspace(1, 50, 50):
     fet = round(fet_num)
     fets.append(fet)
     selected_features, trans = feature_selection(keys, features=fet, model='svm')
