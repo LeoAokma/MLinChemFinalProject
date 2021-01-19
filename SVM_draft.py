@@ -14,6 +14,7 @@ from data_loader import DataLoader
 import visualization as vz
 import data_keys
 from decision_tree import DecisionTree
+from SVM import evaluate_cross_valid
 
 
 # Dataset paths

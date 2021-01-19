@@ -24,7 +24,7 @@ from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
 
 import data_loader
-from SVM import opt_model, load_preprocess
+from SVM import opt_model_gridsearchcv, load_preprocess
 from data_keys import FeatNames
 
 # Successful or failed
@@ -34,73 +34,105 @@ category_colors = plt.get_cmap('tab10')(np.linspace(0., 1., 2))
 digit_styles = {'weight': 'bold', 'size': 8}
 
 
-def load_data(dataloader, is_validation):
+def load_data(dataloader, is_test):
     """
     Dataloading and spliting.
     Data -> inorg + org + misc
     """
     inorg_X, y = dataloader.generate_trainset(
-        FeatNames.feat_inorg, include_first_column=False, is_validation=is_validation)
+        FeatNames.feat_inorg, include_first_column=False, is_test=is_test)
     org_X, y = dataloader.generate_trainset(
-        FeatNames.feat_org, include_first_column=False, is_validation=is_validation)
+        FeatNames.feat_org, include_first_column=False, is_test=is_test)
     misc_X, y = dataloader.generate_trainset(
-        FeatNames.feat_misc, include_first_column=False, is_validation=is_validation)
+        FeatNames.feat_misc, include_first_column=False, is_test=is_test)
     return inorg_X, org_X, misc_X, y
 
 
-def step_one(train_X, valid_X, test_X, n_components):
+def step_one(n_components, *dataset):
     """
     Do PCA analysis with n_components to keep.
-    step_one(train_X, valid_X, test_X, n_components) -> \
-        proj_train_X, proj_valid_X, proj_test_X
+    step_one(*dataset, n_components) -> \
+        proj_dataset
     """
+    # stardardization
+    train_X, *other_sets_X = dataset
     scaler = preprocessing.StandardScaler()
     train_X = scaler.fit_transform(train_X)
-    valid_X = scaler.transform(valid_X)
-    test_X = scaler.transform(test_X)
+    for i in range(len(other_sets_X)):
+        other_sets_X[i] = scaler.transform(other_sets_X[i])
 
     # PCA for step 1
     # For optimization of n_components, see DimReduce.py
     PCA_model = PCA(n_components=n_components, copy=False, whiten=False)
     proj_train_X = PCA_model.fit_transform(train_X)
-    proj_valid_X = PCA_model.transform(valid_X)
-    proj_test_X = PCA_model.transform(test_X)
+    proj_other_sets_X = []
+    for i in range(len(other_sets_X)):
+        proj_other_sets_X.append(
+            PCA_model.transform(other_sets_X[i]))
 
-    return proj_train_X, proj_valid_X, proj_test_X
+    return [proj_train_X] + proj_other_sets_X
+
+
+def pca_steps():
+    """
+    PCA steps were included.
+    Parameters
+    -----
+    include_valid : Bool
+        Split validation set from training set.
+    """
+    dataset_dl = load_preprocess()
+
+    # Loading training/validation/test set
+    dataset_dl.split_test(ratio=0.25)
+    inorg_train_X, org_train_X, misc_train_X, train_y = load_data(dataset_dl, False)
+    inorg_test_X, org_test_X, misc_test_X, test_y = load_data(dataset_dl, True)
+
+    # Do step one
+    inorg_X = step_one(6, inorg_train_X, inorg_test_X)
+    org_X = step_one(7, org_train_X, org_test_X)
+    misc_X = step_one(8, misc_train_X, misc_test_X)
+
+    # Do step two
+    # [[inorg_train_X, org_train_X, misc_train_X], [inorg_test_X, org_test_X, misc_test_X]]
+    # -concatenate-> train_X, test_X
+    train_Xs, test_Xs = zip(inorg_X, org_X, misc_X)
+    train_X = np.concatenate(train_Xs, axis=1)
+    test_X = np.concatenate(test_Xs, axis=1)
+
+    return train_X, train_y, test_X, test_y
+
+
+def cross_valid_test_model(train_X, train_y, test_X, test_y, cv=15):
+    """
+    test model with K-fold cross validation.
+    """
+    param_grid = [{'gamma': np.logspace(-5, 5, 5), 'C': np.logspace(5, 5, num=1)}]
+    svm_model = svm.SVC(kernel='rbf', class_weight='balanced')
+    optimized_svm = opt_model_gridsearchcv(
+        svm_model, param_grid, train_X, train_y, cv=cv)
+
+    pred_train_y = optimized_svm.predict(train_X)
+    pred_test_y = optimized_svm.predict(test_X)
+    train_score = accuracy_score(train_y, pred_train_y)
+    test_score = accuracy_score(test_y, pred_test_y)
+
+    print("Best parameters: %s" % optimized_svm.best_params_)
+    index = np.argwhere(optimized_svm.cv_results_['rank_test_score'] == 1)[0]
+    print("Test mean/std of accuracy in cross validation %.3f ± %.3f" % (
+        optimized_svm.cv_results_['mean_test_score'][index],
+        optimized_svm.cv_results_['std_test_score'][index]))
+    print("Accuracy for training/test set: %.3f, %.3f" %
+          (train_score, test_score))
+    print("Confusion matrix for training set:")
+    print(confusion_matrix(train_y, pred_train_y))
+    print("Confusion matrix for test set:")
+    print(confusion_matrix(test_y, pred_test_y))
 
 
 def main():
-    train_dl, test_dl = load_preprocess()
-
-    # Loading training/validation set
-    train_dl.split_validation()
-    inorg_train_X, org_train_X, misc_train_X, train_y = load_data(train_dl, False)
-    inorg_valid_X, org_valid_X, misc_valid_X, valid_y = load_data(train_dl, True)
-    inorg_test_X, org_test_X, misc_test_X, test_y = load_data(test_dl, False)
-
-    # Do step one
-    inorg_X = step_one(inorg_train_X, inorg_valid_X, inorg_test_X, 6)
-    org_X = step_one(org_train_X, org_valid_X, org_test_X, 7)
-    misc_X = step_one(misc_train_X, misc_valid_X, misc_test_X, 8)
-
-    # Do step two
-    train_Xs, valid_Xs, test_Xs = zip(inorg_X, org_X, misc_X)
-    train_X = np.concatenate(train_Xs, axis=1)
-    valid_X = np.concatenate(valid_Xs, axis=1)
-    test_X = np.concatenate(test_Xs, axis=1)
-
-    param_grid = [{'C': np.logspace(-3, 5, num=10)}]
-    svm_model = svm.SVC(kernel='rbf', class_weight='balanced')
-    optimized_svm, best_regu, results = opt_model(
-        svm_model, param_grid, train_X, train_y, valid_X, valid_y)
-
-    train_score = optimized_svm.score(train_X, train_y)
-    valid_score = optimized_svm.score(valid_X, valid_y)
-    test_score = optimized_svm.score(test_X, test_y)
-
-    print("Best parameters: %s" % best_regu)
-    print("Accuracy for train/valid/test model: %.3f, %.3f, %.3f" %
-          (train_score, valid_score, test_score))
+    train_X, train_y, test_X, test_y = pca_steps()
+    cross_valid_test_model(train_X, train_y, test_X, test_y, 5)
 
 
 if __name__ == "__main__":
