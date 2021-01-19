@@ -50,7 +50,7 @@ edge [fontname="Microsoft YaHei"] ;
 21 -> 23 ;
 24 [label="orgASA_H几何平均 <= 249.165\ngini = 0.479\nsamples = 396\nvalue = [252.218, 165.788]\nclass = 失败", fillcolor="#f6d4bb"] ;
 16 -> 24 ;
-25 [label="原子半径MinWeighted <= 0.712\ngini = 0.486\nsamples = 226\nvalue = [89.886, 126.732]\nclass = 成功", fillcolor="#c5e3f7"] ;
+25 [label="原子半径GeomWeighted <= 0.712\ngini = 0.486\nsamples = 226\nvalue = [89.886, 126.732]\nclass = 成功", fillcolor="#c5e3f7"] ;
 24 -> 25 ;
 26 [label="gini = 0.35\nsamples = 142\nvalue = [28.173, 96.444]\nclass = 成功", fillcolor="#73baed"] ;
 25 -> 26 ;
