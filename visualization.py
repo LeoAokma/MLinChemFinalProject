@@ -197,7 +197,7 @@ class VisualizationTest(unittest.TestCase):
     def test_cm_heat_plot(self):
         self.get_test_data()
         cm_heat_plot(self.test_cm,
-                            test=True)
+                     test=True)
 
     def test_hyper_learning_plot(self):
         self.get_test_data()
