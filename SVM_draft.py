@@ -107,7 +107,7 @@ def hyper_coefficient(valid_X, valid_y, test_X, test_y, plot_str, print_det=Fals
     return best_c, svm_proba
 
 
-def feature_selection(input_keys, features=10):
+def feature_selection(input_keys, features=10, model='random_forest'):
     """
     Select best features by using sklearn.SelectFromModel
     :param input_keys:
@@ -129,9 +129,14 @@ def feature_selection(input_keys, features=10):
                                 max_features=features,
                                 ).fit(train_X, train_y)
     """
-    selection = SelectFromModel(RFC(),
-                                max_features=features,
-                                ).fit(train_X, train_y)
+    if model == 'random_forest':
+        selection = SelectFromModel(RFC(),
+                                    max_features=features,
+                                    ).fit(train_X, train_y)
+    elif model == 'svm':
+        selection = SelectFromModel(svm,
+                                    max_features=features,
+                                    ).fit(train_X, train_y)
     print('Selected Features: {} in {}.'.format(features, len(input_keys[0])))
     print('Feature name\t Translation')
     features_selected = []
@@ -153,7 +158,7 @@ fets = []
 for fet_num in np.linspace(1, 150, 50):
     fet = round(fet_num)
     fets.append(fet)
-    selected_features, trans = feature_selection(keys, features=fet)
+    selected_features, trans = feature_selection(keys, features=fet, model='svm')
     # generate the train and valid dataset and binarize the outcome
     tr_X_origin, tr_y = train_dl.generate_trainset(feature_list=selected_features, include_first_column=False, binarize=True)
     # va_X_origin, va_y = test_dl.generate_trainset(feature_list=selected_features)
