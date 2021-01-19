@@ -67,7 +67,7 @@ def testing_status_plot(x,
     # show plot and save figure
     fig1.show()
     if test == False:
-        plt.savefig('data/{}'.format(filename))
+        plt.savefig('data/{}'.format(filename), dpi=300)
 
 
 def cm_heat_plot(cm, 
@@ -101,7 +101,7 @@ def cm_heat_plot(cm,
     # show plot and save figure
     plt.show()
     if not test:
-        plt.savefig('data/{}'.format(filename))
+        plt.savefig('data/{}'.format(filename), dpi=300)
 
 
 def hyper_learning_plot(test_acc,
@@ -136,8 +136,8 @@ def hyper_learning_plot(test_acc,
     plt.legend()
     plt.title(title)
     plt.xscale(xscale)
-    if test == False:
-        plt.savefig('data/{}'.format(filename))
+    if not test:
+        plt.savefig('data/{}'.format(filename), dpi=300)
     plt.close()
 
 
@@ -168,8 +168,8 @@ def acc_recall_plot(pres,
     plt.xscale(xscale)
     
     # save figure
-    if test == False:
-        plt.savefig('data/{}'.format(filename))
+    if not test:
+        plt.savefig('data/{}'.format(filename), dpi=300)
     plt.close()
 
 
