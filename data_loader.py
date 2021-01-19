@@ -17,13 +17,18 @@ import json
 
 
 class DataLoader:
-    def __init__(self, data_path):
-        self.data_path = data_path
-        self.dataset = pd.read_csv(data_path)
+    def __init__(self, file_path):
+        self.data_path = file_path
+        self.dataset = pd.read_csv(file_path)
         self.identity = None
+        self.sample_number = len(self.dataset.index)
+        self.test = None
 
         # initialize the status of whether the discontinuous data in data loader is normalized to {0,1}
         self.is_binary = False
+
+    def sample_numbers(self):
+        return self.sample_number
 
     def features(self):
         """
@@ -74,7 +79,7 @@ class DataLoader:
         counter = self.value_counter(feature)
         return counter[value]
 
-    def generate_trainset(self, feature_list=None, include_first_column=True, binarize=False):
+    def generate_trainset(self, feature_list=None, include_first_column=True, binarize=False, is_test = False):
         """
         generate train dataset based on selected features, data_loader.generate_trainset()[0] for X,
         data_loader.generate_trainset()[1] for Y
@@ -86,29 +91,54 @@ class DataLoader:
         Turn the outcome column into binary value with 0 and 1 if True.
         :return: train dataset based on selected features
         """
-        try:
-            feature_Y = 'outcome (actual)'
-            train_Y = self.get_value_array(feature_Y)
-        except Exception:
-            feature_Y = 'outcome'
-            train_Y = self.get_value_array(feature_Y)
-        if binarize:
-            self.binarize_all_data()
-        if feature_list == None:
-            train = np.array(self.dataset)
-            if include_first_column:
-                train_X = self.dataset.drop([feature_Y], axis=1)
-                train_X = np.array(train_X)
-            else: 
-                feature_first_column = self.features()[0]
-                train_X = self.dataset.drop([feature_first_column, feature_Y], axis=1)
-                train_X = np.array(train_X)
+        if not is_test:
+            try:
+                feature_Y = 'outcome (actual)'
+                train_Y = self.get_value_array(feature_Y)
+            except Exception:
+                feature_Y = 'outcome'
+                train_Y = self.get_value_array(feature_Y)
+            if binarize:
+                self.binarize_all_data()
+            if feature_list == None:
+                train = np.array(self.dataset)
+                if include_first_column:
+                    train_X = self.dataset.drop([feature_Y], axis=1)
+                    train_X = np.array(train_X)
+                else:
+                    feature_first_column = self.features()[0]
+                    train_X = self.dataset.drop([feature_first_column, feature_Y], axis=1)
+                    train_X = np.array(train_X)
+            else:
+                trainset = []
+                for item in feature_list:
+                    trainset.append(self.get_value_list(item))
+                train_X = np.array(trainset).T
+            train = [train_X, train_Y]
         else:
-            trainset = []
-            for item in feature_list:
-                trainset.append(self.get_value_list(item))
-            train_X = np.array(trainset).T
-        train = [train_X, train_Y]
+            try:
+                feature_Y = 'outcome (actual)'
+                train_Y = np.array(self.test[feature_Y].values.tolist())
+            except Exception:
+                feature_Y = 'outcome'
+                train_Y = np.array(self.test[feature_Y].values.tolist())
+            if binarize:
+                self.binarize_all_data()
+            if feature_list == None:
+                train = np.array(self.test)
+                if include_first_column:
+                    train_X = self.test.drop([feature_Y], axis=1)
+                    train_X = np.array(train_X)
+                else:
+                    feature_first_column = self.test.features()[0]
+                    train_X = self.test.drop([feature_first_column, feature_Y], axis=1)
+                    train_X = np.array(train_X)
+            else:
+                trainset = []
+                for item in feature_list:
+                    trainset.append(self.test[item].values.tolist())
+                train_X = np.array(trainset).T
+            train = [train_X, train_Y]
         return train
 
     def replace(self, key, func):
@@ -222,6 +252,22 @@ class DataLoader:
             return 0
         else:
             return self.identity
+
+    def split_test(self, ratio=0.25):
+        """
+        generate a test set from original dataset,return new dataset and test dataset.test dataset will be expelled from self.dataset and
+        possibly called as self.test. self.dataest would be CHANGED permanently!
+        :param:ratio: float
+        decides the ratio of test samples
+        """
+        # np.random.seed(1)
+        shuffled_indices = np.random.permutation(self.sample_number)
+        valid_size = int(self.sample_number * ratio)
+        valid_indices = shuffled_indices[:valid_size]
+        train_indices = shuffled_indices[valid_size:]
+        self.test = self.dataset.iloc[valid_indices]
+        self.dataset = self.dataset.iloc[train_indices]
+        return self.dataset, self.test
 
 
 '''
