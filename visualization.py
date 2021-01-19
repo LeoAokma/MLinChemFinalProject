@@ -1,10 +1,8 @@
 """
 author: Whale Song
-
 System Environment
 OS: Microsoft Windows 10 Professional x64, WSL with Ubuntu 16.0.4 LTS or MacOS Big Sur 11.0 above
 (No requirements of necessity)
-
 Python Environment
 python==3.8
 """
@@ -32,7 +30,7 @@ def testing_status_plot(x,
                         acc, 
                         rrs, 
                         xscale='log',
-                        x_label='Regularization Number',
+                        x_name='Regularization Number',
                         title='', 
                         filename='testing_status_plot.png',
                         test=False
@@ -61,7 +59,7 @@ def testing_status_plot(x,
     # rr subplot
     rrplot.plot(x, rrs)
     rrplot.set_xscale(xscale)
-    rrplot.set_xlabel(x_label)
+    rrplot.set_xlabel(x_name)
     rrplot.set_ylabel('Recall Rate')
     
     # show plot and save figure
@@ -136,6 +134,7 @@ def hyper_learning_plot(test_acc,
     plt.legend()
     plt.title(title)
     plt.xscale(xscale)
+    plt.show()
     if not test:
         plt.savefig('data/{}'.format(filename), dpi=300)
     plt.close()
@@ -172,6 +171,112 @@ def acc_recall_plot(pres,
         plt.savefig('data/{}'.format(filename), dpi=300)
     plt.close()
 
+def dim_reduce_plot(
+        len_feat,
+        var_ratio,
+        cum_var_ratio,
+        x_name='Number of features',
+        y_name='Scores',
+        title='PCA dimension-reduce plot',
+        filename=''
+        test=False
+        ):
+    """
+    Generate the plot PCA dimension reduction by the progress of len_feat
+    :param: len_feat: integer.
+    :param: var_ratio: list or array.
+    :param: cum_var_ratio: list or array.
+    :param: x_name: str. The name of x axis. Default='Number of features'
+    :param: y_name: str. The name of y axis. Default='Scores'
+    :param: title: string. Caption of the plot. Default='PCA dimension-reduce plot'.
+    :param: filename: str. The file name of pic to be saved, make sure includes the format postfix (e.g. 'pic.png').
+            Default=''.
+    :param: test: bool. Won't generate file if true. Only used for unittest. Default=False
+    :return: None
+    """
+    fig = plt.figure(figsize=(6, 4), dpi=300)
+    ax = fig.add_subplot(1, 1, 1)
+    plt.plot(range(1, len_feat + 1), var_ratio, linewidth=2, label='ratio')
+    plt.plot(range(1, len_feat + 1), cum_var_ratio, linewidth=2, label='accumulated')
+    plt.title(title)
+    plt.legend()
+    plt.xlabel(x_name)
+    plt.ylabel(y_name)
+    plt.xlim(1, len_feat)
+    plt.ylim(0, 1)
+    # plt.grid()
+    # plt.xticks(np.arange(0, len_feat, 5))
+    plt.yticks(np.linspace(0, 1, num=11))
+    if test == False:
+        plt.savefig('data/pca_num_%s.png' % filename, dpi=300)
+
+class svm:
+    def svm_plot(test_regu,
+                 train_lst,
+                 valid_lst,
+                 x_name='Regularization number',
+                 y_name='Accuracy',
+                 title='Accuracy-Regulation plot of SVM'
+                 filename='SVM.png',
+                 test=False):
+        """
+        Generate the plot PCA dimension reduction by the progress of len_feat
+        :param: test_regu: list or array.
+        :param: train_ls: list or array.
+        :param: valid_lst: list or array.
+        :param: x_name: str. The name of x axis. Default='Regularization number'.
+        :param: y_name: str. The name of y axis. Default='Accuracy'.
+        :param: title: string. Caption of the plot. Default='Accuracy-Regulation plot of SVM'.
+        :param: filename: str. The file name of pic to be saved, make sure includes the format postfix (e.g. 'pic.png').
+                Default='SVM.png'.
+        :param: test: bool. Won't generate file if true. Only used for unittest. Default=False
+        :return: None
+        """    
+        plt.plot(test_regu, train_lst)
+        plt.plot(test_regu, valid_lst)
+        plt.xlabel(x_name)
+        plt.ylabel(y_name)
+        plt.axis([min(test_regu), max(test_regu), 0, 1])
+        plt.xscale('log')
+        plt.title(title)
+        plt.legend(['Training set', 'Validation set'])
+        if test == False:
+            plt.savefig('./data/{}'.format(filename), dpi=600)
+
+class svm_draft:
+    def randomforest_selection_plot(
+            fets,
+            accs,
+            rrs,
+            x_name='Numbers of feature',
+            y_name='Score',
+            title='The feature selection result in {} features',
+            filename='feature_selection.png',
+            test=False):
+        """
+        Generate the plot PCA dimension reduction by the progress of len_feat
+        :param: fets: list or array.
+        :param: accs: list or array.
+        :param: rrs: list or array.
+        :param: x_name: str. The name of x axis. Default='Number of features'.
+        :param: y_name: str. The name of y axis. Default='Scores'.
+        :param: title: string. Caption of the plot,'{}'should be included to add number of features with function format(). 
+            Default='The feature selection result in {} features'.
+        :param: filename: str. The file name of pic to be saved, make sure includes the format postfix (e.g. 'pic.png').
+                Default='feature_selection.png'.
+        :param: test: bool. Won't generate file if true. Only used for unittest. Default=False
+        :return: None
+        """    
+        plt.plot(fets, accs, label='Accuracy', color='blue')
+        plt.plot(fets, rrs, label='Recall rate', color='black')
+        plt.xlabel(x_name)
+        plt.ylabel(y_name)
+        plt.legend()
+        plt.title(title.format(max(fets)))
+        plt.xscale('linear')
+        if test == False:
+            plt.savefig('./data/{}'.format(filename), dpi=300)
+        plt.close()
 
 class VisualizationTest(unittest.TestCase):
     """
@@ -186,6 +291,7 @@ class VisualizationTest(unittest.TestCase):
         self.test_cm = mtx
         self.test_accoef = np.arange(25)
         self.test_coef = np.arange(25)
+        self.test_coe = range(25,50)
 
     def test_testing_status_plot(self):
         self.get_test_data()
@@ -202,9 +308,11 @@ class VisualizationTest(unittest.TestCase):
     def test_hyper_learning_plot(self):
         self.get_test_data()
         hyper_learning_plot(self.test_accoef,
+                            self.test_coe,
                             self.test_coef,
                             test=True)
 
 
 if __name__ == '__main__':
     unittest.main()
+
