@@ -18,9 +18,10 @@ import numpy as np
 import sklearn.svm as svm
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split, PredefinedSplit
-from sklearn.metrics import confusion_matrix
+from sklearn.metrics import confusion_matrix, make_scorer
 from sklearn.metrics import accuracy_score, precision_score, recall_score
 from hypopt import GridSearch
+from sklearn.model_selection import GridSearchCV
 import matplotlib.pyplot as plt
 
 import data_loader
@@ -31,53 +32,62 @@ def load_preprocess():
     """
     Data loading/preprocessing
     """
-    train_dl = data_loader.DataLoader('./data/train.csv')
-    test_dl = data_loader.DataLoader('./data/test.csv')
+    dataset_dl = data_loader.DataLoader('./data/dataset.csv')
 
     # data preprocessing
     # column(key): leak
     # 'no' -> 0, 'yes' -> 1
-    train_dl.replace('leak', lambda x: 0 if x == 'no' else 1)
-    test_dl.replace('leak', lambda x: 0 if x == 'no' else 1)
+    dataset_dl.replace('leak', lambda x: 0 if x == 'no' else 1)
 
     # column(key): slowCool
-    train_dl.replace('slowCool', lambda x: 0 if x == 'no' else 1)
-    test_dl.replace('slowCool', lambda x: 0 if x == 'no' else 1)
+    dataset_dl.replace('slowCool', lambda x: 0 if x == 'no' else 1)
 
     # column(key): outcome
     # 1, 2 -> 0 (failed)
     # 3, 4 -> 1 (successful)
-    train_dl.replace('outcome', lambda x: 0 if x < 3 else 1)
-    test_dl.replace('outcome (actual)', lambda x: 0 if x < 3 else 1)
+    dataset_dl.replace('outcome', lambda x: 0 if x < 3 else 1)
+    # for the second csv
+    # test_dl.replace('outcome (actual)', lambda x: 0 if x < 3 else 1)
 
-    return train_dl, test_dl
+    return dataset_dl
 
 
-def train_valid_test(feat):
+def prepare_dataset(feature_lst, create_validation_set=False, valid_ratio=None):
     """
-    Load, preprocess and normalize data from train.csv and test.csv.
+    Load, preprocess and standardize data from train.csv and test.csv.
     Use selected feature.
-    train_valid_test() -> train_X, valid_X, train_y, valid_y, test_X, test_y
+    train_valid_test(feature_lst, create_validation_set, valid_ratio) \
+        -> train_X, train_y, (valid_X, valid_y), test_X, test_y
     Parameters
     -----
-    feat : list
-        list of features.
+    feature_lst : List
+        List of feature names. See FeatNames.
+    create_validation_set : Bool
+        Split validation set from training set.
+    valid_ratio : float
+        Ratio of validation set
     """
-    train_dl, test_dl = load_preprocess()
+    dataset_dl = load_preprocess()
+    dataset_dl.split_test(0.25)
+    train_X, train_y = dataset_dl.generate_trainset(
+        feature_lst, include_first_column=False, is_test=False)
+    test_X, test_y = dataset_dl.generate_trainset(
+        feature_lst, include_first_column=False, is_test=True)
+    # Loading dataset
+    if create_validation_set:
+        train_X, valid_X, train_y, valid_y = train_test_split(train_X, train_y)
 
-    # training/validation/test set split
-    train_X, train_y = train_dl.generate_trainset(feat, include_first_column=False)
-    train_X, valid_X, train_y, valid_y = train_test_split(train_X, train_y, train_size=0.9)
-    test_X, test_y = test_dl.generate_trainset(feat, include_first_column=False)
-
-    # normalization
+    # standardization
     scaler = StandardScaler()
     scaler.fit(train_X)
     train_X = scaler.transform(train_X)
-    valid_X = scaler.transform(valid_X)
     test_X = scaler.transform(test_X)
 
-    return train_X, valid_X, train_y, valid_y, test_X, test_y
+    if create_validation_set:
+        valid_X = scaler.transform(valid_X)
+        return train_X, train_y, valid_X, valid_y, test_X, test_y
+    else:
+        return train_X, train_y, test_X, test_y
 
 
 def svm_evaluate(regular_num, train_X, train_y, valid_X, valid_y):
@@ -114,7 +124,8 @@ def test_svm(train_X, train_y, valid_X, valid_y):
     test_regu = np.logspace(-3, 3, num=25)
 
     for i in test_regu:
-        train_acc, valid_acc, *others = svm_evaluate(i, train_X, train_y, valid_X, valid_y)
+        train_acc, valid_acc, *others = svm_evaluate(
+            i, train_X, train_y, valid_X, valid_y)
         train_lst.append(train_acc)
         valid_lst.append(valid_acc)
 
@@ -130,7 +141,7 @@ def test_svm(train_X, train_y, valid_X, valid_y):
 
 def opt_model(model, param_grid, train_X, train_y, valid_X, valid_y):
     """
-    Optimization of Regularization number C using GridSearchCV.
+    Optimization of param grid using GridSearch.
     opt_svm(train_X, train_y, valid_X, valid_y) \
         -> model, best_params, results
     Parameters
@@ -142,20 +153,9 @@ def opt_model(model, param_grid, train_X, train_y, valid_X, valid_y):
     train_X, train_y, valid_X, valid_y : np.ndarray
         data
     """
-    # Using GridSearchCV
-    # all_X = np.append(train_X, valid_X, axis=0)
-    # all_y = np.append(train_y, valid_y, axis=0)
-    # Create a list where train data indices are -1 and validation data indices are 0
-    # For details, see
-    # https://stackoverflow.com/questions/31948879
-    # split_index = [-1]*len(train_X) + [0]*(len(valid_X))
-    # pds = PredefinedSplit(test_fold=split_index)
-    # clf = GridSearchCV(model, param_grid, verbose=1,
-    #     scoring='accuracy', cv=pds, n_jobs=-1)
-    # clf.fit(all_X, all_y)
-
     clf = GridSearch(model, param_grid)
-    clf.fit(train_X, train_y, valid_X, valid_y)
+    clf.fit(train_X, train_y, valid_X, valid_y,
+            scoring='accuracy')
 
     best_params = clf.best_params
     results = list(zip(clf.params, clf.scores))
@@ -163,20 +163,83 @@ def opt_model(model, param_grid, train_X, train_y, valid_X, valid_y):
     return clf, best_params, results
 
 
-def main():
-    train_X, valid_X, train_y, valid_y, test_X, test_y = train_valid_test(FeatNames.feat_top9)
-    param_grid = [{'C': np.logspace(-3, 4.5, num=10)}]
-    svm_model = svm.SVC(kernel='rbf', class_weight='balanced')
-    optimized_svm, best_regu, results = opt_model(
-        svm_model, param_grid, train_X, train_y, valid_X, valid_y)
+def opt_model_gridsearchcv(model, param_grid, train_X, train_y, cv):
+    """
+    Optimization of param grid using GridSearchCV.
+    opt_svm(train_X, train_y, valid_X, valid_y) \
+        -> best model
+    Parameters
+    -----
+    model : sklearn model
+        model to optimize
+    param_grid : list of dict
+        parameters grid
+    train_X, train_y : np.ndarray
+        data
+    cv : int
+        'K'-fold cross validation.
+    """
+    clf = GridSearchCV(model, param_grid, verbose=3, return_train_score=True,
+                       scoring='accuracy', cv=cv, n_jobs=-1)
+    clf.fit(train_X, train_y)
+    return clf
 
-    train_score = optimized_svm.score(train_X, train_y)
-    valid_score = optimized_svm.score(valid_X, valid_y)
-    test_score = optimized_svm.score(test_X, test_y)
 
-    print("Best parameters: %s" % best_regu)
-    print("Accuracy for train/valid/test model: %.3f, %.3f, %.3f" %
+def evaluate(model, param_grid, train_X, train_y, valid_X, valid_y, test_X, test_y):
+    """
+    Training on training set.
+    Optimizing hyperparameters on validation set.
+    Evaluate model on test set.
+    """
+    optimized_model, best_param, results = opt_model(
+        model, param_grid, train_X, train_y, valid_X, valid_y)
+    # Best params: {'C': 10.0, 'gamma': 0.07742636826811278}
+    # Accuracy in train/valid/test set: 0.910, 0.781, 0.616
+
+    train_score = optimized_model.score(train_X, train_y)
+    valid_score = optimized_model.score(valid_X, valid_y)
+    test_score = optimized_model.score(test_X, test_y)
+
+    print("Best params: %s" % best_param)
+    print("Accuracy in train/valid/test set: %.3f, %.3f, %.3f" %
           (train_score, valid_score, test_score))
+
+
+def evaluate_cross_valid(model, param_grid, train_X, train_y, test_X, test_y, cv):
+    """
+    Evaluate model using K-fold cross validation.
+    """
+    optimized_model = opt_model_gridsearchcv(
+        model, param_grid, train_X, train_y, cv=cv)
+
+    train_score = accuracy_score(train_y, optimized_model.predict(train_X))
+    test_score = accuracy_score(test_y, optimized_model.predict(test_X))
+    print(confusion_matrix(test_y, optimized_model.predict(test_X)))
+
+    print("Best parameters: %s" % optimized_model.best_params_)
+    index = np.argwhere(optimized_model.cv_results_['rank_test_score'] == 1)
+    print("Test mean/std of accuracy in cross validation %.3f ± %.3f" % (
+        optimized_model.cv_results_['mean_test_score'][index],
+        optimized_model.cv_results_['std_test_score'][index]))
+    print("Accuracy for train/test model: %.3f, %.3f" %
+          (train_score, test_score))
+
+
+def main():
+    # train/validation/test split
+    """train_X, train_y, valid_X, valid_y, test_X, test_y = prepare_dataset(
+        FeatNames.feat_first, True, 0.25)
+    params_opt = [[{'gamma': np.logspace(-5, 5, 10), 'C': np.logspace(2, 5, num=3)}]
+    svm_model = svm.SVC(kernel='rbf', class_weight='balanced')
+    evaluate(svm_model, params_opt, train_X, train_y,
+        valid_X, valid_y, test_X, test_y)"""
+
+    # cross validation
+    train_X, train_y, test_X, test_y = prepare_dataset(
+        FeatNames.feat_first, False)
+    params_opt = [{'gamma': np.logspace(-5, 5, 5), 'C': np.logspace(-5, 5, num=5)}]
+    svm_model = svm.SVC(kernel='rbf', class_weight='balanced')
+    evaluate_cross_valid(svm_model, params_opt, train_X, train_y, test_X, test_y, 15)
 
 
 if __name__ == "__main__":

@@ -150,7 +150,7 @@ print('Human test accuracy: {:.4f}'.format(human_acc))
 accs = []
 rrs = []
 fets = []
-for fet_num in np.linspace(1, 273, 50):
+for fet_num in np.linspace(1, 150, 50):
     fet = round(fet_num)
     fets.append(fet)
     selected_features, trans = feature_selection(keys, features=fet)
