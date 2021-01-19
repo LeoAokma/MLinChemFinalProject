@@ -17,7 +17,7 @@ from decision_tree import DecisionTree
 
 
 # Dataset paths
-train_dl = DataLoader('data/train.csv')
+train_dl = DataLoader('data/dataset.csv')
 test_dl = DataLoader('data/test.csv')
 
 keys = data_keys.all_keys
