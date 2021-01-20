@@ -42,12 +42,16 @@ import data_loader
 
 class FeatNames:
     """
-    feature names
+    Feature names.
+    For more information, see Supporting Material of reference.
+    Ref: Raccuglia et al. Nature 2016, 533, 73. doi: 10.1038/nature17439
     """
 
+    # Attributes selected by CfsSubsetEval best-first selection.
     feat_first = ['orgvanderwaalsMin', 'orgASA+Min', 'orghbdamsdonGeomAvg',
                   'PaulingElectronegMean', 'hardnessMaxWeighted', 'AtomicRadiusMeanWeighted']
 
+    # Attributes selected by CfsSubsetEval greedy stepwise selection.
     feat_top6 = ['time', 'hardnessMinWeighted', 'orgASA_HGeomAvg', 'leak', 
                 'inorg-water-moleratio', 'orgvanderwaalsArithAvg']
 
@@ -55,6 +59,7 @@ class FeatNames:
                  'inorg-water-moleratio', 'orgvanderwaalsArithAvg', 'orgvanderwaalsArithAvg',
                  'orghbdamsaccMax', 'temp', 'EAMinWeighted']
 
+    # See table S1
     feat_inorg = ['orgavgpolMax', 'IonizationMax', 'IonizationMin', 'IonizationMean', 'IonizationGeom', 
                   'IonizationMaxWeighted', 'IonizationMinWeighted', 'IonizationMeanWeighted', 'IonizationGeomWeighted', 
                   'EAMax', 'EAMin', 'EAMean', 'EAGeom', 
@@ -67,12 +72,15 @@ class FeatNames:
                   'hardnessMaxWeighted', 'hardnessMinWeighted', 'hardnessMeanWeighted', 'hardnessGeomWeighted', 
                   'AtomicRadiusMax', 'AtomicRadiusMin', 'AtomicRadiusMean', 'AtomicRadiusGeom', 
                   'AtomicRadiusMaxWeighted', 'AtomicRadiusMinWeighted', 'AtomicRadiusMeanWeighted', 'AtomicRadiusGeomWeighted', 'AtomicRadiusGeom']
-                     
+    
+    # See table S2
     feat_stoichio = ['inorg-water-moleratio', 'inorg-org-moleratio', 'org-water-moleratio', 
                      'orgacc-waterdonratio', 'orgdon-wateraccratio', 'notwater-water-moleratio']
 
+    # See table S3
     feat_condition = ['temp', 'time', 'slowCool', 'pH', 'leak']
 
+    # See table S4
     feat_org = ['orgavgpolMax', 'orgavgpolMin', 'orgavgpolArithAvg', 'orgavgpolGeomAvg', 
                 'orgavgpol_pHdependentMax', 'orgavgpol_pHdependentMin', 'orgavgpol_pHdependentArithAvg', 'orgavgpol_pHdependentGeomAvg', 
                 'orgrefractivityMax', 'orgrefractivityMin', 'orgrefractivityArithAvg', 'orgrefractivityGeomAvg', 
