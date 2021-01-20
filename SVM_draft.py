@@ -73,8 +73,6 @@ def hyper_coefficient(valid_X, valid_y, test_X, test_y, plot_str, print_det=Fals
         test_accs.append(test_acc)
         test_rrs.append(test_recall)
 
-        # print(train_cm)
-        # print(test_cm)
         if cnt % 20 == 0:
             print("\r{}/200".format(cnt), end='', flush=True)
         if print_det:
@@ -96,6 +94,7 @@ def hyper_coefficient(valid_X, valid_y, test_X, test_y, plot_str, print_det=Fals
                                                             max(train_accs),
                                                             train_rrs[train_accs.index(max(train_accs))]
                                                             ))
+    # plot the hyper learning curve
     vz.hyper_learning_plot(test_acc=test_accs,
                            train_acc=train_accs,
                            coef=np.linspace(1, 1500, num=200),
@@ -110,8 +109,8 @@ def hyper_coefficient(valid_X, valid_y, test_X, test_y, plot_str, print_det=Fals
                            title='Recall-rate dependency on regularization',
                            xscale='linear')
     # generating final svm model:
-    svm_proba = svm.SVC(kernel='rbf', class_weight='balanced', C=best_c, probability=True)
-    return best_c, svm_proba
+    svm_prob = svm.SVC(kernel='rbf', class_weight='balanced', C=best_c, probability=True)
+    return best_c, svm_prob
 
 
 def feature_selection(input_keys, features=10, model='random_forest'):
@@ -163,6 +162,7 @@ print('Human test accuracy: {:.4f}'.format(human_acc))
 accs = []
 rrs = []
 fets = []
+# searching for features in a range, default [1, 50]
 for fet_num in np.linspace(1, 50, 50):
     fet = round(fet_num)
     fets.append(fet)
