@@ -224,6 +224,8 @@ def evaluate_cross_valid(model, param_grid, train_X, train_y, test_X, test_y, cv
     print("Accuracy for train/test model: %.3f, %.3f" %
           (train_score, test_score))
 
+    return optimized_model.best_params_
+
 
 def main():
     # train/validation/test split

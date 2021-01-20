@@ -162,17 +162,22 @@ for fet_num in np.linspace(1, 273, 50):
     scaler = preprocessing.StandardScaler()
     scaler.fit(tr_X_origin)
     tr_X = scaler.transform(tr_X_origin)
-    # va_X = scaler.transform(va_X_origin)
     # splitting testing data set
     train_valid_X, test_X = model_selection.train_test_split(tr_X, test_size=0.33, random_state=114514)
     train_valid_y, test_y = model_selection.train_test_split(tr_y, test_size=0.33, random_state=114514)
     # splitting train and valid set
-    train_X, valid_X = model_selection.train_test_split(train_valid_X, test_size=0.25, random_state=114514)
-    train_y, valid_y = model_selection.train_test_split(train_valid_y, test_size=0.25, random_state=114514)
-    hyper_c, svm_fn = hyper_coefficient(valid_X, valid_y, test_X, test_y, plot_str=str(fet))
+    # train_X, valid_X = model_selection.train_test_split(train_valid_X, test_size=0.25, random_state=114514)
+    # train_y, valid_y = model_selection.train_test_split(train_valid_y, test_size=0.25, random_state=114514)
+    # hyper_c, svm_fn = hyper_coefficient(valid_X, valid_y, test_X, test_y, plot_str=str(fet))
+    params_opt = [{'gamma': np.logspace(-4, 5, 5), 'C': np.logspace(-4, 4, num=5)}]
+    svm_model = svm.SVC(kernel='rbf', class_weight='balanced')
+    best_params = evaluate_cross_valid(svm_model, params_opt, train_valid_X, train_valid_y, test_X, test_y, 15)
 
     # Generate the instance according to hyper learning
-    svm_main = svm.SVC(kernel='rbf', class_weight='balanced', C=hyper_c)
+    svm_main = svm.SVC(kernel='rbf',
+                       class_weight='balanced',
+                       C=best_params['C'],
+                       gamma=best_params['gamma'])
     svm_main.fit(tr_X, tr_y)
     # Statistical Features
     train_pred = svm_main.predict(tr_X)
@@ -191,10 +196,15 @@ for fet_num in np.linspace(1, 273, 50):
     accs.append(test_acc)
     rrs.append(test_recall)
     # Instance used for generating ROC or PR figs
-    svm_fn.fit(tr_X, tr_y)
+    svm_proba = svm.SVC(kernel='rbf',
+                        class_weight='balanced',
+                        C=best_params['C'],
+                        gamma=best_params['gamma'],
+                        probability=True)
+    svm_proba.fit(tr_X, tr_y)
     # p-r curve of the model
-    train_prpba = svm_fn.predict_proba(tr_X)[:, 1]
-    test_prpba = svm_fn.predict_proba(test_X)[:, 1]
+    train_prpba = svm_proba.predict_proba(tr_X)[:, 1]
+    test_prpba = svm_proba.predict_proba(test_X)[:, 1]
     train_p, train_r, _ = precision_recall_curve(tr_y, train_prpba)
     test_p, test_r, _ = precision_recall_curve(test_y, test_prpba)
     vz.acc_recall_plot(

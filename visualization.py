@@ -48,7 +48,7 @@ def testing_status_plot(x,
     :return: None
     """
     # figure initialize
-    fig1, (accplot, rrplot) = plt.subplots(1, 2, figsize=(9.,4.5), dpi=320)
+    fig1, (accplot, rrplot) = plt.subplots(1, 2, figsize=(9., 4.5), dpi=320)
     
     # acc subplot
     accplot.plot(x, acc)
@@ -178,9 +178,8 @@ def dim_reduce_plot(
         x_name='Number of features',
         y_name='Scores',
         title='PCA dimension-reduce plot',
-        filename=''
-        test=False
-        ):
+        filename='',
+        test=False):
     """
     Generate the plot PCA dimension reduction by the progress of len_feat
     :param: len_feat: integer.
@@ -216,7 +215,7 @@ class svm:
                  valid_lst,
                  x_name='Regularization number',
                  y_name='Accuracy',
-                 title='Accuracy-Regulation plot of SVM'
+                 title='Accuracy-Regulation plot of SVM',
                  filename='SVM.png',
                  test=False):
         """
