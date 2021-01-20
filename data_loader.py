@@ -13,7 +13,6 @@ import numpy as np
 import collections
 import pandas as pd
 import unittest
-import json
 
 
 class DataLoader:
