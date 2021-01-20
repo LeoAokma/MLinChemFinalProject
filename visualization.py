@@ -126,7 +126,6 @@ def hyper_learning_plot(test_acc,
     :param: test: bool. Won't generate file if true. Only used for unittest. Default=False
     :return: None
     """
-    # TODO
     plt.plot(coef, test_acc, label='Test', color='blue')
     plt.plot(coef, train_acc, label='Train', color='black')
     plt.xlabel(x_name)
@@ -171,15 +170,15 @@ def acc_recall_plot(pres,
         plt.savefig('data/{}'.format(filename), dpi=300)
     plt.close()
 
-def dim_reduce_plot(
-        len_feat,
-        var_ratio,
-        cum_var_ratio,
-        x_name='Number of features',
-        y_name='Scores',
-        title='PCA dimension-reduce plot',
-        filename='',
-        test=False):
+
+def dim_reduce_plot(len_feat,
+                    var_ratio,
+                    cum_var_ratio,
+                    x_name='Number of features',
+                    y_name='Scores',
+                    title='PCA dimension-reduce plot',
+                    filename='',
+                    test=False):
     """
     Generate the plot PCA dimension reduction by the progress of len_feat
     :param: len_feat: integer.
@@ -206,11 +205,13 @@ def dim_reduce_plot(
     # plt.grid()
     # plt.xticks(np.arange(0, len_feat, 5))
     plt.yticks(np.linspace(0, 1, num=11))
-    if test == False:
+    if not test:
         plt.savefig('data/pca_num_%s.png' % filename, dpi=300)
 
-class svm:
-    def svm_plot(test_regu,
+
+class SVMPlot:
+    def svm_plot(self,
+                 test_regu,
                  train_lst,
                  valid_lst,
                  x_name='Regularization number',
@@ -239,19 +240,23 @@ class svm:
         plt.xscale('log')
         plt.title(title)
         plt.legend(['Training set', 'Validation set'])
-        if test == False:
+        if not test:
             plt.savefig('./data/{}'.format(filename), dpi=600)
 
-class svm_draft:
-    def randomforest_selection_plot(
-            fets,
-            accs,
-            rrs,
-            x_name='Numbers of feature',
-            y_name='Score',
-            title='The feature selection result in {} features',
-            filename='feature_selection.png',
-            test=False):
+
+class SVMDraftPlot:
+    """
+    Reconstructing the plot functions in SVM_draft.py here.
+    """
+    def randomforest_selection_plot(self,
+                                    fets,
+                                    accs,
+                                    rrs,
+                                    x_name='Numbers of feature',
+                                    y_name='Score',
+                                    title='The feature selection result in {} features',
+                                    filename='feature_selection.png',
+                                    test=False):
         """
         Generate the plot PCA dimension reduction by the progress of len_feat
         :param: fets: list or array.
@@ -276,6 +281,7 @@ class svm_draft:
         if test == False:
             plt.savefig('./data/{}'.format(filename), dpi=300)
         plt.close()
+
 
 class VisualizationTest(unittest.TestCase):
     """
