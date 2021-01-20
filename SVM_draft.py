@@ -14,7 +14,7 @@ from data_loader import DataLoader
 import visualization as vz
 import data_keys
 from decision_tree import DecisionTree
-from SVM import evaluate_cross_valid
+from SVM import opt_evaluate_cross_valid
 
 
 # Dataset paths
@@ -137,11 +137,15 @@ def feature_selection(input_keys, features=10, model='random_forest'):
     print('Feature name\t Translation')
     features_selected = []
     translation = []
-    for _ in range(len(input_keys[1])):
-        if selection.get_support()[_]:
-            print(input_keys[0][_], input_keys[1][_], sep='\t')
-            features_selected.append(input_keys[0][_])
-            translation.append(input_keys[1][_])
+    with open('data/output.log', 'a+') as f:
+        f.writelines('Selected Features: {} in {}.\n'.format(features, len(input_keys[0])))
+        f.writelines('Feature name\t Translation\n')
+        for _ in range(len(input_keys[1])):
+            if selection.get_support()[_]:
+                print(input_keys[0][_], input_keys[1][_], sep='\t')
+                f.writelines("{}\t{}\n".format(input_keys[0][_], input_keys[1][_]))
+                features_selected.append(input_keys[0][_])
+                translation.append(input_keys[1][_])
     return features_selected, translation
 
 
@@ -171,13 +175,13 @@ for fet_num in np.linspace(1, 273, 50):
     # hyper_c, svm_fn = hyper_coefficient(valid_X, valid_y, test_X, test_y, plot_str=str(fet))
     params_opt = [{'gamma': np.logspace(-4, 5, 5), 'C': np.logspace(-4, 4, num=5)}]
     svm_model = svm.SVC(kernel='rbf', class_weight='balanced')
-    best_params = evaluate_cross_valid(svm_model, params_opt, train_valid_X, train_valid_y, test_X, test_y, 15)
+    best_params = opt_evaluate_cross_valid(svm_model, params_opt, train_valid_X, train_valid_y, test_X, test_y, 15)
 
     # Generate the instance according to hyper learning
     svm_main = svm.SVC(kernel='rbf',
                        class_weight='balanced',
-                       C=best_params['C'],
-                       gamma=best_params['gamma'])
+                       C=best_params.best_params_['C'],
+                       gamma=best_params.best_params_['gamma'])
     svm_main.fit(tr_X, tr_y)
     # Statistical Features
     train_pred = svm_main.predict(tr_X)
@@ -191,15 +195,16 @@ for fet_num in np.linspace(1, 273, 50):
 
     train_recall = recall_score(tr_y, train_pred)
     test_recall = recall_score(test_y, test_pred)
-    print('Test Acc: {:.4f}, Test Recall: {:.4f}'.format(test_acc, test_recall))
+    with open('data/output.log', 'a+') as f:
+        f.writelines('Test Acc: {:.4f}, Test Recall: {:.4f}\n'.format(test_acc, test_recall))
     # saving data to lists
     accs.append(test_acc)
     rrs.append(test_recall)
     # Instance used for generating ROC or PR figs
     svm_proba = svm.SVC(kernel='rbf',
                         class_weight='balanced',
-                        C=best_params['C'],
-                        gamma=best_params['gamma'],
+                        C=best_params.best_params_['C'],
+                        gamma=best_params.best_params_['gamma'],
                         probability=True)
     svm_proba.fit(tr_X, tr_y)
     # p-r curve of the model

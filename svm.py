@@ -226,7 +226,7 @@ def opt_evaluate(model, param_grid, train_X, train_y, valid_X, valid_y, test_X, 
     return optimized_model
 
 
-def opt_evaluate_cross_valid(model, param_grid, train_X, train_y, test_X, test_y, cv):
+def opt_evaluate_cross_valid(model, param_grid, train_X, train_y, test_X, test_y, cv, log=True):
     """
     Hyperparam optimization using K-FOLD CROSS VALIDATION.
     Evaluate model on test set.
@@ -262,6 +262,22 @@ def opt_evaluate_cross_valid(model, param_grid, train_X, train_y, test_X, test_y
             optimized_model.cv_results_['mean_test_score'][i], 
             optimized_model.cv_results_['std_test_score'][i]))
     print("\n")
+    if log:
+        with open('data/output.log', 'a+') as f:
+            f.writelines("\n")
+            f.writelines("            |------------------|\n")
+            f.writelines("            | Model evaluation |\n")
+            f.writelines("            |------------------|\n")
+
+            f.writelines("Best parameters: %s\n" % optimized_model.best_params_)
+            index = np.argwhere(optimized_model.cv_results_['rank_test_score'] == 1)
+            if len(index):
+                f.writelines("There are more than one best model.\n")
+            for i in index:
+                f.writelines("Test mean ± std of accuracy in cross validation %.3f ± %.3f.\n" % (
+                    optimized_model.cv_results_['mean_test_score'][i],
+                    optimized_model.cv_results_['std_test_score'][i]))
+            f.writelines("\n")
     
     train_pred = optimized_model.predict(train_X)
     calc_metrics(train_pred, train_y, "training set")

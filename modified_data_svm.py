@@ -30,7 +30,7 @@ from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
 
 import data_loader
-from svm import FeatNames, load_preprocess, opt_evaluate_cross_valid
+from SVM import FeatNames, load_preprocess, opt_evaluate_cross_valid
 
 # Successful or failed
 NCLASS = 2
