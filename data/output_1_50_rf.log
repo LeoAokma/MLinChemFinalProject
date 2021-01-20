@@ -1,0 +1,1833 @@
+Selected Features: 1 in 273.
+Feature name	 Translation
+time	反应时间
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 0.0071968567300115215, 'gamma': 138.9495494373139}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.710 ± 0.035.
+
+Test Acc: 0.6953, Test Recall: 0.7631
+Selected Features: 2 in 273.
+Feature name	 Translation
+time	反应时间
+AtomicRadiusMinWeighted	原子半径MinWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 0.19306977288832497, 'gamma': 3727.593720314938}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.733 ± 0.030.
+
+Test Acc: 0.7856, Test Recall: 0.8154
+Selected Features: 3 in 273.
+Feature name	 Translation
+time	反应时间
+notwater-water-moleratio	非水-水摩尔比
+hardnessMinWeighted	硬度MinWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 0.19306977288832497, 'gamma': 3727.593720314938}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.740 ± 0.013.
+
+Test Acc: 0.8231, Test Recall: 0.9360
+Selected Features: 4 in 273.
+Feature name	 Translation
+time	反应时间
+inorg-water-moleratio	无机相-水摩尔比
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 0.19306977288832497, 'gamma': 3727.593720314938}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.750 ± 0.016.
+
+Test Acc: 0.8155, Test Recall: 0.9413
+Selected Features: 5 in 273.
+Feature name	 Translation
+time	反应时间
+inorg-water-moleratio	无机相-水摩尔比
+notwater-water-moleratio	非水-水摩尔比
+IonizationMinWeighted	电离能MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 3727.593720314938, 'gamma': 0.19306977288832497}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.745 ± 0.033.
+
+Test Acc: 0.7443, Test Recall: 0.7876
+Selected Features: 6 in 273.
+Feature name	 Translation
+time	反应时间
+org-water-moleratio	有机相-水摩尔比
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+IonizationMinWeighted	电离能MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 0.19306977288832497, 'gamma': 138.9495494373139}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.742 ± 0.033.
+
+Test Acc: 0.8193, Test Recall: 0.8901
+Selected Features: 7 in 273.
+Feature name	 Translation
+time	反应时间
+inorg-water-moleratio	无机相-水摩尔比
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+IonizationMinWeighted	电离能MinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 0.19306977288832497, 'gamma': 138.9495494373139}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.741 ± 0.030.
+
+Test Acc: 0.8208, Test Recall: 0.8943
+Selected Features: 8 in 273.
+Feature name	 Translation
+time	反应时间
+org-water-moleratio	有机相-水摩尔比
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+EAMaxWeighted	电子亲和能MaxWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 0.19306977288832497, 'gamma': 138.9495494373139}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.753 ± 0.026.
+
+Test Acc: 0.8170, Test Recall: 0.9210
+Selected Features: 9 in 273.
+Feature name	 Translation
+time	反应时间
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+IonizationMinWeighted	电离能MinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 0.19306977288832497, 'gamma': 138.9495494373139}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.751 ± 0.030.
+
+Test Acc: 0.8216, Test Recall: 0.9082
+Selected Features: 10 in 273.
+Feature name	 Translation
+time	反应时间
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+IonizationMinWeighted	电离能MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+IonizationMeanWeighted	电离能MeanWeighted
+AtomicRadiusGeomWeighted	原子半径GeomWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 0.19306977288832497, 'gamma': 138.9495494373139}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.753 ± 0.025.
+
+Test Acc: 0.8216, Test Recall: 0.9285
+Selected Features: 11 in 273.
+Feature name	 Translation
+time	反应时间
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+AtomicRadiusMeanWeighted	原子半径MeanWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 0.19306977288832497, 'gamma': 138.9495494373139}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.756 ± 0.024.
+
+Test Acc: 0.8178, Test Recall: 0.9317
+Selected Features: 12 in 273.
+Feature name	 Translation
+time	反应时间
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 0.19306977288832497, 'gamma': 5.1794746792312125}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.759 ± 0.030.
+
+Test Acc: 0.7902, Test Recall: 0.8485
+Selected Features: 13 in 273.
+Feature name	 Translation
+time	反应时间
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+EAMaxWeighted	电子亲和能MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 0.19306977288832497, 'gamma': 5.1794746792312125}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.763 ± 0.028.
+
+Test Acc: 0.8017, Test Recall: 0.8613
+Selected Features: 14 in 273.
+Feature name	 Translation
+time	反应时间
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+hardnessMaxWeighted	硬度MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+hardnessMeanWeighted	硬度MeanWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 0.19306977288832497, 'gamma': 5.1794746792312125}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.763 ± 0.026.
+
+Test Acc: 0.7948, Test Recall: 0.8570
+Selected Features: 15 in 273.
+Feature name	 Translation
+time	反应时间
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+EAMaxWeighted	电子亲和能MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+PearsonElectronegMeanWeighted	Pearson电负性MeanWeighted
+hardnessMeanWeighted	硬度MeanWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 0.19306977288832497, 'gamma': 5.1794746792312125}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.763 ± 0.027.
+
+Test Acc: 0.8025, Test Recall: 0.8645
+Selected Features: 16 in 273.
+Feature name	 Translation
+time	反应时间
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+EAMinWeighted	EAMinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+IonizationMeanWeighted	电离能MeanWeighted
+EAMeanWeighted	电子亲和能MeanWeighted
+PearsonElectronegGeomWeighted	Pearson电负性GeomWeighted
+hardnessGeomWeighted	硬度GeomWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 0.19306977288832497, 'gamma': 5.1794746792312125}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.761 ± 0.027.
+
+Test Acc: 0.7994, Test Recall: 0.8655
+Selected Features: 17 in 273.
+Feature name	 Translation
+time	反应时间
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+EAMaxWeighted	电子亲和能MaxWeighted
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+hardnessMaxWeighted	硬度MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+PearsonElectronegMeanWeighted	Pearson电负性MeanWeighted
+AtomicRadiusGeomWeighted	原子半径GeomWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 0.19306977288832497, 'gamma': 5.1794746792312125}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.760 ± 0.027.
+
+Test Acc: 0.7963, Test Recall: 0.8687
+Selected Features: 18 in 273.
+Feature name	 Translation
+time	反应时间
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+IonizationMaxWeighted	电离能MaxWeighted
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+hardnessMaxWeighted	硬度MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+EAMeanWeighted	电子亲和能MeanWeighted
+AtomicRadiusMeanWeighted	原子半径MeanWeighted
+AtomicRadiusGeomWeighted	原子半径GeomWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 0.19306977288832497, 'gamma': 5.1794746792312125}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.760 ± 0.026.
+
+Test Acc: 0.7994, Test Recall: 0.8730
+Selected Features: 19 in 273.
+Feature name	 Translation
+time	反应时间
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+IonizationMaxWeighted	电离能MaxWeighted
+EAMaxWeighted	电子亲和能MaxWeighted
+hardnessMaxWeighted	硬度MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+hardnessMeanWeighted	硬度MeanWeighted
+AtomicRadiusMeanWeighted	原子半径MeanWeighted
+EAGeomWeighted	电子亲和能GeomWeighted
+hardnessGeomWeighted	硬度GeomWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 0.19306977288832497, 'gamma': 5.1794746792312125}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.759 ± 0.026.
+
+Test Acc: 0.7994, Test Recall: 0.8751
+Selected Features: 20 in 273.
+Feature name	 Translation
+time	反应时间
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+IonizationMaxWeighted	电离能MaxWeighted
+EAMaxWeighted	电子亲和能MaxWeighted
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+hardnessMaxWeighted	硬度MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+IonizationMeanWeighted	电离能MeanWeighted
+EAMeanWeighted	电子亲和能MeanWeighted
+AtomicRadiusMeanWeighted	原子半径MeanWeighted
+AtomicRadiusGeomWeighted	原子半径GeomWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 0.19306977288832497, 'gamma': 5.1794746792312125}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.760 ± 0.026.
+
+Test Acc: 0.7994, Test Recall: 0.8730
+Selected Features: 21 in 273.
+Feature name	 Translation
+time	反应时间
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+IonizationMaxWeighted	电离能MaxWeighted
+EAMaxWeighted	电子亲和能MaxWeighted
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+hardnessMaxWeighted	硬度MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+IonizationMeanWeighted	电离能MeanWeighted
+EAMeanWeighted	电子亲和能MeanWeighted
+AtomicRadiusMeanWeighted	原子半径MeanWeighted
+IonizationGeomWeighted	电离能GeomWeighted
+hardnessGeomWeighted	硬度GeomWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 0.19306977288832497, 'gamma': 5.1794746792312125}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.760 ± 0.026.
+
+Test Acc: 0.7994, Test Recall: 0.8730
+Selected Features: 22 in 273.
+Feature name	 Translation
+time	反应时间
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+IonizationMaxWeighted	电离能MaxWeighted
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+IonizationMeanWeighted	电离能MeanWeighted
+EAMeanWeighted	电子亲和能MeanWeighted
+PearsonElectronegMeanWeighted	Pearson电负性MeanWeighted
+hardnessMeanWeighted	硬度MeanWeighted
+AtomicRadiusMeanWeighted	原子半径MeanWeighted
+EAGeomWeighted	电子亲和能GeomWeighted
+PearsonElectronegGeomWeighted	Pearson电负性GeomWeighted
+hardnessGeomWeighted	硬度GeomWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 0.19306977288832497, 'gamma': 5.1794746792312125}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.759 ± 0.025.
+
+Test Acc: 0.8002, Test Recall: 0.8751
+Selected Features: 23 in 273.
+Feature name	 Translation
+time	反应时间
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+IonizationMaxWeighted	电离能MaxWeighted
+EAMaxWeighted	电子亲和能MaxWeighted
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+hardnessMaxWeighted	硬度MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+EAMeanWeighted	电子亲和能MeanWeighted
+PearsonElectronegMeanWeighted	Pearson电负性MeanWeighted
+hardnessMeanWeighted	硬度MeanWeighted
+AtomicRadiusMeanWeighted	原子半径MeanWeighted
+IonizationGeomWeighted	电离能GeomWeighted
+PearsonElectronegGeomWeighted	Pearson电负性GeomWeighted
+hardnessGeomWeighted	硬度GeomWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 0.19306977288832497, 'gamma': 5.1794746792312125}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.760 ± 0.026.
+
+Test Acc: 0.7979, Test Recall: 0.8730
+Selected Features: 24 in 273.
+Feature name	 Translation
+time	反应时间
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+IonizationMaxWeighted	电离能MaxWeighted
+EAMaxWeighted	电子亲和能MaxWeighted
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+hardnessMaxWeighted	硬度MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+IonizationMeanWeighted	电离能MeanWeighted
+EAMeanWeighted	电子亲和能MeanWeighted
+PearsonElectronegMeanWeighted	Pearson电负性MeanWeighted
+hardnessMeanWeighted	硬度MeanWeighted
+AtomicRadiusMeanWeighted	原子半径MeanWeighted
+IonizationGeomWeighted	电离能GeomWeighted
+hardnessGeomWeighted	硬度GeomWeighted
+AtomicRadiusGeomWeighted	原子半径GeomWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 0.19306977288832497, 'gamma': 5.1794746792312125}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.760 ± 0.026.
+
+Test Acc: 0.7994, Test Recall: 0.8762
+Selected Features: 25 in 273.
+Feature name	 Translation
+time	反应时间
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+IonizationMaxWeighted	电离能MaxWeighted
+EAMaxWeighted	电子亲和能MaxWeighted
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+hardnessMaxWeighted	硬度MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+EAMeanWeighted	电子亲和能MeanWeighted
+PearsonElectronegMeanWeighted	Pearson电负性MeanWeighted
+hardnessMeanWeighted	硬度MeanWeighted
+AtomicRadiusMeanWeighted	原子半径MeanWeighted
+IonizationGeomWeighted	电离能GeomWeighted
+EAGeomWeighted	电子亲和能GeomWeighted
+PearsonElectronegGeomWeighted	Pearson电负性GeomWeighted
+hardnessGeomWeighted	硬度GeomWeighted
+AtomicRadiusGeomWeighted	原子半径GeomWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 0.19306977288832497, 'gamma': 5.1794746792312125}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.759 ± 0.027.
+
+Test Acc: 0.8009, Test Recall: 0.8751
+Selected Features: 26 in 273.
+Feature name	 Translation
+time	反应时间
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+IonizationMaxWeighted	电离能MaxWeighted
+EAMaxWeighted	电子亲和能MaxWeighted
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+hardnessMaxWeighted	硬度MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PaulingElectronegMinWeighted	Pauling电负性MinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+IonizationMeanWeighted	电离能MeanWeighted
+EAMeanWeighted	电子亲和能MeanWeighted
+PearsonElectronegMeanWeighted	Pearson电负性MeanWeighted
+hardnessMeanWeighted	硬度MeanWeighted
+AtomicRadiusMeanWeighted	原子半径MeanWeighted
+IonizationGeomWeighted	电离能GeomWeighted
+EAGeomWeighted	电子亲和能GeomWeighted
+hardnessGeomWeighted	硬度GeomWeighted
+AtomicRadiusGeomWeighted	原子半径GeomWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 0.19306977288832497, 'gamma': 5.1794746792312125}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.759 ± 0.027.
+
+Test Acc: 0.8002, Test Recall: 0.8751
+Selected Features: 27 in 273.
+Feature name	 Translation
+time	反应时间
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+IonizationMaxWeighted	电离能MaxWeighted
+EAMaxWeighted	电子亲和能MaxWeighted
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+hardnessMaxWeighted	硬度MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PaulingElectronegMinWeighted	Pauling电负性MinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+IonizationMeanWeighted	电离能MeanWeighted
+EAMeanWeighted	电子亲和能MeanWeighted
+PearsonElectronegMeanWeighted	Pearson电负性MeanWeighted
+hardnessMeanWeighted	硬度MeanWeighted
+AtomicRadiusMeanWeighted	原子半径MeanWeighted
+IonizationGeomWeighted	电离能GeomWeighted
+EAGeomWeighted	电子亲和能GeomWeighted
+PearsonElectronegGeomWeighted	Pearson电负性GeomWeighted
+hardnessGeomWeighted	硬度GeomWeighted
+AtomicRadiusGeomWeighted	原子半径GeomWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 0.19306977288832497, 'gamma': 5.1794746792312125}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.757 ± 0.026.
+
+Test Acc: 0.8009, Test Recall: 0.8762
+Selected Features: 28 in 273.
+Feature name	 Translation
+time	反应时间
+leak	产物泄露
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+IonizationMaxWeighted	电离能MaxWeighted
+EAMaxWeighted	电子亲和能MaxWeighted
+PaulingElectronegMaxWeighted	Pauling电负性MaxWeighted
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+hardnessMaxWeighted	硬度MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+IonizationMeanWeighted	电离能MeanWeighted
+EAMeanWeighted	电子亲和能MeanWeighted
+PearsonElectronegMeanWeighted	Pearson电负性MeanWeighted
+hardnessMeanWeighted	硬度MeanWeighted
+AtomicRadiusMeanWeighted	原子半径MeanWeighted
+IonizationGeomWeighted	电离能GeomWeighted
+EAGeomWeighted	电子亲和能GeomWeighted
+PearsonElectronegGeomWeighted	Pearson电负性GeomWeighted
+hardnessGeomWeighted	硬度GeomWeighted
+AtomicRadiusGeomWeighted	原子半径GeomWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 0.19306977288832497, 'gamma': 5.1794746792312125}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.772 ± 0.022.
+
+Test Acc: 0.8216, Test Recall: 0.8879
+Selected Features: 29 in 273.
+Feature name	 Translation
+time	反应时间
+leak	产物泄露
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+IonizationMaxWeighted	电离能MaxWeighted
+EAMaxWeighted	电子亲和能MaxWeighted
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+hardnessMaxWeighted	硬度MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PaulingElectronegMinWeighted	Pauling电负性MinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+IonizationMeanWeighted	电离能MeanWeighted
+EAMeanWeighted	电子亲和能MeanWeighted
+PaulingElectronegMeanWeighted	Pauling电负性MeanWeighted
+PearsonElectronegMeanWeighted	Pearson电负性MeanWeighted
+hardnessMeanWeighted	硬度MeanWeighted
+AtomicRadiusMeanWeighted	原子半径MeanWeighted
+IonizationGeomWeighted	电离能GeomWeighted
+EAGeomWeighted	电子亲和能GeomWeighted
+PearsonElectronegGeomWeighted	Pearson电负性GeomWeighted
+hardnessGeomWeighted	硬度GeomWeighted
+AtomicRadiusGeomWeighted	原子半径GeomWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 0.19306977288832497, 'gamma': 5.1794746792312125}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.771 ± 0.022.
+
+Test Acc: 0.8216, Test Recall: 0.8879
+Selected Features: 30 in 273.
+Feature name	 Translation
+time	反应时间
+leak	产物泄露
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+IonizationMaxWeighted	电离能MaxWeighted
+EAMaxWeighted	电子亲和能MaxWeighted
+PaulingElectronegMaxWeighted	Pauling电负性MaxWeighted
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+hardnessMaxWeighted	硬度MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PaulingElectronegMinWeighted	Pauling电负性MinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+IonizationMeanWeighted	电离能MeanWeighted
+EAMeanWeighted	电子亲和能MeanWeighted
+PaulingElectronegMeanWeighted	Pauling电负性MeanWeighted
+PearsonElectronegMeanWeighted	Pearson电负性MeanWeighted
+hardnessMeanWeighted	硬度MeanWeighted
+AtomicRadiusMeanWeighted	原子半径MeanWeighted
+IonizationGeomWeighted	电离能GeomWeighted
+EAGeomWeighted	电子亲和能GeomWeighted
+PearsonElectronegGeomWeighted	Pearson电负性GeomWeighted
+hardnessGeomWeighted	硬度GeomWeighted
+AtomicRadiusGeomWeighted	原子半径GeomWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 0.19306977288832497, 'gamma': 5.1794746792312125}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.770 ± 0.023.
+
+Test Acc: 0.8224, Test Recall: 0.8890
+Selected Features: 31 in 273.
+Feature name	 Translation
+temp	温度
+time	反应时间
+leak	产物泄露
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+IonizationMaxWeighted	电离能MaxWeighted
+EAMaxWeighted	电子亲和能MaxWeighted
+PaulingElectronegMaxWeighted	Pauling电负性MaxWeighted
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+hardnessMaxWeighted	硬度MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PaulingElectronegMinWeighted	Pauling电负性MinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+IonizationMeanWeighted	电离能MeanWeighted
+EAMeanWeighted	电子亲和能MeanWeighted
+PaulingElectronegMeanWeighted	Pauling电负性MeanWeighted
+PearsonElectronegMeanWeighted	Pearson电负性MeanWeighted
+hardnessMeanWeighted	硬度MeanWeighted
+AtomicRadiusMeanWeighted	原子半径MeanWeighted
+IonizationGeomWeighted	电离能GeomWeighted
+EAGeomWeighted	电子亲和能GeomWeighted
+PearsonElectronegGeomWeighted	Pearson电负性GeomWeighted
+hardnessGeomWeighted	硬度GeomWeighted
+AtomicRadiusGeomWeighted	原子半径GeomWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 0.19306977288832497, 'gamma': 5.1794746792312125}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.785 ± 0.030.
+
+Test Acc: 0.8277, Test Recall: 0.8997
+Selected Features: 32 in 273.
+Feature name	 Translation
+time	反应时间
+pH	pH
+leak	产物泄露
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+IonizationMaxWeighted	电离能MaxWeighted
+EAMaxWeighted	电子亲和能MaxWeighted
+PaulingElectronegMaxWeighted	Pauling电负性MaxWeighted
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+hardnessMaxWeighted	硬度MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PaulingElectronegMinWeighted	Pauling电负性MinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+IonizationMeanWeighted	电离能MeanWeighted
+EAMeanWeighted	电子亲和能MeanWeighted
+PaulingElectronegMeanWeighted	Pauling电负性MeanWeighted
+PearsonElectronegMeanWeighted	Pearson电负性MeanWeighted
+hardnessMeanWeighted	硬度MeanWeighted
+AtomicRadiusMeanWeighted	原子半径MeanWeighted
+IonizationGeomWeighted	电离能GeomWeighted
+EAGeomWeighted	电子亲和能GeomWeighted
+PaulingElectronegGeomWeighted	Pauling电负性GeomWeighted
+PearsonElectronegGeomWeighted	Pearson电负性GeomWeighted
+hardnessGeomWeighted	硬度GeomWeighted
+AtomicRadiusGeomWeighted	原子半径GeomWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 0.19306977288832497, 'gamma': 5.1794746792312125}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.779 ± 0.036.
+
+Test Acc: 0.8315, Test Recall: 0.9168
+Selected Features: 33 in 273.
+Feature name	 Translation
+temp	温度
+time	反应时间
+pH	pH
+leak	产物泄露
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+IonizationMaxWeighted	电离能MaxWeighted
+EAMaxWeighted	电子亲和能MaxWeighted
+PaulingElectronegMaxWeighted	Pauling电负性MaxWeighted
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+hardnessMaxWeighted	硬度MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PaulingElectronegMinWeighted	Pauling电负性MinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+IonizationMeanWeighted	电离能MeanWeighted
+EAMeanWeighted	电子亲和能MeanWeighted
+PaulingElectronegMeanWeighted	Pauling电负性MeanWeighted
+PearsonElectronegMeanWeighted	Pearson电负性MeanWeighted
+hardnessMeanWeighted	硬度MeanWeighted
+AtomicRadiusMeanWeighted	原子半径MeanWeighted
+IonizationGeomWeighted	电离能GeomWeighted
+EAGeomWeighted	电子亲和能GeomWeighted
+PaulingElectronegGeomWeighted	Pauling电负性GeomWeighted
+PearsonElectronegGeomWeighted	Pearson电负性GeomWeighted
+hardnessGeomWeighted	硬度GeomWeighted
+AtomicRadiusGeomWeighted	原子半径GeomWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 0.19306977288832497, 'gamma': 5.1794746792312125}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.778 ± 0.033.
+
+Test Acc: 0.8446, Test Recall: 0.9296
+Selected Features: 34 in 273.
+Feature name	 Translation
+temp	温度
+time	反应时间
+pH	pH
+leak	产物泄露
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgacc-waterdonratio	orgacc-waterdonratio
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+IonizationMaxWeighted	电离能MaxWeighted
+EAMaxWeighted	电子亲和能MaxWeighted
+PaulingElectronegMaxWeighted	Pauling电负性MaxWeighted
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+hardnessMaxWeighted	硬度MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PaulingElectronegMinWeighted	Pauling电负性MinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+IonizationMeanWeighted	电离能MeanWeighted
+EAMeanWeighted	电子亲和能MeanWeighted
+PaulingElectronegMeanWeighted	Pauling电负性MeanWeighted
+PearsonElectronegMeanWeighted	Pearson电负性MeanWeighted
+hardnessMeanWeighted	硬度MeanWeighted
+AtomicRadiusMeanWeighted	原子半径MeanWeighted
+IonizationGeomWeighted	电离能GeomWeighted
+EAGeomWeighted	电子亲和能GeomWeighted
+PaulingElectronegGeomWeighted	Pauling电负性GeomWeighted
+PearsonElectronegGeomWeighted	Pearson电负性GeomWeighted
+hardnessGeomWeighted	硬度GeomWeighted
+AtomicRadiusGeomWeighted	原子半径GeomWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 100000.0, 'gamma': 0.0071968567300115215}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.784 ± 0.038.
+
+Test Acc: 0.8392, Test Recall: 0.8559
+Selected Features: 35 in 273.
+Feature name	 Translation
+temp	温度
+time	反应时间
+pH	pH
+leak	产物泄露
+orgASA_HGeomAvg	orgASA_H几何平均
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgacc-waterdonratio	orgacc-waterdonratio
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+IonizationMaxWeighted	电离能MaxWeighted
+EAMaxWeighted	电子亲和能MaxWeighted
+PaulingElectronegMaxWeighted	Pauling电负性MaxWeighted
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+hardnessMaxWeighted	硬度MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PaulingElectronegMinWeighted	Pauling电负性MinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+IonizationMeanWeighted	电离能MeanWeighted
+EAMeanWeighted	电子亲和能MeanWeighted
+PaulingElectronegMeanWeighted	Pauling电负性MeanWeighted
+PearsonElectronegMeanWeighted	Pearson电负性MeanWeighted
+hardnessMeanWeighted	硬度MeanWeighted
+AtomicRadiusMeanWeighted	原子半径MeanWeighted
+IonizationGeomWeighted	电离能GeomWeighted
+EAGeomWeighted	电子亲和能GeomWeighted
+PaulingElectronegGeomWeighted	Pauling电负性GeomWeighted
+PearsonElectronegGeomWeighted	Pearson电负性GeomWeighted
+hardnessGeomWeighted	硬度GeomWeighted
+AtomicRadiusGeomWeighted	原子半径GeomWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 100000.0, 'gamma': 0.0071968567300115215}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.792 ± 0.038.
+
+Test Acc: 0.8629, Test Recall: 0.8751
+Selected Features: 36 in 273.
+Feature name	 Translation
+temp	温度
+time	反应时间
+pH	pH
+leak	产物泄露
+orgvanderwaalsMax	orgvanderwaalsMax
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgacc-waterdonratio	orgacc-waterdonratio
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+PaulingElectronegGeom	Pauling电负性Geom
+IonizationMaxWeighted	电离能MaxWeighted
+EAMaxWeighted	电子亲和能MaxWeighted
+PaulingElectronegMaxWeighted	Pauling电负性MaxWeighted
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+hardnessMaxWeighted	硬度MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PaulingElectronegMinWeighted	Pauling电负性MinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+IonizationMeanWeighted	电离能MeanWeighted
+EAMeanWeighted	电子亲和能MeanWeighted
+PaulingElectronegMeanWeighted	Pauling电负性MeanWeighted
+PearsonElectronegMeanWeighted	Pearson电负性MeanWeighted
+hardnessMeanWeighted	硬度MeanWeighted
+AtomicRadiusMeanWeighted	原子半径MeanWeighted
+IonizationGeomWeighted	电离能GeomWeighted
+EAGeomWeighted	电子亲和能GeomWeighted
+PaulingElectronegGeomWeighted	Pauling电负性GeomWeighted
+PearsonElectronegGeomWeighted	Pearson电负性GeomWeighted
+hardnessGeomWeighted	硬度GeomWeighted
+AtomicRadiusGeomWeighted	原子半径GeomWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 100000.0, 'gamma': 0.0071968567300115215}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.792 ± 0.028.
+
+Test Acc: 0.8775, Test Recall: 0.8975
+Selected Features: 37 in 273.
+Feature name	 Translation
+temp	温度
+time	反应时间
+pH	pH
+leak	产物泄露
+orgvanderwaalsMax	orgvanderwaalsMax
+orgASA_HArithAvg	orgASA_H算术平均
+orgASA_HGeomAvg	orgASA_H几何平均
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgacc-waterdonratio	orgacc-waterdonratio
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+IonizationMaxWeighted	电离能MaxWeighted
+EAMaxWeighted	电子亲和能MaxWeighted
+PaulingElectronegMaxWeighted	Pauling电负性MaxWeighted
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+hardnessMaxWeighted	硬度MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PaulingElectronegMinWeighted	Pauling电负性MinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+IonizationMeanWeighted	电离能MeanWeighted
+EAMeanWeighted	电子亲和能MeanWeighted
+PaulingElectronegMeanWeighted	Pauling电负性MeanWeighted
+PearsonElectronegMeanWeighted	Pearson电负性MeanWeighted
+hardnessMeanWeighted	硬度MeanWeighted
+AtomicRadiusMeanWeighted	原子半径MeanWeighted
+IonizationGeomWeighted	电离能GeomWeighted
+EAGeomWeighted	电子亲和能GeomWeighted
+PaulingElectronegGeomWeighted	Pauling电负性GeomWeighted
+PearsonElectronegGeomWeighted	Pearson电负性GeomWeighted
+hardnessGeomWeighted	硬度GeomWeighted
+AtomicRadiusGeomWeighted	原子半径GeomWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 100000.0, 'gamma': 0.0071968567300115215}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.799 ± 0.034.
+
+Test Acc: 0.8775, Test Recall: 0.8965
+Selected Features: 38 in 273.
+Feature name	 Translation
+temp	温度
+time	反应时间
+pH	pH
+leak	产物泄露
+orgvanderwaalsMax	orgvanderwaalsMax
+orgASAMax	orgASAMax
+orgASA_HArithAvg	orgASA_H算术平均
+orgASA_PGeomAvg	orgASA_P几何平均
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgacc-waterdonratio	orgacc-waterdonratio
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+IonizationMaxWeighted	电离能MaxWeighted
+EAMaxWeighted	电子亲和能MaxWeighted
+PaulingElectronegMaxWeighted	Pauling电负性MaxWeighted
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+hardnessMaxWeighted	硬度MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PaulingElectronegMinWeighted	Pauling电负性MinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+IonizationMeanWeighted	电离能MeanWeighted
+EAMeanWeighted	电子亲和能MeanWeighted
+PaulingElectronegMeanWeighted	Pauling电负性MeanWeighted
+PearsonElectronegMeanWeighted	Pearson电负性MeanWeighted
+hardnessMeanWeighted	硬度MeanWeighted
+AtomicRadiusMeanWeighted	原子半径MeanWeighted
+IonizationGeomWeighted	电离能GeomWeighted
+EAGeomWeighted	电子亲和能GeomWeighted
+PaulingElectronegGeomWeighted	Pauling电负性GeomWeighted
+PearsonElectronegGeomWeighted	Pearson电负性GeomWeighted
+hardnessGeomWeighted	硬度GeomWeighted
+AtomicRadiusGeomWeighted	原子半径GeomWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 5.1794746792312125, 'gamma': 0.19306977288832497}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.799 ± 0.034.
+
+Test Acc: 0.8874, Test Recall: 0.9029
+Selected Features: 39 in 273.
+Feature name	 Translation
+temp	温度
+time	反应时间
+slowCool	缓慢冷却
+pH	pH
+leak	产物泄露
+orgASAMax	orgASAMax
+orgASA_HMax	orgASA_HMax
+orgASA_HMin	orgASA_HMin
+orgASA_HGeomAvg	orgASA_H几何平均
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgacc-waterdonratio	orgacc-waterdonratio
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+IonizationMaxWeighted	电离能MaxWeighted
+EAMaxWeighted	电子亲和能MaxWeighted
+PaulingElectronegMaxWeighted	Pauling电负性MaxWeighted
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+hardnessMaxWeighted	硬度MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PaulingElectronegMinWeighted	Pauling电负性MinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+IonizationMeanWeighted	电离能MeanWeighted
+EAMeanWeighted	电子亲和能MeanWeighted
+PaulingElectronegMeanWeighted	Pauling电负性MeanWeighted
+PearsonElectronegMeanWeighted	Pearson电负性MeanWeighted
+hardnessMeanWeighted	硬度MeanWeighted
+AtomicRadiusMeanWeighted	原子半径MeanWeighted
+IonizationGeomWeighted	电离能GeomWeighted
+EAGeomWeighted	电子亲和能GeomWeighted
+PaulingElectronegGeomWeighted	Pauling电负性GeomWeighted
+PearsonElectronegGeomWeighted	Pearson电负性GeomWeighted
+hardnessGeomWeighted	硬度GeomWeighted
+AtomicRadiusGeomWeighted	原子半径GeomWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 5.1794746792312125, 'gamma': 0.19306977288832497}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.805 ± 0.037.
+
+Test Acc: 0.8828, Test Recall: 0.8911
+Selected Features: 40 in 273.
+Feature name	 Translation
+temp	温度
+time	反应时间
+pH	pH
+leak	产物泄露
+orgvanderwaalsMax	orgvanderwaalsMax
+orgASA_HMin	orgASA_HMin
+orgASA_HArithAvg	orgASA_H算术平均
+orgASA_HGeomAvg	orgASA_H几何平均
+orgASA_PGeomAvg	orgASA_P几何平均
+orghbdamsdonGeomAvg	orghbdamsdon几何平均
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgacc-waterdonratio	orgacc-waterdonratio
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+IonizationMaxWeighted	电离能MaxWeighted
+EAMaxWeighted	电子亲和能MaxWeighted
+PaulingElectronegMaxWeighted	Pauling电负性MaxWeighted
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+hardnessMaxWeighted	硬度MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PaulingElectronegMinWeighted	Pauling电负性MinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+IonizationMeanWeighted	电离能MeanWeighted
+EAMeanWeighted	电子亲和能MeanWeighted
+PaulingElectronegMeanWeighted	Pauling电负性MeanWeighted
+PearsonElectronegMeanWeighted	Pearson电负性MeanWeighted
+hardnessMeanWeighted	硬度MeanWeighted
+AtomicRadiusMeanWeighted	原子半径MeanWeighted
+IonizationGeomWeighted	电离能GeomWeighted
+EAGeomWeighted	电子亲和能GeomWeighted
+PaulingElectronegGeomWeighted	Pauling电负性GeomWeighted
+PearsonElectronegGeomWeighted	Pearson电负性GeomWeighted
+hardnessGeomWeighted	硬度GeomWeighted
+AtomicRadiusGeomWeighted	原子半径GeomWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 5.1794746792312125, 'gamma': 0.19306977288832497}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.797 ± 0.030.
+
+Test Acc: 0.8882, Test Recall: 0.8911
+Selected Features: 41 in 273.
+Feature name	 Translation
+temp	温度
+time	反应时间
+pH	pH
+leak	产物泄露
+orgmaximalprojectionsizeMax	orgmaximalprojectionsizeMax
+orgASAMax	orgASAMax
+orgASA_HMax	orgASA_HMax
+orgASA_HMin	orgASA_HMin
+orgASA_HArithAvg	orgASA_H算术平均
+orgASA_HGeomAvg	orgASA_H几何平均
+orgASA_PGeomAvg	orgASA_P几何平均
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgacc-waterdonratio	orgacc-waterdonratio
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+IonizationMaxWeighted	电离能MaxWeighted
+EAMaxWeighted	电子亲和能MaxWeighted
+PaulingElectronegMaxWeighted	Pauling电负性MaxWeighted
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+hardnessMaxWeighted	硬度MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PaulingElectronegMinWeighted	Pauling电负性MinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+IonizationMeanWeighted	电离能MeanWeighted
+EAMeanWeighted	电子亲和能MeanWeighted
+PaulingElectronegMeanWeighted	Pauling电负性MeanWeighted
+PearsonElectronegMeanWeighted	Pearson电负性MeanWeighted
+hardnessMeanWeighted	硬度MeanWeighted
+AtomicRadiusMeanWeighted	原子半径MeanWeighted
+IonizationGeomWeighted	电离能GeomWeighted
+EAGeomWeighted	电子亲和能GeomWeighted
+PaulingElectronegGeomWeighted	Pauling电负性GeomWeighted
+PearsonElectronegGeomWeighted	Pearson电负性GeomWeighted
+hardnessGeomWeighted	硬度GeomWeighted
+AtomicRadiusGeomWeighted	原子半径GeomWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 5.1794746792312125, 'gamma': 0.19306977288832497}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.805 ± 0.033.
+
+Test Acc: 0.8798, Test Recall: 0.8826
+Selected Features: 42 in 273.
+Feature name	 Translation
+temp	温度
+time	反应时间
+slowCool	缓慢冷却
+pH	pH
+leak	产物泄露
+orgmaximalprojectionsizeMax	orgmaximalprojectionsizeMax
+orgvanderwaalsMax	orgvanderwaalsMax
+orgASAMax	orgASAMax
+orgASA_HArithAvg	orgASA_H算术平均
+orgASA_PArithAvg	orgASA_P算术平均
+orghbdamsaccArithAvg	orghbdamsacc算术平均
+orgASA_HGeomAvg	orgASA_H几何平均
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgacc-waterdonratio	orgacc-waterdonratio
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+IonizationMaxWeighted	电离能MaxWeighted
+EAMaxWeighted	电子亲和能MaxWeighted
+PaulingElectronegMaxWeighted	Pauling电负性MaxWeighted
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+hardnessMaxWeighted	硬度MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PaulingElectronegMinWeighted	Pauling电负性MinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+IonizationMeanWeighted	电离能MeanWeighted
+EAMeanWeighted	电子亲和能MeanWeighted
+PaulingElectronegMeanWeighted	Pauling电负性MeanWeighted
+PearsonElectronegMeanWeighted	Pearson电负性MeanWeighted
+hardnessMeanWeighted	硬度MeanWeighted
+AtomicRadiusMeanWeighted	原子半径MeanWeighted
+IonizationGeomWeighted	电离能GeomWeighted
+EAGeomWeighted	电子亲和能GeomWeighted
+PaulingElectronegGeomWeighted	Pauling电负性GeomWeighted
+PearsonElectronegGeomWeighted	Pearson电负性GeomWeighted
+hardnessGeomWeighted	硬度GeomWeighted
+AtomicRadiusGeomWeighted	原子半径GeomWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 5.1794746792312125, 'gamma': 0.19306977288832497}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.820 ± 0.026.
+
+Test Acc: 0.8897, Test Recall: 0.8879
+Selected Features: 43 in 273.
+Feature name	 Translation
+temp	温度
+time	反应时间
+pH	pH
+leak	产物泄露
+orgvanderwaalsMax	orgvanderwaalsMax
+orgASAMax	orgASAMax
+orgASAMin	orgASAMin
+orgASA_HMin	orgASA_HMin
+orgASA_PArithAvg	orgASA_P算术平均
+orghbdamsdonArithAvg	orghbdamsdon算术平均
+orgASA_HGeomAvg	orgASA_H几何平均
+orgASA_PGeomAvg	orgASA_P几何平均
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgacc-waterdonratio	orgacc-waterdonratio
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+PaulingElectronegGeom	Pauling电负性Geom
+IonizationMaxWeighted	电离能MaxWeighted
+EAMaxWeighted	电子亲和能MaxWeighted
+PaulingElectronegMaxWeighted	Pauling电负性MaxWeighted
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+hardnessMaxWeighted	硬度MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PaulingElectronegMinWeighted	Pauling电负性MinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+IonizationMeanWeighted	电离能MeanWeighted
+EAMeanWeighted	电子亲和能MeanWeighted
+PaulingElectronegMeanWeighted	Pauling电负性MeanWeighted
+PearsonElectronegMeanWeighted	Pearson电负性MeanWeighted
+hardnessMeanWeighted	硬度MeanWeighted
+AtomicRadiusMeanWeighted	原子半径MeanWeighted
+IonizationGeomWeighted	电离能GeomWeighted
+EAGeomWeighted	电子亲和能GeomWeighted
+PaulingElectronegGeomWeighted	Pauling电负性GeomWeighted
+PearsonElectronegGeomWeighted	Pearson电负性GeomWeighted
+hardnessGeomWeighted	硬度GeomWeighted
+AtomicRadiusGeomWeighted	原子半径GeomWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 5.1794746792312125, 'gamma': 0.19306977288832497}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.798 ± 0.025.
+
+Test Acc: 0.8897, Test Recall: 0.8901
+Selected Features: 44 in 273.
+Feature name	 Translation
+temp	温度
+time	反应时间
+pH	pH
+leak	产物泄露
+orgvanderwaalsMax	orgvanderwaalsMax
+orgASA_HMax	orgASA_HMax
+orgvanderwaalsMin	orgvanderwaalsMin
+orgASA_HMin	orgASA_HMin
+orgASA_HArithAvg	orgASA_H算术平均
+orgASA_PArithAvg	orgASA_P算术平均
+orgASA+GeomAvg	orgASA+几何平均
+orgASA-GeomAvg	orgASA-几何平均
+orgASA_HGeomAvg	orgASA_H几何平均
+orghbdamsdonGeomAvg	orghbdamsdon几何平均
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgacc-waterdonratio	orgacc-waterdonratio
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+IonizationMaxWeighted	电离能MaxWeighted
+EAMaxWeighted	电子亲和能MaxWeighted
+PaulingElectronegMaxWeighted	Pauling电负性MaxWeighted
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+hardnessMaxWeighted	硬度MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PaulingElectronegMinWeighted	Pauling电负性MinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+IonizationMeanWeighted	电离能MeanWeighted
+EAMeanWeighted	电子亲和能MeanWeighted
+PaulingElectronegMeanWeighted	Pauling电负性MeanWeighted
+PearsonElectronegMeanWeighted	Pearson电负性MeanWeighted
+hardnessMeanWeighted	硬度MeanWeighted
+AtomicRadiusMeanWeighted	原子半径MeanWeighted
+IonizationGeomWeighted	电离能GeomWeighted
+EAGeomWeighted	电子亲和能GeomWeighted
+PaulingElectronegGeomWeighted	Pauling电负性GeomWeighted
+PearsonElectronegGeomWeighted	Pearson电负性GeomWeighted
+hardnessGeomWeighted	硬度GeomWeighted
+AtomicRadiusGeomWeighted	原子半径GeomWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 5.1794746792312125, 'gamma': 0.19306977288832497}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.807 ± 0.031.
+
+Test Acc: 0.8890, Test Recall: 0.8869
+Selected Features: 45 in 273.
+Feature name	 Translation
+temp	温度
+time	反应时间
+pH	pH
+leak	产物泄露
+orgmaximalprojectionsizeMax	orgmaximalprojectionsizeMax
+orgASAMax	orgASAMax
+orgASA_HMax	orgASA_HMax
+orgASA_HMin	orgASA_HMin
+orgvanderwaalsArithAvg	orgvanderwaals算术平均
+orgASA_HArithAvg	orgASA_H算术平均
+orgASA_PArithAvg	orgASA_P算术平均
+orgASA_HGeomAvg	orgASA_H几何平均
+orgASA_PGeomAvg	orgASA_P几何平均
+orghbdamsdonGeomAvg	orghbdamsdon几何平均
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgacc-waterdonratio	orgacc-waterdonratio
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+PaulingElectronegGeom	Pauling电负性Geom
+IonizationMaxWeighted	电离能MaxWeighted
+EAMaxWeighted	电子亲和能MaxWeighted
+PaulingElectronegMaxWeighted	Pauling电负性MaxWeighted
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+hardnessMaxWeighted	硬度MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PaulingElectronegMinWeighted	Pauling电负性MinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+IonizationMeanWeighted	电离能MeanWeighted
+EAMeanWeighted	电子亲和能MeanWeighted
+PaulingElectronegMeanWeighted	Pauling电负性MeanWeighted
+PearsonElectronegMeanWeighted	Pearson电负性MeanWeighted
+hardnessMeanWeighted	硬度MeanWeighted
+AtomicRadiusMeanWeighted	原子半径MeanWeighted
+IonizationGeomWeighted	电离能GeomWeighted
+EAGeomWeighted	电子亲和能GeomWeighted
+PaulingElectronegGeomWeighted	Pauling电负性GeomWeighted
+PearsonElectronegGeomWeighted	Pearson电负性GeomWeighted
+hardnessGeomWeighted	硬度GeomWeighted
+AtomicRadiusGeomWeighted	原子半径GeomWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 5.1794746792312125, 'gamma': 0.19306977288832497}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.804 ± 0.034.
+
+Test Acc: 0.8928, Test Recall: 0.8890
+Selected Features: 46 in 273.
+Feature name	 Translation
+temp	温度
+time	反应时间
+pH	pH
+leak	产物泄露
+orgvanderwaalsMax	orgvanderwaalsMax
+orgASAMax	orgASAMax
+orgASA_HMax	orgASA_HMax
+orgASAMin	orgASAMin
+orgASA_HMin	orgASA_HMin
+orgmaximalprojectionsizeArithAvg	orgmaximalprojectionsize算术平均
+orgASA_PArithAvg	orgASA_P算术平均
+orghbdamsdonArithAvg	orghbdamsdon算术平均
+orgmaximalprojectionsizeGeomAvg	orgmaximalprojectionsize几何平均
+orgvanderwaalsGeomAvg	orgvanderwaals几何平均
+orgASA_HGeomAvg	orgASA_H几何平均
+orgASA_PGeomAvg	orgASA_P几何平均
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgacc-waterdonratio	orgacc-waterdonratio
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+IonizationMaxWeighted	电离能MaxWeighted
+EAMaxWeighted	电子亲和能MaxWeighted
+PaulingElectronegMaxWeighted	Pauling电负性MaxWeighted
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+hardnessMaxWeighted	硬度MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PaulingElectronegMinWeighted	Pauling电负性MinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+IonizationMeanWeighted	电离能MeanWeighted
+EAMeanWeighted	电子亲和能MeanWeighted
+PaulingElectronegMeanWeighted	Pauling电负性MeanWeighted
+PearsonElectronegMeanWeighted	Pearson电负性MeanWeighted
+hardnessMeanWeighted	硬度MeanWeighted
+AtomicRadiusMeanWeighted	原子半径MeanWeighted
+IonizationGeomWeighted	电离能GeomWeighted
+EAGeomWeighted	电子亲和能GeomWeighted
+PaulingElectronegGeomWeighted	Pauling电负性GeomWeighted
+PearsonElectronegGeomWeighted	Pearson电负性GeomWeighted
+hardnessGeomWeighted	硬度GeomWeighted
+AtomicRadiusGeomWeighted	原子半径GeomWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 5.1794746792312125, 'gamma': 0.19306977288832497}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.808 ± 0.029.
+
+Test Acc: 0.8882, Test Recall: 0.8837
+Selected Features: 47 in 273.
+Feature name	 Translation
+temp	温度
+time	反应时间
+pH	pH
+leak	产物泄露
+orgmaximalprojectionsizeMax	orgmaximalprojectionsizeMax
+orgvanderwaalsMax	orgvanderwaalsMax
+orgASAMax	orgASAMax
+orgvanderwaalsMin	orgvanderwaalsMin
+orgvanderwaalsArithAvg	orgvanderwaals算术平均
+orgASA_HArithAvg	orgASA_H算术平均
+orgASA_PArithAvg	orgASA_P算术平均
+orghbdamsdonArithAvg	orghbdamsdon算术平均
+orgmaximalprojectionsizeGeomAvg	orgmaximalprojectionsize几何平均
+orgASA-GeomAvg	orgASA-几何平均
+orgASA_HGeomAvg	orgASA_H几何平均
+orgASA_PGeomAvg	orgASA_P几何平均
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgacc-waterdonratio	orgacc-waterdonratio
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+PaulingElectronegMean	Pauling电负性Mean
+IonizationMaxWeighted	电离能MaxWeighted
+EAMaxWeighted	电子亲和能MaxWeighted
+PaulingElectronegMaxWeighted	Pauling电负性MaxWeighted
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+hardnessMaxWeighted	硬度MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PaulingElectronegMinWeighted	Pauling电负性MinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+IonizationMeanWeighted	电离能MeanWeighted
+EAMeanWeighted	电子亲和能MeanWeighted
+PaulingElectronegMeanWeighted	Pauling电负性MeanWeighted
+PearsonElectronegMeanWeighted	Pearson电负性MeanWeighted
+hardnessMeanWeighted	硬度MeanWeighted
+AtomicRadiusMeanWeighted	原子半径MeanWeighted
+IonizationGeomWeighted	电离能GeomWeighted
+EAGeomWeighted	电子亲和能GeomWeighted
+PaulingElectronegGeomWeighted	Pauling电负性GeomWeighted
+PearsonElectronegGeomWeighted	Pearson电负性GeomWeighted
+hardnessGeomWeighted	硬度GeomWeighted
+AtomicRadiusGeomWeighted	原子半径GeomWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 5.1794746792312125, 'gamma': 0.19306977288832497}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.801 ± 0.034.
+
+Test Acc: 0.8920, Test Recall: 0.8869
+Selected Features: 48 in 273.
+Feature name	 Translation
+temp	温度
+time	反应时间
+pH	pH
+leak	产物泄露
+orgmaximalprojectionsizeMax	orgmaximalprojectionsizeMax
+orgvanderwaalsMax	orgvanderwaalsMax
+orgASAMax	orgASAMax
+orgASA_HMax	orgASA_HMax
+orgASA_HMin	orgASA_HMin
+orgASAArithAvg	orgASA算术平均
+orgASA_HArithAvg	orgASA_H算术平均
+orgASA_PArithAvg	orgASA_P算术平均
+orghbdamsaccArithAvg	orghbdamsacc算术平均
+orgvanderwaalsGeomAvg	orgvanderwaals几何平均
+orgASA_HGeomAvg	orgASA_H几何平均
+orgASA_PGeomAvg	orgASA_P几何平均
+orghbdamsdonGeomAvg	orghbdamsdon几何平均
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgacc-waterdonratio	orgacc-waterdonratio
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+PaulingElectronegGeom	Pauling电负性Geom
+IonizationMaxWeighted	电离能MaxWeighted
+EAMaxWeighted	电子亲和能MaxWeighted
+PaulingElectronegMaxWeighted	Pauling电负性MaxWeighted
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+hardnessMaxWeighted	硬度MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PaulingElectronegMinWeighted	Pauling电负性MinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+IonizationMeanWeighted	电离能MeanWeighted
+EAMeanWeighted	电子亲和能MeanWeighted
+PaulingElectronegMeanWeighted	Pauling电负性MeanWeighted
+PearsonElectronegMeanWeighted	Pearson电负性MeanWeighted
+hardnessMeanWeighted	硬度MeanWeighted
+AtomicRadiusMeanWeighted	原子半径MeanWeighted
+IonizationGeomWeighted	电离能GeomWeighted
+EAGeomWeighted	电子亲和能GeomWeighted
+PaulingElectronegGeomWeighted	Pauling电负性GeomWeighted
+PearsonElectronegGeomWeighted	Pearson电负性GeomWeighted
+hardnessGeomWeighted	硬度GeomWeighted
+AtomicRadiusGeomWeighted	原子半径GeomWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 5.1794746792312125, 'gamma': 0.19306977288832497}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.809 ± 0.025.
+
+Test Acc: 0.8951, Test Recall: 0.8911
+Selected Features: 49 in 273.
+Feature name	 Translation
+temp	温度
+time	反应时间
+slowCool	缓慢冷却
+pH	pH
+leak	产物泄露
+orgmaximalprojectionsizeMax	orgmaximalprojectionsizeMax
+orgvanderwaalsMax	orgvanderwaalsMax
+orgASAMax	orgASAMax
+orgASA+Max	orgASA+Max
+orgvanderwaalsMin	orgvanderwaalsMin
+orgASA_HMin	orgASA_HMin
+orgASA_HArithAvg	orgASA_H算术平均
+orgASA_PArithAvg	orgASA_P算术平均
+orghbdamsaccArithAvg	orghbdamsacc算术平均
+orghbdamsdonArithAvg	orghbdamsdon算术平均
+orgmaximalprojectionsizeGeomAvg	orgmaximalprojectionsize几何平均
+orgvanderwaalsGeomAvg	orgvanderwaals几何平均
+orgASA_HGeomAvg	orgASA_H几何平均
+orghbdamsdonGeomAvg	orghbdamsdon几何平均
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgacc-waterdonratio	orgacc-waterdonratio
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+IonizationMaxWeighted	电离能MaxWeighted
+EAMaxWeighted	电子亲和能MaxWeighted
+PaulingElectronegMaxWeighted	Pauling电负性MaxWeighted
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+hardnessMaxWeighted	硬度MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PaulingElectronegMinWeighted	Pauling电负性MinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+IonizationMeanWeighted	电离能MeanWeighted
+EAMeanWeighted	电子亲和能MeanWeighted
+PaulingElectronegMeanWeighted	Pauling电负性MeanWeighted
+PearsonElectronegMeanWeighted	Pearson电负性MeanWeighted
+hardnessMeanWeighted	硬度MeanWeighted
+AtomicRadiusMeanWeighted	原子半径MeanWeighted
+IonizationGeomWeighted	电离能GeomWeighted
+EAGeomWeighted	电子亲和能GeomWeighted
+PaulingElectronegGeomWeighted	Pauling电负性GeomWeighted
+PearsonElectronegGeomWeighted	Pearson电负性GeomWeighted
+hardnessGeomWeighted	硬度GeomWeighted
+AtomicRadiusGeomWeighted	原子半径GeomWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 5.1794746792312125, 'gamma': 0.19306977288832497}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.825 ± 0.025.
+
+Test Acc: 0.9035, Test Recall: 0.8943
+Selected Features: 50 in 273.
+Feature name	 Translation
+temp	温度
+time	反应时间
+pH	pH
+leak	产物泄露
+orgvanderwaalsMax	orgvanderwaalsMax
+orgASAMax	orgASAMax
+orgASA_HMax	orgASA_HMax
+orghbdamsaccMax	orghbdamsaccMax
+orgASAMin	orgASAMin
+orgASA_PMin	orgASA_PMin
+orghbdamsdonMin	orghbdamsdonMin
+orgmaximalprojectionsizeArithAvg	orgmaximalprojectionsize算术平均
+orgvanderwaalsArithAvg	orgvanderwaals算术平均
+orgASA_HArithAvg	orgASA_H算术平均
+orgASA_PArithAvg	orgASA_P算术平均
+orgASAGeomAvg	orgASA几何平均
+orgASA-GeomAvg	orgASA-几何平均
+orgASA_HGeomAvg	orgASA_H几何平均
+orgASA_PGeomAvg	orgASA_P几何平均
+orghbdamsdonGeomAvg	orghbdamsdon几何平均
+inorg-water-moleratio	无机相-水摩尔比
+org-water-moleratio	有机相-水摩尔比
+orgacc-waterdonratio	orgacc-waterdonratio
+orgdon-wateraccratio	orgdon-wateraccratio
+inorg-org-moleratio	无机-有机相摩尔比
+notwater-water-moleratio	非水-水摩尔比
+IonizationMaxWeighted	电离能MaxWeighted
+EAMaxWeighted	电子亲和能MaxWeighted
+PaulingElectronegMaxWeighted	Pauling电负性MaxWeighted
+PearsonElectronegMaxWeighted	Pearson电负性MaxWeighted
+hardnessMaxWeighted	硬度MaxWeighted
+AtomicRadiusMaxWeighted	原子半径MaxWeighted
+IonizationMinWeighted	电离能MinWeighted
+EAMinWeighted	EAMinWeighted
+PaulingElectronegMinWeighted	Pauling电负性MinWeighted
+PearsonElectronegMinWeighted	Pearson电负性MinWeighted
+hardnessMinWeighted	硬度MinWeighted
+AtomicRadiusMinWeighted	原子半径MinWeighted
+IonizationMeanWeighted	电离能MeanWeighted
+EAMeanWeighted	电子亲和能MeanWeighted
+PaulingElectronegMeanWeighted	Pauling电负性MeanWeighted
+PearsonElectronegMeanWeighted	Pearson电负性MeanWeighted
+hardnessMeanWeighted	硬度MeanWeighted
+AtomicRadiusMeanWeighted	原子半径MeanWeighted
+IonizationGeomWeighted	电离能GeomWeighted
+EAGeomWeighted	电子亲和能GeomWeighted
+PaulingElectronegGeomWeighted	Pauling电负性GeomWeighted
+PearsonElectronegGeomWeighted	Pearson电负性GeomWeighted
+hardnessGeomWeighted	硬度GeomWeighted
+AtomicRadiusGeomWeighted	原子半径GeomWeighted
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 5.1794746792312125, 'gamma': 0.19306977288832497}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.809 ± 0.027.
+
+Test Acc: 0.8943, Test Recall: 0.8869
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 100000.0, 'gamma': 0.0031622776601683794}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.806 ± 0.028.
+

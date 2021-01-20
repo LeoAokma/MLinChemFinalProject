@@ -158,9 +158,11 @@ fets = []
 for fet_num in np.linspace(1, 50, 50):
     fet = round(fet_num)
     fets.append(fet)
-    selected_features, trans = feature_selection(keys, features=fet, model='random_forest')
+    selected_features, trans = feature_selection(keys, features=fet, model='svm')
     # generate the train and valid dataset and binarize the outcome
-    tr_X_origin, tr_y = train_dl.generate_trainset(feature_list=selected_features, include_first_column=False, binarize=True)
+    tr_X_origin, tr_y = train_dl.generate_trainset(feature_list=selected_features,
+                                                   include_first_column=False,
+                                                   binarize=True)
     # normalization
     scaler = preprocessing.StandardScaler()
     scaler.fit(tr_X_origin)
