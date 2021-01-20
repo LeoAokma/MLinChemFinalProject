@@ -34,10 +34,16 @@ train_dl.binarize('outcome', 3)
 
 def hyper_coefficient(valid_X, valid_y, test_X, test_y, plot_str, print_det=False):
     """
-    A function designed for finding best hyper parameters
-    :return: the best hyper parameter
+    A function designed for finding best hyper parameters in regularization
+    :param: valid_X: list or nd-array, the validation dataset
+    :param: valid_y: list or nd-array, the outcome of validation dataset
+    :param: test_X: list or nd-array, the test dataset used for plotting
+    :param: test_y: list or nd-array, the outcome of test dataset used for plotting
+    :param: plot_str: str, the caption of the plot and its filename
+    :param: print_det: bool, if you want to print the details during the process. Default=False
+    :return: tuple, the best hyper parameter and the svm model with probability on.
+    (best_param, svm_model)
     """
-    # C = 580
     train_accs = []
     train_rrs = []
     test_accs = []
@@ -111,9 +117,11 @@ def hyper_coefficient(valid_X, valid_y, test_X, test_y, plot_str, print_det=Fals
 def feature_selection(input_keys, features=10, model='random_forest'):
     """
     Select best features by using sklearn.SelectFromModel
-    :param input_keys:
-    :param features:
-    :return:
+    :param input_keys: List, the feature list you want to use
+    :param features: Int, the number of features to choose from selected features. Default=10
+    :param model: str, the model used in model selection, random forest or linear svm. Default='random_forest'
+    :return: array, containing the features selected by the algorithm and its corresponding translation:
+    (selected_list, translation_list)
     """
     # generate the dataset and binarize the outcome
     tr_X, tr_y = train_dl.generate_trainset(keys[0], include_first_column=False, binarize=True)
