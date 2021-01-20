@@ -1,31 +1,36 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-"""
 """
 SVM with modified Data
+
 Procedure:
-    1. Inorg/Org/Misc descriptors -Normalize->
-        -PCA-> Dim-reduced features (respectively, dim=10+5+3)
+    1. Inorg/Org/Misc descriptors -standardize-> \ 
+        -PCA-> Dim-reduced features (respectively, dim=6+7+8)
     2. Dim-reduced features -SVM hyperopt-> Predicted results
+
 Author: Yichen Nie
+
 System Environment
 OS: MacOS Mojave 10.14.6
 (No requirements of necessity)
+
 Python Environment
 python==3.8
 numpy==1.18.5
 sklearn-learn==0.23.2
 data_loader: see data_loader.py
-SVM: see SVM.py
+svm: see svm.py
 """
 
 import numpy as np
-import sklearn.svm as svm
+from sklearn.svm import SVC
 from sklearn import preprocessing, model_selection
 from sklearn.metrics import confusion_matrix, accuracy_score
 from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
 
 import data_loader
-from SVM import opt_model_gridsearchcv, load_preprocess
-from data_keys import FeatNames
+from svm import FeatNames, load_preprocess, opt_evaluate_cross_valid
 
 # Successful or failed
 NCLASS = 2
@@ -50,7 +55,7 @@ def load_data(dataloader, is_test):
 
 def step_one(n_components, *dataset):
     """
-    Do PCA analysis with n_components to keep.
+    Do PCA analysis with n_components to keep.    
     step_one(*dataset, n_components) -> \
         proj_dataset
     """
@@ -60,7 +65,7 @@ def step_one(n_components, *dataset):
     train_X = scaler.fit_transform(train_X)
     for i in range(len(other_sets_X)):
         other_sets_X[i] = scaler.transform(other_sets_X[i])
-
+    
     # PCA for step 1
     # For optimization of n_components, see DimReduce.py
     PCA_model = PCA(n_components=n_components, copy=False, whiten=False)
@@ -73,9 +78,10 @@ def step_one(n_components, *dataset):
     return [proj_train_X] + proj_other_sets_X
 
 
-def pca_steps():
+def pca_steps(test_ratio=0.25):
     """
-    PCA steps were included.
+    Data loading and PCA steps were included.
+
     Parameters
     -----
     include_valid : Bool
@@ -83,11 +89,11 @@ def pca_steps():
     """
     dataset_dl = load_preprocess()
 
-    # Loading training/validation/test set
-    dataset_dl.split_test(ratio=0.25)
+    # Loading training/validation/test set 
+    dataset_dl.split_test(test_ratio)
     inorg_train_X, org_train_X, misc_train_X, train_y = load_data(dataset_dl, False)
     inorg_test_X, org_test_X, misc_test_X, test_y = load_data(dataset_dl, True)
-
+    
     # Do step one
     inorg_X = step_one(6, inorg_train_X, inorg_test_X)
     org_X = step_one(7, org_train_X, org_test_X)
@@ -103,36 +109,14 @@ def pca_steps():
     return train_X, train_y, test_X, test_y
 
 
-def cross_valid_test_model(train_X, train_y, test_X, test_y, cv=15):
-    """
-    test model with K-fold cross validation.
-    """
-    param_grid = [{'gamma': np.logspace(-5, 5, 5), 'C': np.logspace(5, 5, num=1)}]
-    svm_model = svm.SVC(kernel='rbf', class_weight='balanced')
-    optimized_svm = opt_model_gridsearchcv(
-        svm_model, param_grid, train_X, train_y, cv=cv)
-
-    pred_train_y = optimized_svm.predict(train_X)
-    pred_test_y = optimized_svm.predict(test_X)
-    train_score = accuracy_score(train_y, pred_train_y)
-    test_score = accuracy_score(test_y, pred_test_y)
-
-    print("Best parameters: %s" % optimized_svm.best_params_)
-    index = np.argwhere(optimized_svm.cv_results_['rank_test_score'] == 1)[0]
-    print("Test mean/std of accuracy in cross validation %.3f ± %.3f" % (
-        optimized_svm.cv_results_['mean_test_score'][index],
-        optimized_svm.cv_results_['std_test_score'][index]))
-    print("Accuracy for training/test set: %.3f, %.3f" %
-          (train_score, test_score))
-    print("Confusion matrix for training set:")
-    print(confusion_matrix(train_y, pred_train_y))
-    print("Confusion matrix for test set:")
-    print(confusion_matrix(test_y, pred_test_y))
-
-
 def main():
-    train_X, train_y, test_X, test_y = pca_steps()
-    cross_valid_test_model(train_X, train_y, test_X, test_y, 5)
+    # PCA
+    train_X, train_y, test_X, test_y = pca_steps(0.25)
+
+    # svm
+    param_grid = [{'gamma': np.logspace(-5, 5, 5), 'C': np.logspace(-5, 5, num=5)}]
+    svm_model = SVC(kernel='rbf', class_weight='balanced')
+    opt_evaluate_cross_valid(svm_model, param_grid, train_X, train_y, test_X, test_y, 15)
 
 
 if __name__ == "__main__":
