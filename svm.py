@@ -39,70 +39,7 @@ from hypopt import GridSearch
 import matplotlib.pyplot as plt
 
 import data_loader
-
-class FeatNames:
-    """
-    Feature names.
-    For more information, see Supporting Material of reference.
-    Ref: Raccuglia et al. Nature 2016, 533, 73. doi: 10.1038/nature17439
-    """
-
-    # Attributes selected by CfsSubsetEval best-first selection.
-    feat_first = ['orgvanderwaalsMin', 'orgASA+Min', 'orghbdamsdonGeomAvg',
-                  'PaulingElectronegMean', 'hardnessMaxWeighted', 'AtomicRadiusMeanWeighted']
-
-    # Attributes selected by CfsSubsetEval greedy stepwise selection.
-    feat_top6 = ['time', 'hardnessMinWeighted', 'orgASA_HGeomAvg', 'leak', 
-                'inorg-water-moleratio', 'orgvanderwaalsArithAvg']
-
-    feat_top9 = ['time', 'hardnessMinWeighted', 'orgASA_HGeomAvg', 'leak', 
-                 'inorg-water-moleratio', 'orgvanderwaalsArithAvg', 'orgvanderwaalsArithAvg',
-                 'orghbdamsaccMax', 'temp', 'EAMinWeighted']
-
-    # See table S1
-    feat_inorg = ['orgavgpolMax', 'IonizationMax', 'IonizationMin', 'IonizationMean', 'IonizationGeom', 
-                  'IonizationMaxWeighted', 'IonizationMinWeighted', 'IonizationMeanWeighted', 'IonizationGeomWeighted', 
-                  'EAMax', 'EAMin', 'EAMean', 'EAGeom', 
-                  'EAMaxWeighted', 'EAMinWeighted', 'EAMeanWeighted', 'EAGeomWeighted', 
-                  'PaulingElectronegMax', 'PaulingElectronegMin', 'PaulingElectronegMean', 'PaulingElectronegGeom', 
-                  'PaulingElectronegMaxWeighted', 'PaulingElectronegMinWeighted', 'PaulingElectronegMeanWeighted', 'PaulingElectronegGeomWeighted', 
-                  'PearsonElectronegMax', 'PearsonElectronegMin', 'PearsonElectronegMean', 'PearsonElectronegGeom',
-                  'PearsonElectronegMaxWeighted', 'PearsonElectronegMinWeighted', 'PearsonElectronegMeanWeighted', 'PearsonElectronegGeomWeighted', 
-                  'hardnessMax', 'hardnessMin','hardnessMean', 'hardnessGeom', 
-                  'hardnessMaxWeighted', 'hardnessMinWeighted', 'hardnessMeanWeighted', 'hardnessGeomWeighted', 
-                  'AtomicRadiusMax', 'AtomicRadiusMin', 'AtomicRadiusMean', 'AtomicRadiusGeom', 
-                  'AtomicRadiusMaxWeighted', 'AtomicRadiusMinWeighted', 'AtomicRadiusMeanWeighted', 'AtomicRadiusGeomWeighted', 'AtomicRadiusGeom']
-    
-    # See table S2
-    feat_stoichio = ['inorg-water-moleratio', 'inorg-org-moleratio', 'org-water-moleratio', 
-                     'orgacc-waterdonratio', 'orgdon-wateraccratio', 'notwater-water-moleratio']
-
-    # See table S3
-    feat_condition = ['temp', 'time', 'slowCool', 'pH', 'leak']
-
-    # See table S4
-    feat_org = ['orgavgpolMax', 'orgavgpolMin', 'orgavgpolArithAvg', 'orgavgpolGeomAvg', 
-                'orgavgpol_pHdependentMax', 'orgavgpol_pHdependentMin', 'orgavgpol_pHdependentArithAvg', 'orgavgpol_pHdependentGeomAvg', 
-                'orgrefractivityMax', 'orgrefractivityMin', 'orgrefractivityArithAvg', 'orgrefractivityGeomAvg', 
-                'orgmaximalprojectionareaMax', 'orgmaximalprojectionareaMin', 'orgmaximalprojectionareaArithAvg', 'orgmaximalprojectionareaGeomAvg', 
-                'orgmaximalprojectionradiusMax', 'orgmaximalprojectionradiusMin', 'orgmaximalprojectionradiusArithAvg', 'orgmaximalprojectionradiusGeomAvg', 
-                'orgmaximalprojectionsizeMax', 'orgmaximalprojectionsizeMin', 'orgmaximalprojectionsizeArithAvg', 'orgmaximalprojectionsizeGeomAvg', 
-                'orgminimalprojectionareaMax', 'orgminimalprojectionareaMin', 'orgminimalprojectionareaArithAvg', 'orgminimalprojectionareaGeomAvg', 
-                'orgminimalprojectionradiusMax', 'orgminimalprojectionradiusMin', 'orgminimalprojectionradiusArithAvg', 'orgminimalprojectionradiusGeomAvg', 
-                'orgminimalprojectionsizeMax', 'orgminimalprojectionsizeMin', 'orgminimalprojectionsizeArithAvg', 'orgminimalprojectionsizeGeomAvg', 
-                'orgmolpolMax', 'orgmolpolMin', 'orgmolpolArithAvg', 'orgmolpolGeomAvg', 
-                'orgvanderwaalsMax', 'orgvanderwaalsMin', 'orgvanderwaalsArithAvg', 'orgvanderwaalsGeomAvg', 
-                'orgASAMax', 'orgASAMin', 'orgASAArithAvg', 'orgASAGeomAvg', 
-                'orgASA+Max', 'orgASA+Min', 'orgASA+ArithAvg', 'orgASA+GeomAvg', 
-                'orgASA-Max', 'orgASA-Min', 'orgASA-ArithAvg', 'orgASA-GeomAvg', 
-                'orgASA_HMax', 'orgASA_HMin', 'orgASA_HArithAvg', 'orgASA_HGeomAvg', 
-                'orgASA_PMax', 'orgASA_PMin', 'orgASA_PArithAvg', 'orgASA_PGeomAvg', 
-                'orgpolarsurfaceareaMax', 'orgpolarsurfaceareaMin', 'orgpolarsurfaceareaArithAvg', 'orgpolarsurfaceareaGeomAvg', 
-                'orghbdamsaccMax', 'orghbdamsaccMin', 'orghbdamsaccArithAvg', 'orghbdamsaccGeomAvg', 
-                'orghbdamsdonMax', 'orghbdamsdonMin', 'orghbdamsdonArithAvg', 'orghbdamsdonGeomAvg']
-    
-    feat_misc = feat_stoichio + feat_condition
-    feat_all = feat_inorg + feat_org + feat_misc
+from data_keys import FeatNames
 
 
 def load_preprocess():
@@ -295,7 +232,8 @@ def opt_evaluate_cross_valid(model, param_grid, train_X, train_y, test_X, test_y
     return optimized_model
 
 
-def main():    
+def main():
+    """
     # train/validation/test split
     train_X, train_y, valid_X, valid_y, test_X, test_y = prepare_dataset(
         FeatNames.feat_first, True, 0.25, 0.25)
@@ -303,13 +241,14 @@ def main():
     svm_model = SVC(kernel='rbf', class_weight='balanced')
     opt_evaluate(svm_model, params_opt, 
         train_X, train_y, valid_X, valid_y, test_X, test_y)
+    """
     
     # cross validation
     train_X, train_y, test_X, test_y = prepare_dataset(
-        FeatNames.feat_first, False, 1/3)
+        FeatNames.feat_all, False, 1/3)
     params_opt = [{'gamma': np.logspace(-5, 5, num=5), 'C': np.logspace(-5, 5, num=5)}]
     svm_model = SVC(kernel='rbf', class_weight='balanced')
-    opt_evaluate_cross_valid(svm_model, params_opt, train_X, train_y, test_X, test_y, 15)
+    opt_evaluate_cross_valid(svm_model, params_opt, train_X, train_y, test_X, test_y, 15, log=False)
 
 
 if __name__ == "__main__":

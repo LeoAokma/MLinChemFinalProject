@@ -158,10 +158,9 @@ fets = []
 for fet_num in np.linspace(1, 50, 50):
     fet = round(fet_num)
     fets.append(fet)
-    selected_features, trans = feature_selection(keys, features=fet, model='svm')
+    selected_features, trans = feature_selection(keys, features=fet, model='random_forest')
     # generate the train and valid dataset and binarize the outcome
     tr_X_origin, tr_y = train_dl.generate_trainset(feature_list=selected_features, include_first_column=False, binarize=True)
-    # va_X_origin, va_y = test_dl.generate_trainset(feature_list=selected_features)
     # normalization
     scaler = preprocessing.StandardScaler()
     scaler.fit(tr_X_origin)
@@ -173,7 +172,7 @@ for fet_num in np.linspace(1, 50, 50):
     # train_X, valid_X = model_selection.train_test_split(train_valid_X, test_size=0.25, random_state=114514)
     # train_y, valid_y = model_selection.train_test_split(train_valid_y, test_size=0.25, random_state=114514)
     # hyper_c, svm_fn = hyper_coefficient(valid_X, valid_y, test_X, test_y, plot_str=str(fet))
-    params_opt = [{'gamma': np.logspace(-4, 5, 5), 'C': np.logspace(-4, 4, num=5)}]
+    params_opt = [{'gamma': np.logspace(-5, 5, 8), 'C': np.logspace(-5, 5, num=8)}]
     svm_model = svm.SVC(kernel='rbf', class_weight='balanced')
     best_params = opt_evaluate_cross_valid(svm_model, params_opt, train_valid_X, train_valid_y, test_X, test_y, 15)
 

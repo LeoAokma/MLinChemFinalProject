@@ -1,0 +1,16 @@
+Selected Features: 1 in 273.
+Feature name	 Translation
+time	反应时间
+
+            |------------------|
+            | Model evaluation |
+            |------------------|
+Best parameters: {'C': 0.0071968567300115215, 'gamma': 138.9495494373139}
+There are more than one best model.
+Test mean ± std of accuracy in cross validation 0.710 ± 0.035.
+
+Test Acc: 0.6953, Test Recall: 0.7631
+Selected Features: 2 in 273.
+Feature name	 Translation
+time	反应时间
+AtomicRadiusMinWeighted	原子半径MinWeighted
